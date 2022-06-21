@@ -74,6 +74,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Speakers.cs" />
     <Compile Include="Example_mtw.cs">
       <SubType>Form</SubType>
     </Compile>

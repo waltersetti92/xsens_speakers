@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "499d2ae0-eee6-48e5-9720-1a06c5595cbb": {
+      "ProjectGuid": "499d2ae0-eee6-48e5-9720-1a06c5595cbb",
+      "DisplayName": "XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

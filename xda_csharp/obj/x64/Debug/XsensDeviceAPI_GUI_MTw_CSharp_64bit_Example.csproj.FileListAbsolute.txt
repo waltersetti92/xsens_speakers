@@ -24,3 +24,17 @@ C:\Users\wsetti\OneDrive - Fondazione Istituto Italiano Tecnologia\Desktop\tmp_c
 C:\Users\wsetti\OneDrive - Fondazione Istituto Italiano Tecnologia\Desktop\tmp_calambrone\xda_csharp\obj\x64\Debug\XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example.csproj.CoreCompileInputs.cache
 C:\Users\wsetti\OneDrive - Fondazione Istituto Italiano Tecnologia\Desktop\tmp_calambrone\xda_csharp\obj\x64\Debug\XsensDeviceAPI GUI MTw CSharp 64bit Example.exe
 C:\Users\wsetti\OneDrive - Fondazione Istituto Italiano Tecnologia\Desktop\tmp_calambrone\xda_csharp\obj\x64\Debug\XsensDeviceAPI GUI MTw CSharp 64bit Example.pdb
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\x64\Debug\Out\xsensdeviceapi64.dll
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\x64\Debug\Out\xsensdeviceapi_csharp64.dll
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\x64\Debug\Out\xstypes64.dll
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\x64\Debug\Out\XsensDeviceAPI GUI MTw CSharp 64bit Example.exe.config
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\x64\Debug\Out\XsensDeviceAPI GUI MTw CSharp 64bit Example.exe
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\x64\Debug\Out\XsensDeviceAPI GUI MTw CSharp 64bit Example.pdb
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example.csproj.AssemblyReference.cache
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example.csproj.SuggestedBindingRedirects.cache
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\MTwExample.Form1.resources
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\dll_example_mtw_64.Properties.Resources.resources
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example.csproj.GenerateResource.cache
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example.csproj.CoreCompileInputs.cache
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI GUI MTw CSharp 64bit Example.exe
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI GUI MTw CSharp 64bit Example.pdb
