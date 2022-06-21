@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsensDeviceAPI_GUI_MTix_and_MTmk4_CSharp_32bit_Example", "XsensDeviceAPI_GUI_MTix_and_MTmk4_CSharp_32bit_Example.csproj", "{A8925434-025A-4352-8E47-897BBDDD75F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsensDeviceAPI_GUI_MTix_and_MTmk4_CSharp_64bit_Example", "XsensDeviceAPI_GUI_MTix_and_MTmk4_CSharp_64bit_Example.csproj", "{87690D88-DE61-476D-B2CE-8741D81AB05F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsensDeviceAPI_GUI_MTw_CSharp_32bit_Example", "XsensDeviceAPI_GUI_MTw_CSharp_32bit_Example.csproj", "{396BD921-69E8-401E-A74D-8E9D8A0DB152}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example", "XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example.csproj", "{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Debug|x64.ActiveCfg = Debug|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Debug|x86.ActiveCfg = Debug|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Debug|x86.Build.0 = Debug|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Release|x64.ActiveCfg = Release|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Release|x86.ActiveCfg = Release|x86
+		{A8925434-025A-4352-8E47-897BBDDD75F8}.Release|x86.Build.0 = Release|x86
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Debug|x64.ActiveCfg = Debug|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Debug|x64.Build.0 = Debug|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Debug|x86.ActiveCfg = Debug|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Release|Mixed Platforms.Build.0 = Release|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Release|x64.ActiveCfg = Release|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Release|x64.Build.0 = Release|x64
+		{87690D88-DE61-476D-B2CE-8741D81AB05F}.Release|x86.ActiveCfg = Release|x64
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Debug|x64.ActiveCfg = Debug|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Debug|x86.ActiveCfg = Debug|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Debug|x86.Build.0 = Debug|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Release|Mixed Platforms.Build.0 = Release|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Release|x64.ActiveCfg = Release|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Release|x86.ActiveCfg = Release|x86
+		{396BD921-69E8-401E-A74D-8E9D8A0DB152}.Release|x86.Build.0 = Release|x86
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Debug|x64.ActiveCfg = Debug|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Debug|x64.Build.0 = Debug|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Debug|x86.ActiveCfg = Debug|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Release|Mixed Platforms.Build.0 = Release|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Release|x64.ActiveCfg = Release|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Release|x64.Build.0 = Release|x64
+		{499D2AE0-EEE6-48E5-9720-1A06C5595CBB}.Release|x86.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
