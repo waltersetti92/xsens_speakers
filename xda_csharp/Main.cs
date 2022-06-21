@@ -54,14 +54,14 @@ namespace MTwExample
 		public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
 		public static readonly string resultsDir = Path.GetDirectoryName(Application.ExecutablePath) + "\\results";
 		private UserControl currUC = null;
-		//public Speakers speakers = null;
+		public Speakers speakers = null;
 		public Form1()
         {
             InitializeComponent();
             _xda = new MyXda();
 			cbxChannel.SelectedIndex = 0;
             step(1);
-			//speakers = new Speakers();
+			speakers = new Speakers();
 		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -262,5 +262,10 @@ namespace MTwExample
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+			speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
+		}
     }
 }
