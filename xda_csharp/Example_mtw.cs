@@ -36,17 +36,26 @@ using System.Text;
 using System.Windows.Forms;
 using Xsens;
 using XDA;
-
+using System.Media;
+using System.IO;
+using Newtonsoft.Json;
+using System.Threading;
 namespace MTwExample
 {
-    public partial class Form1 : Form
+	public delegate void ResumeFromMessage();
+	public partial class Form1 : Form
     {
         private MyXda _xda;
 		private XsDevice _measuringDevice = null;
 		private Dictionary<XsDevice, MyMtCallback> _measuringMts = new Dictionary<XsDevice, MyMtCallback>();
 		private Dictionary<uint, ConnectedMtData> _connectedMtwData = new Dictionary<uint, ConnectedMtData>();
-
-        public Form1()
+		public static readonly string appPath = Path.GetDirectoryName(Application.ExecutablePath);
+		public static readonly string resourcesPath1 = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources1";
+		public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
+		public static readonly string resultsDir = Path.GetDirectoryName(Application.ExecutablePath) + "\\results";
+		private UserControl currUC = null;
+		//public Speakers speakers = null;
+		public Form1()
         {
             InitializeComponent();
             _xda = new MyXda();

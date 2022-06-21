@@ -38,3 +38,6 @@ C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDevice
 C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example.csproj.CoreCompileInputs.cache
 C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI GUI MTw CSharp 64bit Example.exe
 C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI GUI MTw CSharp 64bit Example.pdb
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\x64\Debug\Out\Newtonsoft.Json.dll
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\x64\Debug\Out\Newtonsoft.Json.xml
+C:\Users\wsetti\source\repos\xsens_speakers\xda_csharp\obj\x64\Debug\XsensDeviceAPI_GUI_MTw_CSharp_64bit_Example.csproj.CopyComplete
