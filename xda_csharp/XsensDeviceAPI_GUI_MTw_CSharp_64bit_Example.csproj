@@ -77,19 +77,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Example_mtw.cs">
+    <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Example_mtw.Designer.cs">
-      <DependentUpon>Example_mtw.cs</DependentUpon>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="MasterInfo.cs" />
     <Compile Include="MyEventArgs.cs" />
     <Compile Include="MyXda.cs" />
     <Compile Include="Program_mtw.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Example_mtw.resx">
-      <DependentUpon>Example_mtw.cs</DependentUpon>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -113,6 +113,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="DeviceInfo.cs" />
+    <Compile Include="Speakers.cs" />
     <Compile Include="wrap_csharp64\IpProtocol.cs" />
     <Compile Include="wrap_csharp64\NetworkLayerProtocol.cs" />
     <Compile Include="wrap_csharp64\SnapshotStatusFlag.cs" />

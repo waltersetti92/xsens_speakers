@@ -61,7 +61,8 @@ namespace MTwExample
             _xda = new MyXda();
 			cbxChannel.SelectedIndex = 0;
             step(1);
-        }
+			//speakers = new Speakers();
+		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
 		{

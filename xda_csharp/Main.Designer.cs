@@ -262,9 +262,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1105, 65);
+            this.button3.Location = new System.Drawing.Point(1105, 58);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 28);
+            this.button3.Size = new System.Drawing.Size(75, 41);
             this.button3.TabIndex = 26;
             this.button3.Text = "SET";
             this.button3.UseVisualStyleBackColor = true;
