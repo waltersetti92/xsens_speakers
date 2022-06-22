@@ -313,6 +313,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\two.png" />
+    <None Include="Resources\one2.png" />
+    <None Include="Resources\four11.png" />
     <Content Include="xsensdeviceapi64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

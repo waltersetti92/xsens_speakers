@@ -46,6 +46,10 @@ namespace MTwExample
             if (File.Exists(comFile) is true) return File.ReadAllText(comFile);
             else return "";
         }
+         public async void stopspeaker()
+        {
+            _canceller.Cancel();
+        }
         public Speakers openPort(string c)
         {
             try

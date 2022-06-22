@@ -267,5 +267,49 @@ namespace MTwExample
         {
 			speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+			speakers.stopspeaker();
+		}
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+			speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
+		}
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+			speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
+		}
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+			speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 1);
+		}
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+			speakers.stopspeaker();
+		}
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+			speakers.stopspeaker();
+			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+			txt_box_2_1.Text = unixTimestamp.ToString();
+		}
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+			speakers.stopspeaker();
+			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+			txt_box_1_4.Text = unixTimestamp.ToString();
+		}
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+			speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 2);
+		}
     }
 }
