@@ -93,6 +93,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txt_box_2_1 = new System.Windows.Forms.TextBox();
             this.txt_box_1_4 = new System.Windows.Forms.TextBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_Confusion = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -254,6 +257,7 @@
             this.button1.TabIndex = 22;
             this.button1.Text = "CONFUSION";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -372,7 +376,7 @@
             // 
             this.button6.Location = new System.Drawing.Point(956, 308);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 31);
+            this.button6.Size = new System.Drawing.Size(94, 31);
             this.button6.TabIndex = 35;
             this.button6.Text = "START";
             this.button6.UseVisualStyleBackColor = true;
@@ -382,7 +386,7 @@
             // 
             this.button7.Location = new System.Drawing.Point(956, 345);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 31);
+            this.button7.Size = new System.Drawing.Size(94, 31);
             this.button7.TabIndex = 36;
             this.button7.Text = "STOP";
             this.button7.UseVisualStyleBackColor = true;
@@ -390,9 +394,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(1128, 420);
+            this.button8.Location = new System.Drawing.Point(1119, 420);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 31);
+            this.button8.Size = new System.Drawing.Size(84, 31);
             this.button8.TabIndex = 37;
             this.button8.Text = "START";
             this.button8.UseVisualStyleBackColor = true;
@@ -400,9 +404,9 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(1128, 457);
+            this.button9.Location = new System.Drawing.Point(1119, 457);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 31);
+            this.button9.Size = new System.Drawing.Size(84, 31);
             this.button9.TabIndex = 38;
             this.button9.Text = "STOP";
             this.button9.UseVisualStyleBackColor = true;
@@ -460,11 +464,40 @@
             this.txt_box_1_4.Size = new System.Drawing.Size(100, 26);
             this.txt_box_1_4.TabIndex = 44;
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(909, 701);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(200, 36);
+            this.button12.TabIndex = 45;
+            this.button12.Text = "END CONDITION";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(748, 644);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(119, 20);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Time Confusion";
+            // 
+            // txt_Confusion
+            // 
+            this.txt_Confusion.Location = new System.Drawing.Point(898, 638);
+            this.txt_Confusion.Name = "txt_Confusion";
+            this.txt_Confusion.Size = new System.Drawing.Size(100, 26);
+            this.txt_Confusion.TabIndex = 47;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1430, 938);
+            this.Controls.Add(this.txt_Confusion);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.txt_box_1_4);
             this.Controls.Add(this.txt_box_2_1);
             this.Controls.Add(this.label6);
@@ -551,6 +584,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_box_2_1;
         private System.Windows.Forms.TextBox txt_box_1_4;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_Confusion;
     }
 }
 

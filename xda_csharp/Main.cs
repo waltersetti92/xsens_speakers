@@ -257,44 +257,110 @@ namespace MTwExample
                     break;
             }
         }
-
+		public void Initial_Visibility()
+        {
+			button12.Visible = false;
+			button3.Visible = false;
+			button4.Visible = false;
+			button5.Visible = false;
+			button6.Visible = false;
+			button7.Visible = false;
+			button8.Visible = false;
+			button9.Visible = false;
+			button10.Visible = false;
+			button11.Visible = false;
+			comboBox1.Visible = false;
+			label1.Visible = false;
+			label5.Visible = false;
+			label6.Visible = false;
+			label7.Visible = false;
+			txt_box_1_4.Visible = false;
+			txt_box_2_1.Visible = false;
+			txt_Confusion.Visible = false;
+		}
         private void Form1_Load(object sender, EventArgs e)
         {
-
+			Initial_Visibility();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+			button1.Visible = false;
+			button4.Visible = true;
+			button6.Visible = true;
+			button8.Visible = true;
+			button7.Visible = true;
+			button5.Visible = false;
+			button7.Visible = false;
+			button9.Visible = false;
+			button10.Visible = false;
+			button11.Visible = false;
+			button12.Visible = true;
+			button2.Visible = false;
 			speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
 
         private void button11_Click(object sender, EventArgs e)
         {
+			button11.Visible = false;
+			button10.Visible = true;
+			button12.Visible = true;
+			label7.Visible = true;
+			txt_Confusion.Visible = true;
 			speakers.stopspeaker();
+			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+			txt_Confusion.Text = unixTimestamp.ToString();
 		}
 
         private void button4_Click(object sender, EventArgs e)
         {
+			button12.Visible = false;
+			button4.Visible = false;
+			button5.Visible = true;
+			button6.Visible = false;
+			button8.Visible = false;
 			speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
 
         private void button6_Click(object sender, EventArgs e)
         {
+			button12.Visible = false;
+			button6.Visible = false;
+			button7.Visible = true;
+			button4.Visible = false;
+			button8.Visible = false;
 			speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
 		}
 
         private void button8_Click(object sender, EventArgs e)
         {
+			button12.Visible = false;
+			button8.Visible = false;
+			button4.Visible = false;
+			button6.Visible = false;
+			button9.Visible = true;
 			speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 1);
 		}
 
         private void button5_Click(object sender, EventArgs e)
         {
+			button12.Visible = true;
+			button5.Visible = false;
+			button4.Visible = true;
+			button6.Visible = true;
+			button8.Visible = true;
 			speakers.stopspeaker();
 		}
 
         private void button7_Click(object sender, EventArgs e)
         {
+			button12.Visible = true;
+			button7.Visible = false;
+			button6.Visible = true;
+			button4.Visible = true;
+			button8.Visible = true;
+			label5.Visible = true;
+			txt_box_2_1.Visible = true;
 			speakers.stopspeaker();
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			txt_box_2_1.Text = unixTimestamp.ToString();
@@ -302,6 +368,13 @@ namespace MTwExample
 
         private void button9_Click(object sender, EventArgs e)
         {
+			button12.Visible = true;
+			button9.Visible = false;
+			button4.Visible = true;
+			button6.Visible = true;
+			button8.Visible = true;
+			label6.Visible = true;
+			txt_box_1_4.Visible = true;
 			speakers.stopspeaker();
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			txt_box_1_4.Text = unixTimestamp.ToString();
@@ -309,7 +382,27 @@ namespace MTwExample
 
         private void button10_Click(object sender, EventArgs e)
         {
+			button10.Visible = false;
+			button11.Visible = true;
+			button12.Visible = false;
 			speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 2);
 		}
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+			button12.Visible = false;
+			Initial_Visibility();
+			button1.Visible = true;
+			button2.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			button2.Visible = false;
+			Initial_Visibility();
+			button12.Visible = true;
+			button10.Visible = true;
+			button11.Visible = true;
+        }
     }
 }
