@@ -1,30 +1,34 @@
-/*	Copyright (c) 2003-2016 Xsens Technologies B.V. or subsidiaries worldwide.
-	All rights reserved.
 
-	Redistribution and use in source and binary forms, with or without modification,
-	are permitted provided that the following conditions are met:
-
-	1.	Redistributions of source code must retain the above copyright notice,
-		this list of conditions and the following disclaimer.
-
-	2.	Redistributions in binary form must reproduce the above copyright notice,
-		this list of conditions and the following disclaimer in the documentation
-		and/or other materials provided with the distribution.
-
-	3.	Neither the names of the copyright holders nor the names of their contributors
-		may be used to endorse or promote products derived from this software without
-		specific prior written permission.
-
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
-	EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-	MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
-	THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-	SPECIAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
-	OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-	HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY OR
-	TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+//  Copyright (c) 2003-2021 Xsens Technologies B.V. or subsidiaries worldwide.
+//  All rights reserved.
+//  
+//  Redistribution and use in source and binary forms, with or without modification,
+//  are permitted provided that the following conditions are met:
+//  
+//  1.	Redistributions of source code must retain the above copyright notice,
+//  	this list of conditions, and the following disclaimer.
+//  
+//  2.	Redistributions in binary form must reproduce the above copyright notice,
+//  	this list of conditions, and the following disclaimer in the documentation
+//  	and/or other materials provided with the distribution.
+//  
+//  3.	Neither the names of the copyright holders nor the names of their contributors
+//  	may be used to endorse or promote products derived from this software without
+//  	specific prior written permission.
+//  
+//  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+//  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+//  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+//  THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+//  SPECIAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT 
+//  OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+//  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY OR
+//  TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+//  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.THE LAWS OF THE NETHERLANDS 
+//  SHALL BE EXCLUSIVELY APPLICABLE AND ANY DISPUTES SHALL BE FINALLY SETTLED UNDER THE RULES 
+//  OF ARBITRATION OF THE INTERNATIONAL CHAMBER OF COMMERCE IN THE HAGUE BY ONE OR MORE 
+//  ARBITRATORS APPOINTED IN ACCORDANCE WITH SAID RULES.
+//  
 
 ﻿using System;
 using System.Collections.Generic;
@@ -86,9 +90,23 @@ namespace Xsens
 			}
 		}
 
+        //Checks if XDA knows the device (by looking up the passed ID) and returns the device if it is found.
+        //If the ID is unknown returns null.
         public XsDevice getDevice(XsDeviceId deviceId)
         {
-            return new XsDevice(_xda.device(deviceId));
+            bool knownID = false;
+            for (uint i = 0; i < _xda.deviceIds().size(); ++i)
+            {
+               if (_xda.deviceIds().at(i).toXsString().toString() == deviceId.toXsString().toString())
+               {
+                    knownID = true;
+                    break;
+               }
+            }
+            if (knownID)
+                return new XsDevice(_xda.device(deviceId));
+            else
+                return null;
         }
 
         public void reset()
@@ -99,7 +117,8 @@ namespace Xsens
 
         public void openPort(XsPortInfo portInfo)
         {
-            if (_xda.openPort(portInfo)) {
+            if (_xda.openPort(portInfo))
+            {
 		        if (OpenPortSuccessful != null)
                 {
 					OpenPortSuccessful(this, new PortInfoArg(portInfo));
@@ -188,7 +207,7 @@ namespace Xsens
         {
         }
 
-        protected override void onLiveDataAvailable(SWIGTYPE_p_XsDevice dev, XsDataPacket packet)
+        protected override void onLiveDataAvailable(XsDevice dev, XsDataPacket packet)
         {
             XsDevice device = new XsDevice(dev);
             XsDataPacket pack = new XsDataPacket(packet);
@@ -198,7 +217,7 @@ namespace Xsens
             }
         }
 
-        protected override void onInfoResponse(SWIGTYPE_p_XsDevice dev, XsInfoRequest request)
+        protected override void onInfoResponse(XsDevice dev, XsInfoRequest request)
         {
             XsDevice device = new XsDevice(dev);
             if (request == XsInfoRequest.XIR_BatteryLevel)
@@ -235,17 +254,19 @@ namespace Xsens
             return _ConnectedMtws;
         }
 
-        protected override void onConnectivityChanged(SWIGTYPE_p_XsDevice dev, XsConnectivityState state)
+        protected override void onConnectivityChanged(XsDevice dev, XsConnectivityState state)
         {
             XsDevice device = new XsDevice(dev);
-            if (state == XsConnectivityState.XCS_Wireless) {
+            if (state == XsConnectivityState.XCS_Wireless)
+            {
                 lock (_ConnectedMtws)
                 {
                     _ConnectedMtws.Add(device.deviceId());
                 }
 	            
             }
-            else {
+            else
+            {
                 lock (_ConnectedMtws)
                 {
                     _ConnectedMtws.Remove(device.deviceId());
@@ -285,11 +306,12 @@ namespace Xsens
             }
         }
 
-		protected override void onDeviceStateChanged(SWIGTYPE_p_XsDevice dev, XsDeviceState newState, XsDeviceState oldState)
+		protected override void onDeviceStateChanged(XsDevice dev, XsDeviceState newState, XsDeviceState oldState)
 		{
 			XsDevice device = new XsDevice(dev);
 
-			switch (newState) {
+			switch (newState)
+            {
 			case XsDeviceState.XDS_Config:
 				if (oldState != XsDeviceState.XDS_Initial)
 				{
@@ -317,14 +339,14 @@ namespace Xsens
 			}
 		}
 
-		protected override void onError(SWIGTYPE_p_XsDevice dev, XsResultValue error)
+		protected override void onError(XsDevice dev, XsResultValue error)
 		{
 			XsDevice device = new XsDevice(dev);
 			if (DeviceError != null)
 				DeviceError(this, new DeviceErrorArgs(device.deviceId(), error));
 		}
 
-		protected override void onProgressUpdated(SWIGTYPE_p_XsDevice dev, int current, int total, XsString identifier)
+		protected override void onProgressUpdated(XsDevice dev, int current, int total, XsString identifier)
 		{
 			XsDevice device = new XsDevice(dev);
 			if (ProgressUpdate != null)
