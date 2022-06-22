@@ -31,7 +31,6 @@
 //  
 
 ﻿using System;
-using System.Timers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -809,7 +808,7 @@ namespace AwindaMonitor
 			}
 			setWidgetsStates();     
 		}
-		private static System.Timers.Timer aTimer;
+
 		private void btnRecord_Click(object sender, EventArgs e)
 		{
 			switch (_state)
@@ -824,14 +823,8 @@ namespace AwindaMonitor
 					{
 						if (_MyWirelessMasterDevice.startRecording())
 						{
-								// Create a timer with a two second interval.
-								aTimer = new System.Timers.Timer(5000);
-								// Hook up the Elapsed event for the timer. 
-								aTimer.Elapsed += OnElapsedTime;
-								aTimer.AutoReset = false;
-								aTimer.Enabled = true;
-								log("Timer started");
-							}
+
+						}
 						else
 						{
 							log(String.Format("Failed to start recording. ID: {0}", _MyWirelessMasterDevice.deviceId().toXsString().toString()));
@@ -849,26 +842,14 @@ namespace AwindaMonitor
 					_state = States.FLUSHING;
 					_MyWirelessMasterDevice.stopRecording();
 					log(String.Format("Stopping recording. ID: {0}", _MyWirelessMasterDevice.deviceId().toXsString().toString()));
-					if (aTimer != null)
-					{
-						aTimer.Stop();
-						aTimer.Dispose();
-						log("Timer stopped");
 
-						}
-					} break;
+				} break;
 
 			default:
 				break;
 			}
 
 			setWidgetsStates();
-		}
-
-		private static void OnElapsedTime(object source, ElapsedEventArgs e)
-		{
-			Form1 thissource = (Form1)source;
-			if (thissource._state == States.RECORDING) thissource.btnRecord_Click(source, e);
 		}
 
 		//------------------------------------------------------------------------------
