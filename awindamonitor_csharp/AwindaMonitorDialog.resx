@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="labelTimer.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAAC9CAIAAAB51aW7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAAd0SU1FB+MJFww7BdkYLAgAAAvwSURBVHhe7Zz5VxRXGobnT8iMmpiZ5Bg3iDtx
+        EgAACxIB0t1+/AAAAAd0SU1FB+MJFww7BdkYLAgAAAvwSURBVHhe7Zz5VxRXGobnT8iMmpiZ5Bg3iDtx
         S5Qhk3jOxCU5cyaRqBkVEWSLqKwuiUtcMVEDYoK7kjjBPUbHJeo46jiJK0pwX4hLFJq2WQW6W7a5dF3a
         5qOqu6HrE468z3l/sr+6t7k8VN1bdcvfVQPAAMQCLEAswALEAixALMACxAIsQCzAAsQCLEAswALEAixA
         LMACxAIsQCzAAsQCLEAswALEAixALMACxAIsQCzAAsQCLEAswALEAixALMACxAIsQCzAAsQCLEAswALE

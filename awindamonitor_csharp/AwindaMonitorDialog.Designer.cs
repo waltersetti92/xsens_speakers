@@ -61,6 +61,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AwindaMonitorDialog));
+            System.Windows.Forms.Label labelTimer;
             this.btnEnable = new System.Windows.Forms.Button();
             this.btnMeasure = new System.Windows.Forms.Button();
             this.btnRecord = new System.Windows.Forms.Button();
@@ -99,6 +100,9 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pictureBoxStateDiagram = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.TimerTextBox = new System.Windows.Forms.TextBox();
+            this.TimerCheckBox = new System.Windows.Forms.CheckBox();
+            labelTimer = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.dockedMtwListGroupBox.SuspendLayout();
             this.connectedMtwListGroupBox.SuspendLayout();
@@ -134,7 +138,7 @@
             // btnRecord
             // 
             this.btnRecord.Enabled = false;
-            this.btnRecord.Location = new System.Drawing.Point(18, 249);
+            this.btnRecord.Location = new System.Drawing.Point(18, 277);
             this.btnRecord.Name = "btnRecord";
             this.btnRecord.Size = new System.Drawing.Size(144, 33);
             this.btnRecord.TabIndex = 8;
@@ -197,6 +201,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TimerCheckBox);
+            this.groupBox1.Controls.Add(this.TimerTextBox);
+            this.groupBox1.Controls.Add(labelTimer);
             this.groupBox1.Controls.Add(this.labelStationId);
             this.groupBox1.Controls.Add(this.progressBarFlushing);
             this.groupBox1.Controls.Add(this.labelFlushing);
@@ -229,7 +236,7 @@
             // progressBarFlushing
             // 
             this.progressBarFlushing.Enabled = false;
-            this.progressBarFlushing.Location = new System.Drawing.Point(76, 298);
+            this.progressBarFlushing.Location = new System.Drawing.Point(76, 330);
             this.progressBarFlushing.Name = "progressBarFlushing";
             this.progressBarFlushing.Size = new System.Drawing.Size(85, 23);
             this.progressBarFlushing.TabIndex = 22;
@@ -238,7 +245,7 @@
             // 
             this.labelFlushing.AutoSize = true;
             this.labelFlushing.Enabled = false;
-            this.labelFlushing.Location = new System.Drawing.Point(21, 303);
+            this.labelFlushing.Location = new System.Drawing.Point(21, 335);
             this.labelFlushing.Name = "labelFlushing";
             this.labelFlushing.Size = new System.Drawing.Size(49, 13);
             this.labelFlushing.TabIndex = 21;
@@ -510,6 +517,38 @@
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
+            // TimerTextBox
+            // 
+            this.TimerTextBox.Enabled = false;
+            this.TimerTextBox.Location = new System.Drawing.Point(108, 245);
+            this.TimerTextBox.Name = "TimerTextBox";
+            this.TimerTextBox.Size = new System.Drawing.Size(53, 20);
+            this.TimerTextBox.TabIndex = 25;
+            this.TimerTextBox.Text = "30";
+            this.TimerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TimerTextBox.TextChanged += new System.EventHandler(this.TimerTextBox_TextChanged);
+            // 
+            // labelTimer
+            // 
+            labelTimer.AutoSize = true;
+            labelTimer.CausesValidation = false;
+            labelTimer.Enabled = false;
+            labelTimer.Location = new System.Drawing.Point(17, 249);
+            labelTimer.Name = "labelTimer";
+            labelTimer.Size = new System.Drawing.Size(47, 13);
+            labelTimer.TabIndex = 24;
+            labelTimer.Text = "Timer (s)";
+            // 
+            // TimerCheckBox
+            // 
+            this.TimerCheckBox.AutoSize = true;
+            this.TimerCheckBox.Location = new System.Drawing.Point(87, 248);
+            this.TimerCheckBox.Name = "TimerCheckBox";
+            this.TimerCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.TimerCheckBox.TabIndex = 26;
+            this.TimerCheckBox.UseVisualStyleBackColor = true;
+            this.TimerCheckBox.CheckedChanged += new System.EventHandler(this.TimerCheckBox_CheckedChanged);
+            // 
             // AwindaMonitorDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -582,6 +621,8 @@
         private System.Windows.Forms.PictureBox pictureBoxStateDiagram;
         private System.Windows.Forms.ListBox dockedMtwList;
         private System.Windows.Forms.ListBox connectedMtwList;
+        private System.Windows.Forms.TextBox TimerTextBox;
+        private System.Windows.Forms.CheckBox TimerCheckBox;
     }
 }
 

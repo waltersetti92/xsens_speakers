@@ -31,6 +31,7 @@
 //  
 
 ﻿using System;
+using System.Timers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -809,6 +810,8 @@ namespace AwindaMonitor
 			setWidgetsStates();     
 		}
 
+		private static System.Timers.Timer aTimer;
+		private float timerLapse;
 		private void btnRecord_Click(object sender, EventArgs e)
 		{
 			switch (_state)
@@ -823,8 +826,16 @@ namespace AwindaMonitor
 					{
 						if (_MyWirelessMasterDevice.startRecording())
 						{
-
-						}
+								if (TimerCheckBox.Checked)
+								{
+									aTimer = new System.Timers.Timer(timerLapse * 1000);
+									// Hook up the Elapsed event for the timer. 
+									aTimer.Elapsed += OnTimedEvent;
+									aTimer.AutoReset = false;
+									aTimer.Enabled = true;
+									log("Timer started");
+								}
+							}
 						else
 						{
 							log(String.Format("Failed to start recording. ID: {0}", _MyWirelessMasterDevice.deviceId().toXsString().toString()));
@@ -842,6 +853,13 @@ namespace AwindaMonitor
 					_state = States.FLUSHING;
 					_MyWirelessMasterDevice.stopRecording();
 					log(String.Format("Stopping recording. ID: {0}", _MyWirelessMasterDevice.deviceId().toXsString().toString()));
+					
+					if (aTimer != null)
+                        {
+							aTimer.Stop();
+							aTimer.Dispose();
+							log("Timer stopped");
+						}
 
 				} break;
 
@@ -851,6 +869,25 @@ namespace AwindaMonitor
 
 			setWidgetsStates();
 		}
+
+		private void OnTimedEvent(Object source, ElapsedEventArgs e)
+		{
+			SafeFormCall( () => btnRecord_Click(source,e) );
+			log("Time out");
+		}
+
+		private void SafeFormCall(Action bgAction)
+		{
+			if (InvokeRequired)
+			 {
+				Invoke(bgAction);
+			 }
+            else
+            {
+				bgAction();
+            }
+		}
+
 
 		//------------------------------------------------------------------------------
 		// Set the states of widgets (labels, buttons and images) depending on the m_state.
@@ -966,5 +1003,15 @@ namespace AwindaMonitor
 						break;
 			}
 		}
-	}
+
+        private void TimerCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+			TimerTextBox.Enabled = TimerCheckBox.Checked;
+        }
+
+        private void TimerTextBox_TextChanged(object sender, EventArgs e)
+        {
+			float.TryParse(TimerTextBox.Text, out timerLapse);
+        }
+    }
 }
