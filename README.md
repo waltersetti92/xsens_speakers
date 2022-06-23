@@ -5,7 +5,7 @@ EXTRA (2):
 Scrivere codifiche 
 
 POST (1)
-1) Timer 30 secondi per Rombergher e per Fukuda anche se va poi settato quello del Fukuda post signora Esposito
+//1) Timer 30 secondi per Rombergher e per Fukuda anche se va poi settato quello del Fukuda post signora Esposito
 2) Timestamp per posturali
 
 TC (3)
