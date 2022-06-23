@@ -56,13 +56,15 @@ namespace MTwExample
 		private UserControl currUC = null;
 		public Speakers speakers = null;
 		public int counter = 0;
-		public Form1()
+		public string ID;
+		public Form1(string str)
         {
             InitializeComponent();
             _xda = new MyXda();
 			cbxChannel.SelectedIndex = 0;
             step(1);
 			speakers = new Speakers();
+			ID = str;
 		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -295,6 +297,8 @@ namespace MTwExample
         private void Form1_Load(object sender, EventArgs e)
         {
 			Initial_Visibility();
+			MessageBox.Show(ID);
+			textBoxFilename.Text = ID + ".mtb";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -557,5 +561,10 @@ namespace MTwExample
 			label9.Visible = true;
 			label10.Visible = true;
 		}
+
+        private void textBoxFilename_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

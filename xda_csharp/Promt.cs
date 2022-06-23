@@ -16,7 +16,7 @@ namespace MTwExample
         public Promt()
         {
             InitializeComponent();
-         
+            string id;
 
 
         }
@@ -32,9 +32,12 @@ namespace MTwExample
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {        
-            Form1 form1 = new Form1();
+        {
+            string id= textBox1.Text;
+            Form1 form1 = new Form1(textBox1.Text);
             form1.ShowDialog();
+           // form1.ID = id;
+           // MessageBox.Show(form1.ID);
             this.Close();
 
         }
