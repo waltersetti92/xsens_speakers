@@ -272,6 +272,8 @@ namespace MTwExample
 			button9.Visible = false;
 			button10.Visible = false;
 			button11.Visible = false;
+			button16.Visible = false;
+			button17.Visible = false;
 			comboBox1.Visible = false;
 			label1.Visible = false;
 			label5.Visible = false;
@@ -315,6 +317,7 @@ namespace MTwExample
 			button12.Visible = true;
 			button2.Visible = false;
 			button13.Visible = false;
+			button16.Visible = false;
 			pictureBox1.Visible = true;
 			pictureBox2.Visible = true;
 			pictureBox3.Visible = true;
@@ -445,12 +448,14 @@ namespace MTwExample
 
         private void button9_Click(object sender, EventArgs e)
         {
+			button16.Visible = true;
 			button12.Visible = true;
 			button9.Visible = false;
 			button4.Visible = true;
 			button6.Visible = true;
 			button8.Visible = true;
 			label6.Visible = true;
+			button17.Visible = false;
 			txt_box_1_4.Visible = true;
 			btnStop.Enabled = false;
 			timer1.Enabled = false;
@@ -474,14 +479,9 @@ namespace MTwExample
 				step(1);
 			}
 			
-			counter = counter + 1;
 			speakers.stopspeaker();
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-			txt_box_1_4.Text = unixTimestamp.ToString();
-			label10.Text = counter.ToString();
-			label9.Visible = true;
-			label10.Visible = true;
-			
+			txt_box_1_4.Text = unixTimestamp.ToString();			
 		}
 
         private void button10_Click(object sender, EventArgs e)
@@ -573,5 +573,30 @@ namespace MTwExample
         {
 
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+			button16.Visible = false;
+			button17.Visible = true;
+		}
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+			label8.Visible = true;
+			button17.Visible = false;
+			button16.Visible = false;
+			counter = counter + 1;
+			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+			textBox1.Text = unixTimestamp.ToString();
+			textBox1.Visible = true;
+			label10.Text = counter.ToString();
+			label9.Visible = true;
+			label10.Visible = true;
+		}
     }
 }
