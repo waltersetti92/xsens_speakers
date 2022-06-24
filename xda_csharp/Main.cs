@@ -49,14 +49,20 @@ namespace MTwExample
 		private XsDevice _measuringDevice = null;
 		private Dictionary<XsDevice, MyMtCallback> _measuringMts = new Dictionary<XsDevice, MyMtCallback>();
 		private Dictionary<ulong, ConnectedMtData> _connectedMtwData = new Dictionary<ulong, ConnectedMtData>();
-		public static readonly string appPath = Path.GetDirectoryName(Application.ExecutablePath);
-		public static readonly string resourcesPath1 = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources1";
-		public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
-		public static readonly string resultsDir = Path.GetDirectoryName(Application.ExecutablePath) + "\\results";
+		public static readonly string appPath = Path.Combine(new string[] { Path.GetDirectoryName(Application.ExecutablePath) });
+		public static readonly string resourcesPath1 = Path.Combine(new string[] { appPath, "resources1"});
+		public static readonly string resourcesPath = Path.Combine(new string[] { appPath, "resources"});
+		public static readonly string resultsDir = Path.Combine(new string[] { appPath, "results" });
 		private UserControl currUC = null;
 		public Speakers speakers = null;
 		public int counter = 0;
 		public string ID;
+
+		private Logger TriangleClassicLogger;
+		private Logger TriangleSoundLogger;
+		private Logger ConfusionLogger;
+
+
 		public Form1(string str)
         {
             InitializeComponent();
@@ -65,6 +71,10 @@ namespace MTwExample
             step(1);
 			speakers = new Speakers();
 			ID = str;
+			Logger.SetCommonPath(appPath, "results", ID);
+			TriangleClassicLogger = new Logger("tc",extension: "dat", keepStream: false);
+			TriangleSoundLogger = new Logger("ts", extension: "dat", keepStream: false);
+			ConfusionLogger = new Logger("c", extension: "dat", keepStream: false);
 		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -521,7 +531,9 @@ namespace MTwExample
 			button2.Visible = false;
 			button12.Visible = true;
 			button14.Visible = true;
-			button15.Visible = false; 
+			button15.Visible = false;
+			TriangleClassicLogger.CreateFolder();
+			TriangleClassicLogger.MakeTable();
 		}
 
         private void button14_Click(object sender, EventArgs e)
