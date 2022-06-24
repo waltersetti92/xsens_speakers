@@ -77,6 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logger.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

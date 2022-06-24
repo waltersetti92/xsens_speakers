@@ -31,6 +31,8 @@ public class Logger: IDisposable {
     #region members
     private bool _disposedValue;
 
+    static string time;
+
     private static string commonFilePath;
     
     private static string commonFileFolder;
@@ -44,11 +46,15 @@ public class Logger: IDisposable {
 
     private string fullFile { get => Path.Combine(new string[] { commonFilePath, thisFileFolder, thisFileName + "." + filExt }); }
 
-    private string[] Header;
-    public string headerLine { get => string.Join("\t", Header); }
-    private Dictionary<string,string> DataLine = new Dictionary<string,string>();
+    private int counter = 0;
 
-    public bool KeepStream;
+    private Dictionary<string, string> Data = new Dictionary<string, string>();
+
+    
+    public string headerLine { get => string.Join("\t", Data.Keys); }
+    public string dataLine { get => string.Join("\t", Data.Values); } 
+
+    public readonly bool KeepStream;
 
     // This is the writer, it writes to the filepath
     Stream dStream;
@@ -69,15 +75,16 @@ public class Logger: IDisposable {
 
     public static void SetCommonPath(string filePath, string folderName, string fileName)
     {
-        Logger.commonFileFolder = Path.Combine(new string[] { folderName, fileName,System.DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") });
-        Logger.commonFileName = fileName;
+        Logger.time = System.DateTime.Now.ToString("ddMMyyyyHHmmss");
+        Logger.commonFileFolder = Path.Combine(new string[] { folderName, fileName,Logger.time });
+        Logger.commonFileName = Logger.time + "_" + fileName;
         Logger.commonFilePath = filePath;
     }
     public void CreateFolder()
     {
         if (thisFileFolder != "")
         {
-            Directory.CreateDirectory(commonFilePath + thisFileFolder);
+            Directory.CreateDirectory(Path.Combine(new string[] { commonFilePath, thisFileFolder }));
         }
         else
         {
@@ -86,13 +93,14 @@ public class Logger: IDisposable {
     }
    
     // Use this for initialization
-    public async Task MakeTable() {
-        await OpenWriteCloseBye(headerLine, FileMode.Create).ConfigureAwait(false);
-    }
 
     public async Task OpenWriteCloseBye(string text, FileMode fileMode)
     {
-        using (FileStream stream = new FileStream(fullFile, fileMode, FileAccess.Write))
+        string filepath = fullFile;
+        if (counter > 0)
+            filepath += counter.ToString();
+
+        using (FileStream stream = new FileStream(filepath, fileMode, FileAccess.Write))
         using (StreamWriter writer = new StreamWriter(stream))
         {
             //This is writing the line of the type, name, damage... etc... (I set these)
@@ -106,41 +114,55 @@ public class Logger: IDisposable {
         dWriter = new StreamWriter(dStream);
     }
 
-    public async void logdata()
-    {
-        
+    public async void LogData()
+    {   
         if (KeepStream)
         {
             if (dWriter == null)
                 SetStream();
 
-            await dWriter.WriteLineAsync(DataLine.ToString()).ConfigureAwait(false); ;
-            await dWriter.FlushAsync().ConfigureAwait(false); ;
+            await dWriter.WriteLineAsync(dataLine).ConfigureAwait(false);
+            await dWriter.FlushAsync().ConfigureAwait(false);
         }
         else
         {
-            await OpenWriteCloseBye(DataLine.ToString(), FileMode.Append).ConfigureAwait(false);
+            await OpenWriteCloseBye(dataLine, FileMode.Append).ConfigureAwait(false);
         }
     }
 
-    public void SetHeader(string[] columnNames)
+    public async Task SetHeader(string[] columnNames)
     {
+
+        Data.Clear();
         
-        foreach(string column in columnNames)
+        foreach (string column in columnNames)
         {
-            DataLine.Add(column, null);
+            Data.Add(column, "");
         }
-    } 
+        
+        try
+        {
+            await OpenWriteCloseBye(headerLine, FileMode.CreateNew).ConfigureAwait(false);
+            counter = 0;
+        }
+        catch
+        {
+            counter++;
+            if (counter>10)
+                throw (new IOException("Unable or unwilling to create another file with the same name") );
+            await OpenWriteCloseBye(headerLine, FileMode.CreateNew).ConfigureAwait(false);
+        }
+        } 
 
     public void UpdateValue<T>(string variable, T value)
     {
         if (value.GetType() == typeof(float))
         {
-            DataLine[variable] = string.Format("{0:0.###}", value);
+            Data[variable] = string.Format("{0:0.###}", value);
         }
         else
         {
-            DataLine[variable] = value.ToString();
+            Data[variable] = value.ToString();
         }
     }
 

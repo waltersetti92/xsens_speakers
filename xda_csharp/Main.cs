@@ -62,6 +62,8 @@ namespace MTwExample
 		private Logger TriangleSoundLogger;
 		private Logger ConfusionLogger;
 
+		private Logger thisTaskLogger;
+
 
 		public Form1(string str)
         {
@@ -72,9 +74,9 @@ namespace MTwExample
 			speakers = new Speakers();
 			ID = str;
 			Logger.SetCommonPath(appPath, "results", ID);
-			TriangleClassicLogger = new Logger("tc",extension: "dat", keepStream: false);
-			TriangleSoundLogger = new Logger("ts", extension: "dat", keepStream: false);
-			ConfusionLogger = new Logger("c", extension: "dat", keepStream: false);
+			TriangleClassicLogger = new Logger("tc", destinationFolder: ID, extension: "dat", keepStream: false);
+			TriangleSoundLogger = new Logger("ts", destinationFolder: ID, extension: "dat", keepStream: false);
+			ConfusionLogger = new Logger("c", destinationFolder: ID, extension: "dat", keepStream: false);
 		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -312,9 +314,10 @@ namespace MTwExample
 			textBoxFilename.Text = ID + ".mtb";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
 			button1.Visible = false;
+			button2.Enabled = false;
 			button4.Visible = true;
 			button6.Visible = true;
 			button8.Visible = true;
@@ -325,7 +328,6 @@ namespace MTwExample
 			button10.Visible = false;
 			button11.Visible = false;
 			button12.Visible = true;
-			button2.Visible = false;
 			button13.Visible = false;
 			button16.Visible = false;
 			pictureBox1.Visible = true;
@@ -334,6 +336,9 @@ namespace MTwExample
 			label2.Visible = true;
 			label3.Visible = true;
 			label4.Visible = true;
+			TriangleSoundLogger.CreateFolder();
+			await TriangleSoundLogger.SetHeader(new string[] { "Code", "ID", "Task", "Condition", "Trial", "StartPoint", "EndPoint", "Timestamp", "sensordata", "angle_abs", "radius_abs", "angle_rel" });
+			thisTaskLogger = TriangleSoundLogger;
 			//speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
 
@@ -453,6 +458,7 @@ namespace MTwExample
 			
 			speakers.stopspeaker();
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
 			txt_box_2_1.Text = unixTimestamp.ToString();
 		}
 
@@ -511,20 +517,28 @@ namespace MTwExample
 			button1.Visible = true;
 			button2.Visible = true;
 			button13.Visible = true;
+			button13.Enabled = true;
+			button2.Enabled = true;
+			button1.Enabled = true;
 			counter = 0;
+			thisTaskLogger = null;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+			button1.Enabled = false;
 			button2.Visible = false;
 			Initial_Visibility();
 			button12.Visible = true;
 			button10.Visible = true;
 			button11.Visible = true;
 			button13.Visible = false;
-        }
+			ConfusionLogger.CreateFolder();
+			await ConfusionLogger.SetHeader(new string[] { "Code", "ID", "Task", "Condition", "Trial", "StartPoint", "EndPoint", "Timestamp", "sensordata", "angle_abs", "radius_abs", "angle_rel" });
+			thisTaskLogger = ConfusionLogger;
+		}
 
-        private void button13_Click(object sender, EventArgs e)
+        private async void button13_Click(object sender, EventArgs e)
         {
 			Initial_Visibility();
 			button1.Visible = false;
@@ -532,8 +546,10 @@ namespace MTwExample
 			button12.Visible = true;
 			button14.Visible = true;
 			button15.Visible = false;
+			button13.Enabled = false;
 			TriangleClassicLogger.CreateFolder();
-			TriangleClassicLogger.MakeTable();
+			await TriangleClassicLogger.SetHeader(new string[] {"Code","ID","Task","Condition","Trial","StartPoint","EndPoint","Timestamp","sensordata","angle_abs","radius_abs","angle_rel"});
+			thisTaskLogger = TriangleClassicLogger;
 		}
 
         private void button14_Click(object sender, EventArgs e)
