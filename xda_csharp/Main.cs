@@ -42,6 +42,14 @@ using Newtonsoft.Json;
 using System.Threading;
 namespace MTwExample
 {
+	public enum expTask
+    {
+		NONE,
+		TriClassic,
+		TriSound,
+		Confusion
+    }
+
 	public delegate void ResumeFromMessage();
 	public partial class Form1 : Form
     {
@@ -55,8 +63,10 @@ namespace MTwExample
 		public static readonly string resultsDir = Path.Combine(new string[] { appPath, "results" });
 		private UserControl currUC = null;
 		public Speakers speakers = null;
-		public int counter = 0;
+		public int trialCounter = 0;
 		public string ID;
+
+		expTask _task = expTask.NONE;
 
 		private Logger TriangleClassicLogger;
 		private Logger TriangleSoundLogger;
@@ -64,6 +74,7 @@ namespace MTwExample
 
 		private Logger thisTaskLogger;
 
+		private string[] Form1Header = new string[] { "Code", "ID", "Task", "Condition", "Trial", "StartPoint", "EndPoint", "Timestamp", "sensordata", "angle_abs", "radius_abs", "angle_rel" };
 
 		public Form1(string str)
         {
@@ -91,7 +102,7 @@ namespace MTwExample
 			_xda.Dispose();
 			_xda = null;
 		}
-
+        #region XSENSFORM
         private void btnScan_Click(object sender, EventArgs e)
         {
             cbxStations.Items.Clear();
@@ -175,7 +186,7 @@ namespace MTwExample
 
 		private void btnRecord_Click(object sender, EventArgs e)
 		{
-			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			_measuringDevice.createLogFile(new XsString(SensFilenameBox.Text));
 			_measuringDevice.startRecording();
 			btnRecord.Enabled = false;
 		}
@@ -272,72 +283,78 @@ namespace MTwExample
                     break;
             }
         }
-		public void Initial_Visibility()
+        #endregion
+
+        #region CASSEFORM
+        public void Initial_Visibility()
         {
-			button12.Visible = false;
+			EndCondBtn.Visible = false;
 			button3.Visible = false;
-			button4.Visible = false;
-			button5.Visible = false;
-			button6.Visible = false;
-			button7.Visible = false;
-			button8.Visible = false;
-			button9.Visible = false;
+			C2StartBtn.Visible = false;
+			C2StopBtn.Visible = false;
+			C1StartBtn.Visible = false;
+			C1StopBtn.Visible = false;
+			C4StartBtn.Visible = false;
+			C4StopBtn.Visible = false;
 			button10.Visible = false;
 			button11.Visible = false;
-			button16.Visible = false;
-			button17.Visible = false;
+			ArrivalStartBtn.Visible = false;
+			ArrivalStopBtn.Visible = false;
 			comboBox1.Visible = false;
-			label1.Visible = false;
+			COMPortLbl.Visible = false;
 			label5.Visible = false;
 			label6.Visible = false;
 			label7.Visible = false;
 			txt_box_1_4.Visible = false;
 			txt_box_2_1.Visible = false;
 			txt_Confusion.Visible = false;
-			pictureBox1.Visible = false;
-			pictureBox2.Visible = false;
-			pictureBox3.Visible = false;
+			Cassa1Img.Visible = false;
+			Cassa4Img.Visible = false;
+			Cassa2Img.Visible = false;
 			label2.Visible = false;
 			label3.Visible = false;
 			label4.Visible = false;
 			label9.Visible = false;
-			label10.Visible = false;
-			button14.Visible = false;
-			button15.Visible = false;
-			label8.Visible = false;
+			TrialBox.Visible = false;
+			StartCounterBtn.Visible = false;
+			StopCounterBtn.Visible = false;
+			ArrivalTimeLbl.Visible = false;
 			textBox1.Visible = false;
 			btnRecord.Visible = false;
 		}
         private void Form1_Load(object sender, EventArgs e)
         {
 			Initial_Visibility();
-			textBoxFilename.Text = ID + ".mtb";
+			SensFilenameBox.Text = string.Join("_",new string[] { ID,_task.ToString(),trialCounter.ToString()}) + ".mtb";
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private async void TriSoundBtn_Click(object sender, EventArgs e)
         {
-			button1.Visible = false;
-			button2.Enabled = false;
-			button4.Visible = true;
-			button6.Visible = true;
-			button8.Visible = true;
-			button7.Visible = true;
-			button5.Visible = false;
-			button7.Visible = false;
-			button9.Visible = false;
+			ConfBtn.Visible = false;
+			TriSoundBtn.Enabled = false;
+			C2StartBtn.Visible = true;
+			C1StartBtn.Visible = true;
+			C4StartBtn.Visible = true;
+			C1StopBtn.Visible = true;
+			C2StopBtn.Visible = false;
+			C1StopBtn.Visible = false;
+			C4StopBtn.Visible = false;
 			button10.Visible = false;
 			button11.Visible = false;
-			button12.Visible = true;
-			button13.Visible = false;
-			button16.Visible = false;
-			pictureBox1.Visible = true;
-			pictureBox2.Visible = true;
-			pictureBox3.Visible = true;
+			EndCondBtn.Visible = true;
+			TriClassicBtn.Visible = false;
+			ArrivalStartBtn.Visible = false;
+			Cassa1Img.Visible = true;
+			Cassa4Img.Visible = true;
+			Cassa2Img.Visible = true;
 			label2.Visible = true;
 			label3.Visible = true;
 			label4.Visible = true;
+
+			_task = expTask.TriSound;
+
 			TriangleSoundLogger.CreateFolder();
-			await TriangleSoundLogger.SetHeader(new string[] { "Code", "ID", "Task", "Condition", "Trial", "StartPoint", "EndPoint", "Timestamp", "sensordata", "angle_abs", "radius_abs", "angle_rel" });
+			await TriangleSoundLogger.SetHeader(Form1Header);
 			thisTaskLogger = TriangleSoundLogger;
 			//speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
@@ -346,7 +363,7 @@ namespace MTwExample
         {
 			button11.Visible = false;
 			button10.Visible = true;
-			button12.Visible = true;
+			EndCondBtn.Visible = true;
 			label7.Visible = true;
 			txt_Confusion.Visible = true;
 			speakers.stopspeaker();
@@ -372,66 +389,66 @@ namespace MTwExample
 				step(1);
 			}
 			
-			counter = counter + 1;
+			trialCounter = trialCounter + 1;
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			txt_Confusion.Text = unixTimestamp.ToString();
-			label10.Text = counter.ToString();
+			TrialBox.Text = trialCounter.ToString();
 			label9.Visible = true;
-			label10.Visible = true;
+			TrialBox.Visible = true;
 
 		}
 
         private void button4_Click(object sender, EventArgs e)
         {
-			button12.Visible = false;
-			button4.Visible = false;
-			button5.Visible = true;
-			button6.Visible = false;
-			button8.Visible = false;
+			EndCondBtn.Visible = false;
+			C2StartBtn.Visible = false;
+			C2StopBtn.Visible = true;
+			C1StartBtn.Visible = false;
+			C4StartBtn.Visible = false;
 			speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
 
         private void button6_Click(object sender, EventArgs e)
         {
-			button12.Visible = false;
-			button6.Visible = false;
-			button7.Visible = true;
-			button4.Visible = false;
-			button8.Visible = false;
-			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			EndCondBtn.Visible = false;
+			C1StartBtn.Visible = false;
+			C1StopBtn.Visible = true;
+			C2StartBtn.Visible = false;
+			C4StartBtn.Visible = false;
+			_measuringDevice.createLogFile(new XsString(SensFilenameBox.Text));
 			_measuringDevice.startRecording();
 			speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
 		}
 
         private void button8_Click(object sender, EventArgs e)
         {
-			button12.Visible = false;
-			button8.Visible = false;
-			button4.Visible = false;
-			button6.Visible = false;
-			button9.Visible = true;
-			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			EndCondBtn.Visible = false;
+			C4StartBtn.Visible = false;
+			C2StartBtn.Visible = false;
+			C1StartBtn.Visible = false;
+			C4StopBtn.Visible = true;
+			_measuringDevice.createLogFile(new XsString(SensFilenameBox.Text));
 			_measuringDevice.startRecording();
 			speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 1);
 		}
 
         private void button5_Click(object sender, EventArgs e)
         {
-			button12.Visible = true;
-			button5.Visible = false;
-			button4.Visible = true;
-			button6.Visible = true;
-			button8.Visible = true;
+			EndCondBtn.Visible = true;
+			C2StopBtn.Visible = false;
+			C2StartBtn.Visible = true;
+			C1StartBtn.Visible = true;
+			C4StartBtn.Visible = true;
 			speakers.stopspeaker();
 		}
 
         private void button7_Click(object sender, EventArgs e)
         {
-			button12.Visible = true;
-			button7.Visible = false;
-			button6.Visible = true;
-			button4.Visible = true;
-			button8.Visible = true;
+			EndCondBtn.Visible = true;
+			C1StopBtn.Visible = false;
+			C1StartBtn.Visible = true;
+			C2StartBtn.Visible = true;
+			C4StartBtn.Visible = true;
 			label5.Visible = true;
 			txt_box_2_1.Visible = true;
 			btnStop.Enabled = false;
@@ -464,14 +481,14 @@ namespace MTwExample
 
         private void button9_Click(object sender, EventArgs e)
         {
-			button16.Visible = true;
-			button12.Visible = true;
-			button9.Visible = false;
-			button4.Visible = true;
-			button6.Visible = true;
-			button8.Visible = true;
+			ArrivalStartBtn.Visible = true;
+			EndCondBtn.Visible = true;
+			C4StopBtn.Visible = false;
+			C2StartBtn.Visible = true;
+			C1StartBtn.Visible = true;
+			C4StartBtn.Visible = true;
 			label6.Visible = true;
-			button17.Visible = false;
+			ArrivalStopBtn.Visible = false;
 			txt_box_1_4.Visible = true;
 			btnStop.Enabled = false;
 			timer1.Enabled = false;
@@ -504,68 +521,78 @@ namespace MTwExample
         {
 			button10.Visible = false;
 			button11.Visible = true;
-			button12.Visible = false;
-			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			EndCondBtn.Visible = false;
+			_measuringDevice.createLogFile(new XsString(SensFilenameBox.Text));
 			_measuringDevice.startRecording();
 			speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 2);
 		}
 
-        private void button12_Click(object sender, EventArgs e)
+        private void EndCondBtn_Click(object sender, EventArgs e)
         {
-			button12.Visible = false;
+			EndCondBtn.Visible = false;
 			Initial_Visibility();
-			button1.Visible = true;
-			button2.Visible = true;
-			button13.Visible = true;
-			button13.Enabled = true;
-			button2.Enabled = true;
-			button1.Enabled = true;
-			counter = 0;
+			ConfBtn.Visible = true;
+			TriSoundBtn.Visible = true;
+			TriClassicBtn.Visible = true;
+			TriClassicBtn.Enabled = true;
+			TriSoundBtn.Enabled = true;
+			ConfBtn.Enabled = true;
+			
+			trialCounter = 0;
+			_task = expTask.NONE;
 			thisTaskLogger = null;
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void ConfBtn_Click(object sender, EventArgs e)
         {
-			button1.Enabled = false;
-			button2.Visible = false;
+			ConfBtn.Enabled = false;
+			TriSoundBtn.Visible = false;
 			Initial_Visibility();
-			button12.Visible = true;
+			EndCondBtn.Visible = true;
 			button10.Visible = true;
 			button11.Visible = true;
-			button13.Visible = false;
+			TriClassicBtn.Visible = false;
 			ConfusionLogger.CreateFolder();
-			await ConfusionLogger.SetHeader(new string[] { "Code", "ID", "Task", "Condition", "Trial", "StartPoint", "EndPoint", "Timestamp", "sensordata", "angle_abs", "radius_abs", "angle_rel" });
+			await ConfusionLogger.SetHeader(Form1Header);
 			thisTaskLogger = ConfusionLogger;
 		}
 
-        private async void button13_Click(object sender, EventArgs e)
+        private async void TriClassicBtn_Click(object sender, EventArgs e)
         {
 			Initial_Visibility();
-			button1.Visible = false;
-			button2.Visible = false;
-			button12.Visible = true;
-			button14.Visible = true;
-			button15.Visible = false;
-			button13.Enabled = false;
+			ConfBtn.Visible = false;
+			TriSoundBtn.Visible = false;
+			EndCondBtn.Visible = true;
+			StartCounterBtn.Visible = true;
+			StopCounterBtn.Visible = false;
+			TriClassicBtn.Enabled = false;
+			_task = expTask.TriClassic;
 			TriangleClassicLogger.CreateFolder();
-			await TriangleClassicLogger.SetHeader(new string[] {"Code","ID","Task","Condition","Trial","StartPoint","EndPoint","Timestamp","sensordata","angle_abs","radius_abs","angle_rel"});
+			await TriangleClassicLogger.SetHeader(Form1Header);
+			
 			thisTaskLogger = TriangleClassicLogger;
+
+			
 		}
 
-        private void button14_Click(object sender, EventArgs e)
+        private void StartCounterBtn_Click(object sender, EventArgs e)
         {
-			button14.Visible = false;
-			button15.Visible = true;
-			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			trialCounter++;
+			_measuringDevice.createLogFile(new XsString(SensFilenameBox.Text));
 			_measuringDevice.startRecording();
-			////btnRecord.Enabled = false;
+
+			StartCounterBtn.Visible = false;
+			StopCounterBtn.Visible = true;
+			btnRecord.Enabled = false;
+			
+			thisTaskLogger.UpdateValue("Trial", trialCounter);
 		}
 
-		private void button15_Click(object sender, EventArgs e)
+		private void StopCounterBtn_Click(object sender, EventArgs e)
 		{
-			button15.Visible = false;
-			button14.Visible = true;
-			label8.Visible = true;
+			StopCounterBtn.Visible = false;
+			StartCounterBtn.Visible = true;
+			ArrivalTimeLbl.Visible = true;
 			textBox1.Visible = true;
 			btnStop.Enabled = false;
 			timer1.Enabled = false;
@@ -589,23 +616,20 @@ namespace MTwExample
 				step(1);
 			}
 			
-			counter = counter + 1;
-			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+			//trialCounter = trialCounter + 1;
+			int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+			thisTaskLogger.UpdateValue("Timestamp", unixTimestamp);
+			thisTaskLogger.
 			textBox1.Text = unixTimestamp.ToString();
-			label10.Text = counter.ToString();
+			TrialBox.Text = trialCounter.ToString();
 			label9.Visible = true;
-			label10.Visible = true;
+			TrialBox.Visible = true;
 		}
-
-        private void textBoxFilename_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button16_Click(object sender, EventArgs e)
         {
-			button16.Visible = false;
-			button17.Visible = true;
+			ArrivalStartBtn.Visible = false;
+			ArrivalStopBtn.Visible = true;
 		}
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -615,16 +639,26 @@ namespace MTwExample
 
         private void button17_Click(object sender, EventArgs e)
         {
-			label8.Visible = true;
-			button17.Visible = false;
-			button16.Visible = false;
-			counter = counter + 1;
+			ArrivalTimeLbl.Visible = true;
+			ArrivalStopBtn.Visible = false;
+			ArrivalStartBtn.Visible = false;
+			trialCounter = trialCounter + 1;
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			textBox1.Text = unixTimestamp.ToString();
 			textBox1.Visible = true;
-			label10.Text = counter.ToString();
+			TrialBox.Text = trialCounter.ToString();
 			label9.Visible = true;
-			label10.Visible = true;
+			TrialBox.Visible = true;
 		}
+
+		#endregion
+
+		void UpdateLogBasicInfo()
+        {
+			thisTaskLogger.UpdateValue("Code", thisTaskLogger.thisFileName);
+			thisTaskLogger.UpdateValue("ID", ID);
+			thisTaskLogger.UpdateValue("Task", _task.ToString());
+		}
+
     }
 }

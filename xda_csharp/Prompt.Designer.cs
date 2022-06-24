@@ -1,6 +1,6 @@
 ﻿namespace MTwExample
 {
-    partial class Promt
+    partial class Prompt
     {
         /// <summary>
         /// Required designer variable.
@@ -41,21 +41,21 @@
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // ConfBtn
             // 
             this.button1.Location = new System.Drawing.Point(291, 281);
-            this.button1.Name = "button1";
+            this.button1.Name = "ConfBtn";
             this.button1.Size = new System.Drawing.Size(75, 34);
             this.button1.TabIndex = 0;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // COMPortLbl
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(42, 44);
-            this.label1.Name = "label1";
+            this.label1.Name = "COMPortLbl";
             this.label1.Size = new System.Drawing.Size(26, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "ID";
@@ -136,7 +136,7 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "AGE";
             // 
-            // Promt
+            // Prompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -152,7 +152,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Name = "Promt";
+            this.Name = "Prompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prompt";
             this.Load += new System.EventHandler(this.Promt_Load);

@@ -69,54 +69,53 @@
             this.rtbData = new System.Windows.Forms.RichTextBox();
             this.cbxChannel = new System.Windows.Forms.ComboBox();
             this.btnRecord = new System.Windows.Forms.Button();
-            this.textBoxFilename = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.SensFilenameBox = new System.Windows.Forms.TextBox();
+            this.ConfBtn = new System.Windows.Forms.Button();
+            this.TriSoundBtn = new System.Windows.Forms.Button();
+            this.COMPortLbl = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.C2StartBtn = new System.Windows.Forms.Button();
+            this.C2StopBtn = new System.Windows.Forms.Button();
+            this.C1StartBtn = new System.Windows.Forms.Button();
+            this.C1StopBtn = new System.Windows.Forms.Button();
+            this.C4StartBtn = new System.Windows.Forms.Button();
+            this.C4StopBtn = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_box_2_1 = new System.Windows.Forms.TextBox();
             this.txt_box_1_4 = new System.Windows.Forms.TextBox();
-            this.button12 = new System.Windows.Forms.Button();
+            this.EndCondBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_Confusion = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
+            this.TriClassicBtn = new System.Windows.Forms.Button();
+            this.StartCounterBtn = new System.Windows.Forms.Button();
+            this.StopCounterBtn = new System.Windows.Forms.Button();
+            this.ArrivalTimeLbl = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button16 = new System.Windows.Forms.Button();
+            this.TrialBox = new System.Windows.Forms.Label();
+            this.Cassa2Img = new System.Windows.Forms.PictureBox();
+            this.Cassa4Img = new System.Windows.Forms.PictureBox();
+            this.Cassa1Img = new System.Windows.Forms.PictureBox();
+            this.ArrivalStartBtn = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.button17 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.ArrivalStopBtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.Cassa2Img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cassa4Img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cassa1Img)).BeginInit();
             this.SuspendLayout();
             // 
             // btnScan
             // 
-            this.btnScan.Location = new System.Drawing.Point(20, 18);
-            this.btnScan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnScan.Location = new System.Drawing.Point(13, 12);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(138, 35);
+            this.btnScan.Size = new System.Drawing.Size(92, 23);
             this.btnScan.TabIndex = 0;
             this.btnScan.Text = "Scan";
             this.btnScan.UseVisualStyleBackColor = true;
@@ -125,10 +124,9 @@
             // btnEnable
             // 
             this.btnEnable.Enabled = false;
-            this.btnEnable.Location = new System.Drawing.Point(18, 186);
-            this.btnEnable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEnable.Location = new System.Drawing.Point(12, 121);
             this.btnEnable.Name = "btnEnable";
-            this.btnEnable.Size = new System.Drawing.Size(138, 35);
+            this.btnEnable.Size = new System.Drawing.Size(92, 23);
             this.btnEnable.TabIndex = 3;
             this.btnEnable.Text = "Enable Radio";
             this.btnEnable.UseVisualStyleBackColor = true;
@@ -137,39 +135,35 @@
             // lblChannel
             // 
             this.lblChannel.AutoSize = true;
-            this.lblChannel.Location = new System.Drawing.Point(24, 126);
-            this.lblChannel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblChannel.Location = new System.Drawing.Point(16, 82);
             this.lblChannel.Name = "lblChannel";
-            this.lblChannel.Size = new System.Drawing.Size(72, 20);
+            this.lblChannel.Size = new System.Drawing.Size(49, 13);
             this.lblChannel.TabIndex = 4;
             this.lblChannel.Text = "Channel:";
             // 
             // cbxStations
             // 
             this.cbxStations.FormattingEnabled = true;
-            this.cbxStations.Location = new System.Drawing.Point(20, 78);
-            this.cbxStations.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxStations.Location = new System.Drawing.Point(13, 51);
             this.cbxStations.Name = "cbxStations";
-            this.cbxStations.Size = new System.Drawing.Size(433, 28);
+            this.cbxStations.Size = new System.Drawing.Size(290, 21);
             this.cbxStations.TabIndex = 5;
             // 
             // lblDeviceCount
             // 
             this.lblDeviceCount.AutoSize = true;
-            this.lblDeviceCount.Location = new System.Drawing.Point(180, 252);
-            this.lblDeviceCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDeviceCount.Location = new System.Drawing.Point(120, 164);
             this.lblDeviceCount.Name = "lblDeviceCount";
-            this.lblDeviceCount.Size = new System.Drawing.Size(152, 20);
+            this.lblDeviceCount.Size = new System.Drawing.Size(105, 13);
             this.lblDeviceCount.TabIndex = 6;
             this.lblDeviceCount.Text = "MTw\'s Connected: 0";
             // 
             // btnMeasure
             // 
             this.btnMeasure.Enabled = false;
-            this.btnMeasure.Location = new System.Drawing.Point(18, 245);
-            this.btnMeasure.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMeasure.Location = new System.Drawing.Point(12, 159);
             this.btnMeasure.Name = "btnMeasure";
-            this.btnMeasure.Size = new System.Drawing.Size(138, 35);
+            this.btnMeasure.Size = new System.Drawing.Size(92, 23);
             this.btnMeasure.TabIndex = 8;
             this.btnMeasure.Text = "Measure";
             this.btnMeasure.UseVisualStyleBackColor = true;
@@ -178,10 +172,9 @@
             // btnStop
             // 
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(20, 362);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnStop.Location = new System.Drawing.Point(13, 235);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(136, 35);
+            this.btnStop.Size = new System.Drawing.Size(91, 23);
             this.btnStop.TabIndex = 9;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -193,21 +186,19 @@
             // 
             // rtbSteps
             // 
-            this.rtbSteps.Location = new System.Drawing.Point(473, 78);
-            this.rtbSteps.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rtbSteps.Location = new System.Drawing.Point(315, 51);
             this.rtbSteps.Name = "rtbSteps";
             this.rtbSteps.ReadOnly = true;
-            this.rtbSteps.Size = new System.Drawing.Size(235, 305);
+            this.rtbSteps.Size = new System.Drawing.Size(158, 200);
             this.rtbSteps.TabIndex = 10;
             this.rtbSteps.Text = "";
             // 
             // rtbData
             // 
             this.rtbData.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbData.Location = new System.Drawing.Point(18, 420);
-            this.rtbData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rtbData.Location = new System.Drawing.Point(12, 273);
             this.rtbData.Name = "rtbData";
-            this.rtbData.Size = new System.Drawing.Size(723, 449);
+            this.rtbData.Size = new System.Drawing.Size(483, 293);
             this.rtbData.TabIndex = 11;
             this.rtbData.Text = "";
             // 
@@ -232,75 +223,77 @@
             "23",
             "24",
             "25"});
-            this.cbxChannel.Location = new System.Drawing.Point(106, 118);
-            this.cbxChannel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxChannel.Location = new System.Drawing.Point(71, 77);
             this.cbxChannel.Name = "cbxChannel";
-            this.cbxChannel.Size = new System.Drawing.Size(108, 28);
+            this.cbxChannel.Size = new System.Drawing.Size(73, 21);
             this.cbxChannel.TabIndex = 12;
             // 
             // btnRecord
             // 
             this.btnRecord.Enabled = false;
-            this.btnRecord.Location = new System.Drawing.Point(18, 303);
-            this.btnRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRecord.Location = new System.Drawing.Point(12, 197);
             this.btnRecord.Name = "btnRecord";
-            this.btnRecord.Size = new System.Drawing.Size(138, 35);
+            this.btnRecord.Size = new System.Drawing.Size(92, 23);
             this.btnRecord.TabIndex = 13;
             this.btnRecord.Text = "Record";
             this.btnRecord.UseVisualStyleBackColor = true;
             this.btnRecord.Click += new System.EventHandler(this.btnRecord_Click);
             // 
-            // textBoxFilename
+            // SensFilenameBox
             // 
-            this.textBoxFilename.Location = new System.Drawing.Point(184, 308);
-            this.textBoxFilename.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBoxFilename.Name = "textBoxFilename";
-            this.textBoxFilename.Size = new System.Drawing.Size(127, 26);
-            this.textBoxFilename.TabIndex = 21;
-            this.textBoxFilename.TextChanged += new System.EventHandler(this.textBoxFilename_TextChanged);
+            this.SensFilenameBox.Location = new System.Drawing.Point(123, 200);
+            this.SensFilenameBox.Name = "SensFilenameBox";
+            this.SensFilenameBox.ReadOnly = true;
+            this.SensFilenameBox.Size = new System.Drawing.Size(86, 20);
+            this.SensFilenameBox.TabIndex = 21;
             // 
-            // button1
+            // ConfBtn
             // 
-            this.button1.Location = new System.Drawing.Point(749, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 35);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "CONFUSION";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ConfBtn.Location = new System.Drawing.Point(499, 8);
+            this.ConfBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ConfBtn.Name = "ConfBtn";
+            this.ConfBtn.Size = new System.Drawing.Size(89, 23);
+            this.ConfBtn.TabIndex = 22;
+            this.ConfBtn.Text = "CONFUSION";
+            this.ConfBtn.UseVisualStyleBackColor = true;
+            this.ConfBtn.Click += new System.EventHandler(this.ConfBtn_Click);
             // 
-            // button2
+            // TriSoundBtn
             // 
-            this.button2.Location = new System.Drawing.Point(749, 53);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(204, 35);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "TRIANGLE SOUND";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.TriSoundBtn.Location = new System.Drawing.Point(499, 34);
+            this.TriSoundBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.TriSoundBtn.Name = "TriSoundBtn";
+            this.TriSoundBtn.Size = new System.Drawing.Size(136, 23);
+            this.TriSoundBtn.TabIndex = 23;
+            this.TriSoundBtn.Text = "TRIANGLE SOUND";
+            this.TriSoundBtn.UseVisualStyleBackColor = true;
+            this.TriSoundBtn.Click += new System.EventHandler(this.TriSoundBtn_Click);
             // 
-            // label1
+            // COMPortLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(974, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "PORTA COM";
+            this.COMPortLbl.AutoSize = true;
+            this.COMPortLbl.Location = new System.Drawing.Point(649, 27);
+            this.COMPortLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.COMPortLbl.Name = "COMPortLbl";
+            this.COMPortLbl.Size = new System.Drawing.Size(71, 13);
+            this.COMPortLbl.TabIndex = 24;
+            this.COMPortLbl.Text = "PORTA COM";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(978, 65);
+            this.comboBox1.Location = new System.Drawing.Point(652, 42);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
+            this.comboBox1.Size = new System.Drawing.Size(82, 21);
             this.comboBox1.TabIndex = 25;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1105, 58);
+            this.button3.Location = new System.Drawing.Point(737, 38);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 41);
+            this.button3.Size = new System.Drawing.Size(50, 27);
             this.button3.TabIndex = 26;
             this.button3.Text = "SET";
             this.button3.UseVisualStyleBackColor = true;
@@ -308,95 +301,105 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(745, 254);
+            this.label2.Location = new System.Drawing.Point(497, 165);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 20);
+            this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 30;
             this.label2.Text = "Speaker Number";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(924, 137);
+            this.label3.Location = new System.Drawing.Point(616, 89);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 20);
+            this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 31;
             this.label3.Text = "Speaker Number";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1099, 245);
+            this.label4.Location = new System.Drawing.Point(733, 159);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 20);
+            this.label4.Size = new System.Drawing.Size(87, 13);
             this.label4.TabIndex = 32;
             this.label4.Text = "Speaker Number";
             // 
-            // button4
+            // C2StartBtn
             // 
-            this.button4.Location = new System.Drawing.Point(766, 420);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(84, 31);
-            this.button4.TabIndex = 33;
-            this.button4.Text = "START";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.C2StartBtn.Location = new System.Drawing.Point(511, 273);
+            this.C2StartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C2StartBtn.Name = "C2StartBtn";
+            this.C2StartBtn.Size = new System.Drawing.Size(56, 20);
+            this.C2StartBtn.TabIndex = 33;
+            this.C2StartBtn.Text = "START";
+            this.C2StartBtn.UseVisualStyleBackColor = true;
+            this.C2StartBtn.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // C2StopBtn
             // 
-            this.button5.Location = new System.Drawing.Point(766, 457);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(84, 31);
-            this.button5.TabIndex = 34;
-            this.button5.Text = "STOP";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.C2StopBtn.Location = new System.Drawing.Point(511, 297);
+            this.C2StopBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C2StopBtn.Name = "C2StopBtn";
+            this.C2StopBtn.Size = new System.Drawing.Size(56, 20);
+            this.C2StopBtn.TabIndex = 34;
+            this.C2StopBtn.Text = "STOP";
+            this.C2StopBtn.UseVisualStyleBackColor = true;
+            this.C2StopBtn.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button6
+            // C1StartBtn
             // 
-            this.button6.Location = new System.Drawing.Point(956, 308);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(94, 31);
-            this.button6.TabIndex = 35;
-            this.button6.Text = "START";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.C1StartBtn.Location = new System.Drawing.Point(637, 200);
+            this.C1StartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C1StartBtn.Name = "C1StartBtn";
+            this.C1StartBtn.Size = new System.Drawing.Size(63, 20);
+            this.C1StartBtn.TabIndex = 35;
+            this.C1StartBtn.Text = "START";
+            this.C1StartBtn.UseVisualStyleBackColor = true;
+            this.C1StartBtn.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
+            // C1StopBtn
             // 
-            this.button7.Location = new System.Drawing.Point(956, 345);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(94, 31);
-            this.button7.TabIndex = 36;
-            this.button7.Text = "STOP";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.C1StopBtn.Location = new System.Drawing.Point(637, 224);
+            this.C1StopBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C1StopBtn.Name = "C1StopBtn";
+            this.C1StopBtn.Size = new System.Drawing.Size(63, 20);
+            this.C1StopBtn.TabIndex = 36;
+            this.C1StopBtn.Text = "STOP";
+            this.C1StopBtn.UseVisualStyleBackColor = true;
+            this.C1StopBtn.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button8
+            // C4StartBtn
             // 
-            this.button8.Location = new System.Drawing.Point(1119, 420);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(84, 31);
-            this.button8.TabIndex = 37;
-            this.button8.Text = "START";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.C4StartBtn.Location = new System.Drawing.Point(746, 273);
+            this.C4StartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C4StartBtn.Name = "C4StartBtn";
+            this.C4StartBtn.Size = new System.Drawing.Size(56, 20);
+            this.C4StartBtn.TabIndex = 37;
+            this.C4StartBtn.Text = "START";
+            this.C4StartBtn.UseVisualStyleBackColor = true;
+            this.C4StartBtn.Click += new System.EventHandler(this.button8_Click);
             // 
-            // button9
+            // C4StopBtn
             // 
-            this.button9.Location = new System.Drawing.Point(1119, 457);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(84, 31);
-            this.button9.TabIndex = 38;
-            this.button9.Text = "STOP";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.C4StopBtn.Location = new System.Drawing.Point(746, 297);
+            this.C4StopBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C4StopBtn.Name = "C4StopBtn";
+            this.C4StopBtn.Size = new System.Drawing.Size(56, 20);
+            this.C4StopBtn.TabIndex = 38;
+            this.C4StopBtn.Text = "STOP";
+            this.C4StopBtn.UseVisualStyleBackColor = true;
+            this.C4StopBtn.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(941, 419);
+            this.button10.Location = new System.Drawing.Point(627, 272);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(109, 30);
+            this.button10.Size = new System.Drawing.Size(73, 20);
             this.button10.TabIndex = 39;
             this.button10.Text = "START ALL";
             this.button10.UseVisualStyleBackColor = true;
@@ -404,9 +407,10 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(941, 455);
+            this.button11.Location = new System.Drawing.Point(627, 296);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(109, 30);
+            this.button11.Size = new System.Drawing.Size(73, 20);
             this.button11.TabIndex = 40;
             this.button11.Text = "STOP ALL";
             this.button11.UseVisualStyleBackColor = true;
@@ -415,228 +419,248 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(748, 567);
+            this.label5.Location = new System.Drawing.Point(499, 369);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 20);
+            this.label5.Size = new System.Drawing.Size(89, 13);
             this.label5.TabIndex = 41;
             this.label5.Text = "Arrival Time 2 ->1";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(748, 604);
+            this.label6.Location = new System.Drawing.Point(499, 393);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(130, 20);
+            this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 42;
             this.label6.Text = "Arrival Time 1 ->4";
             // 
             // txt_box_2_1
             // 
-            this.txt_box_2_1.Location = new System.Drawing.Point(898, 561);
+            this.txt_box_2_1.Location = new System.Drawing.Point(599, 365);
+            this.txt_box_2_1.Margin = new System.Windows.Forms.Padding(2);
             this.txt_box_2_1.Name = "txt_box_2_1";
-            this.txt_box_2_1.Size = new System.Drawing.Size(100, 26);
+            this.txt_box_2_1.Size = new System.Drawing.Size(68, 20);
             this.txt_box_2_1.TabIndex = 43;
             // 
             // txt_box_1_4
             // 
-            this.txt_box_1_4.Location = new System.Drawing.Point(898, 598);
+            this.txt_box_1_4.Location = new System.Drawing.Point(599, 389);
+            this.txt_box_1_4.Margin = new System.Windows.Forms.Padding(2);
             this.txt_box_1_4.Name = "txt_box_1_4";
-            this.txt_box_1_4.Size = new System.Drawing.Size(100, 26);
+            this.txt_box_1_4.Size = new System.Drawing.Size(68, 20);
             this.txt_box_1_4.TabIndex = 44;
             // 
-            // button12
+            // EndCondBtn
             // 
-            this.button12.Location = new System.Drawing.Point(909, 772);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(200, 36);
-            this.button12.TabIndex = 45;
-            this.button12.Text = "END CONDITION";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.EndCondBtn.Location = new System.Drawing.Point(606, 502);
+            this.EndCondBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.EndCondBtn.Name = "EndCondBtn";
+            this.EndCondBtn.Size = new System.Drawing.Size(133, 23);
+            this.EndCondBtn.TabIndex = 45;
+            this.EndCondBtn.Text = "END CONDITION";
+            this.EndCondBtn.UseVisualStyleBackColor = true;
+            this.EndCondBtn.Click += new System.EventHandler(this.EndCondBtn_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(748, 527);
+            this.label7.Location = new System.Drawing.Point(499, 343);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(119, 20);
+            this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 46;
             this.label7.Text = "Time Confusion";
             // 
             // txt_Confusion
             // 
-            this.txt_Confusion.Location = new System.Drawing.Point(898, 524);
+            this.txt_Confusion.Location = new System.Drawing.Point(599, 341);
+            this.txt_Confusion.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Confusion.Name = "txt_Confusion";
-            this.txt_Confusion.Size = new System.Drawing.Size(100, 26);
+            this.txt_Confusion.Size = new System.Drawing.Size(68, 20);
             this.txt_Confusion.TabIndex = 47;
             // 
-            // button13
+            // TriClassicBtn
             // 
-            this.button13.Location = new System.Drawing.Point(752, 94);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(201, 35);
-            this.button13.TabIndex = 48;
-            this.button13.Text = "TRIANGLE CLASSIC";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.TriClassicBtn.Location = new System.Drawing.Point(501, 61);
+            this.TriClassicBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.TriClassicBtn.Name = "TriClassicBtn";
+            this.TriClassicBtn.Size = new System.Drawing.Size(134, 23);
+            this.TriClassicBtn.TabIndex = 48;
+            this.TriClassicBtn.Text = "TRIANGLE CLASSIC";
+            this.TriClassicBtn.UseVisualStyleBackColor = true;
+            this.TriClassicBtn.Click += new System.EventHandler(this.TriClassicBtn_Click);
             // 
-            // button14
+            // StartCounterBtn
             // 
-            this.button14.Location = new System.Drawing.Point(941, 418);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(168, 30);
-            this.button14.TabIndex = 49;
-            this.button14.Text = "START COUNTER";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.StartCounterBtn.Location = new System.Drawing.Point(627, 272);
+            this.StartCounterBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.StartCounterBtn.Name = "StartCounterBtn";
+            this.StartCounterBtn.Size = new System.Drawing.Size(112, 20);
+            this.StartCounterBtn.TabIndex = 49;
+            this.StartCounterBtn.Text = "START COUNTER";
+            this.StartCounterBtn.UseVisualStyleBackColor = true;
+            this.StartCounterBtn.Click += new System.EventHandler(this.StartCounterBtn_Click);
             // 
-            // button15
+            // StopCounterBtn
             // 
-            this.button15.Location = new System.Drawing.Point(941, 455);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(168, 30);
-            this.button15.TabIndex = 50;
-            this.button15.Text = "STOP COUNTER";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.StopCounterBtn.Location = new System.Drawing.Point(627, 296);
+            this.StopCounterBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.StopCounterBtn.Name = "StopCounterBtn";
+            this.StopCounterBtn.Size = new System.Drawing.Size(112, 20);
+            this.StopCounterBtn.TabIndex = 50;
+            this.StopCounterBtn.Text = "STOP COUNTER";
+            this.StopCounterBtn.UseVisualStyleBackColor = true;
+            this.StopCounterBtn.Click += new System.EventHandler(this.StopCounterBtn_Click);
             // 
-            // label8
+            // ArrivalTimeLbl
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(748, 524);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 20);
-            this.label8.TabIndex = 51;
-            this.label8.Text = "Arrival Time ";
+            this.ArrivalTimeLbl.AutoSize = true;
+            this.ArrivalTimeLbl.Location = new System.Drawing.Point(499, 341);
+            this.ArrivalTimeLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ArrivalTimeLbl.Name = "ArrivalTimeLbl";
+            this.ArrivalTimeLbl.Size = new System.Drawing.Size(65, 13);
+            this.ArrivalTimeLbl.TabIndex = 51;
+            this.ArrivalTimeLbl.Text = "Arrival Time ";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(898, 524);
+            this.textBox1.Location = new System.Drawing.Point(619, 341);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
+            this.textBox1.Size = new System.Drawing.Size(68, 20);
             this.textBox1.TabIndex = 52;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1036, 579);
+            this.label9.Location = new System.Drawing.Point(691, 376);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 20);
+            this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 53;
             this.label9.Text = "TRIAL: ";
             // 
-            // label10
+            // TrialBox
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(1099, 579);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 20);
-            this.label10.TabIndex = 54;
-            this.label10.Text = "label10";
+            this.TrialBox.AutoSize = true;
+            this.TrialBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrialBox.ForeColor = System.Drawing.Color.Red;
+            this.TrialBox.Location = new System.Drawing.Point(733, 376);
+            this.TrialBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TrialBox.Name = "TrialBox";
+            this.TrialBox.Size = new System.Drawing.Size(48, 13);
+            this.TrialBox.TabIndex = 54;
+            this.TrialBox.Text = "label10";
             // 
-            // pictureBox3
+            // Cassa2Img
             // 
-            this.pictureBox3.Image = global::example.Properties.Resources.two;
-            this.pictureBox3.Location = new System.Drawing.Point(743, 277);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(131, 135);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 29;
-            this.pictureBox3.TabStop = false;
+            this.Cassa2Img.Image = global::example.Properties.Resources.two;
+            this.Cassa2Img.Location = new System.Drawing.Point(495, 180);
+            this.Cassa2Img.Margin = new System.Windows.Forms.Padding(2);
+            this.Cassa2Img.Name = "Cassa2Img";
+            this.Cassa2Img.Size = new System.Drawing.Size(87, 88);
+            this.Cassa2Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Cassa2Img.TabIndex = 29;
+            this.Cassa2Img.TabStop = false;
             // 
-            // pictureBox2
+            // Cassa4Img
             // 
-            this.pictureBox2.Image = global::example.Properties.Resources.four11;
-            this.pictureBox2.Location = new System.Drawing.Point(1093, 277);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(135, 135);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 28;
-            this.pictureBox2.TabStop = false;
+            this.Cassa4Img.Image = global::example.Properties.Resources.four11;
+            this.Cassa4Img.Location = new System.Drawing.Point(729, 180);
+            this.Cassa4Img.Margin = new System.Windows.Forms.Padding(2);
+            this.Cassa4Img.Name = "Cassa4Img";
+            this.Cassa4Img.Size = new System.Drawing.Size(90, 88);
+            this.Cassa4Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Cassa4Img.TabIndex = 28;
+            this.Cassa4Img.TabStop = false;
             // 
-            // pictureBox1
+            // Cassa1Img
             // 
-            this.pictureBox1.Image = global::example.Properties.Resources.one2;
-            this.pictureBox1.Location = new System.Drawing.Point(928, 160);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(122, 138);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
+            this.Cassa1Img.Image = global::example.Properties.Resources.one2;
+            this.Cassa1Img.Location = new System.Drawing.Point(619, 104);
+            this.Cassa1Img.Margin = new System.Windows.Forms.Padding(2);
+            this.Cassa1Img.Name = "Cassa1Img";
+            this.Cassa1Img.Size = new System.Drawing.Size(81, 90);
+            this.Cassa1Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Cassa1Img.TabIndex = 27;
+            this.Cassa1Img.TabStop = false;
             // 
-            // button16
+            // ArrivalStartBtn
             // 
-            this.button16.Location = new System.Drawing.Point(941, 418);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(168, 31);
-            this.button16.TabIndex = 55;
-            this.button16.Text = "START ARRIVAL";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.ArrivalStartBtn.Location = new System.Drawing.Point(627, 272);
+            this.ArrivalStartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ArrivalStartBtn.Name = "ArrivalStartBtn";
+            this.ArrivalStartBtn.Size = new System.Drawing.Size(112, 20);
+            this.ArrivalStartBtn.TabIndex = 55;
+            this.ArrivalStartBtn.Text = "START ARRIVAL";
+            this.ArrivalStartBtn.UseVisualStyleBackColor = true;
+            this.ArrivalStartBtn.Click += new System.EventHandler(this.button16_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(748, 677);
+            this.label11.Location = new System.Drawing.Point(499, 440);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(0, 20);
+            this.label11.Size = new System.Drawing.Size(0, 13);
             this.label11.TabIndex = 56;
             // 
-            // button17
+            // ArrivalStopBtn
             // 
-            this.button17.Location = new System.Drawing.Point(941, 457);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(168, 31);
-            this.button17.TabIndex = 57;
-            this.button17.Text = "STOP ARRIVAL";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.ArrivalStopBtn.Location = new System.Drawing.Point(627, 297);
+            this.ArrivalStopBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ArrivalStopBtn.Name = "ArrivalStopBtn";
+            this.ArrivalStopBtn.Size = new System.Drawing.Size(112, 20);
+            this.ArrivalStopBtn.TabIndex = 57;
+            this.ArrivalStopBtn.Text = "STOP ARRIVAL";
+            this.ArrivalStopBtn.UseVisualStyleBackColor = true;
+            this.ArrivalStopBtn.Click += new System.EventHandler(this.button17_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1430, 938);
-            this.Controls.Add(this.button17);
+            this.ClientSize = new System.Drawing.Size(953, 610);
+            this.Controls.Add(this.ArrivalStopBtn);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.button16);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.ArrivalStartBtn);
+            this.Controls.Add(this.TrialBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
+            this.Controls.Add(this.ArrivalTimeLbl);
+            this.Controls.Add(this.StopCounterBtn);
+            this.Controls.Add(this.StartCounterBtn);
+            this.Controls.Add(this.TriClassicBtn);
             this.Controls.Add(this.txt_Confusion);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.button12);
+            this.Controls.Add(this.EndCondBtn);
             this.Controls.Add(this.txt_box_1_4);
             this.Controls.Add(this.txt_box_2_1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.C4StopBtn);
+            this.Controls.Add(this.C4StartBtn);
+            this.Controls.Add(this.C1StopBtn);
+            this.Controls.Add(this.C1StartBtn);
+            this.Controls.Add(this.C2StopBtn);
+            this.Controls.Add(this.C2StartBtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Cassa2Img);
+            this.Controls.Add(this.Cassa4Img);
+            this.Controls.Add(this.Cassa1Img);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBoxFilename);
+            this.Controls.Add(this.COMPortLbl);
+            this.Controls.Add(this.TriSoundBtn);
+            this.Controls.Add(this.ConfBtn);
+            this.Controls.Add(this.SensFilenameBox);
             this.Controls.Add(this.btnRecord);
             this.Controls.Add(this.cbxChannel);
             this.Controls.Add(this.rtbData);
@@ -648,15 +672,14 @@
             this.Controls.Add(this.lblChannel);
             this.Controls.Add(this.btnEnable);
             this.Controls.Add(this.btnScan);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "MTw Example";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cassa2Img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cassa4Img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Cassa1Img)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,43 +699,43 @@
         private System.Windows.Forms.RichTextBox rtbData;
 		private System.Windows.Forms.ComboBox cbxChannel;
 		private System.Windows.Forms.Button btnRecord;
-		private System.Windows.Forms.TextBox textBoxFilename;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox SensFilenameBox;
+        private System.Windows.Forms.Button ConfBtn;
+        private System.Windows.Forms.Button TriSoundBtn;
+        private System.Windows.Forms.Label COMPortLbl;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox Cassa1Img;
+        private System.Windows.Forms.PictureBox Cassa4Img;
+        private System.Windows.Forms.PictureBox Cassa2Img;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button C2StartBtn;
+        private System.Windows.Forms.Button C2StopBtn;
+        private System.Windows.Forms.Button C1StartBtn;
+        private System.Windows.Forms.Button C1StopBtn;
+        private System.Windows.Forms.Button C4StartBtn;
+        private System.Windows.Forms.Button C4StopBtn;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_box_2_1;
         private System.Windows.Forms.TextBox txt_box_1_4;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button EndCondBtn;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_Confusion;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button TriClassicBtn;
+        private System.Windows.Forms.Button StartCounterBtn;
+        private System.Windows.Forms.Button StopCounterBtn;
+        private System.Windows.Forms.Label ArrivalTimeLbl;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Label TrialBox;
+        private System.Windows.Forms.Button ArrivalStartBtn;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button ArrivalStopBtn;
     }
 }
 

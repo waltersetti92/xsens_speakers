@@ -47,7 +47,7 @@ namespace MTwExample
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Promt());
+			Application.Run(new Prompt());
 		}
 	}
 }

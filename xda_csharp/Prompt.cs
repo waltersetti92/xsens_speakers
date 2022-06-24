@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace MTwExample
 {
-    public partial class Promt : Form
+    public partial class Prompt : Form
     {
   
-        public Promt()
+        public Prompt()
         {
             InitializeComponent();
             string id;
