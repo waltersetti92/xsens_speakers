@@ -40,11 +40,13 @@ public class Logger: IDisposable {
     public string thisFileFolder { get => commonFileFolder + "_" + _thisFileFolder; set => _thisFileFolder = value; }
     
     private static string commonFileName;
-    public string _thisFileName;
+    private string _thisFileName;
     public string thisFileName { get => commonFileName + "_" + _thisFileName; set => _thisFileName = value; }
     public string filExt;
 
-    private string fullFile { get => Path.Combine(new string[] { commonFilePath, thisFileFolder, thisFileName + "." + filExt }); }
+    private string fullFile { get => Path.Combine(new string[] { commonFilePath, thisFileFolder, Logger.time + "_" + thisFileName + "." + filExt }); }
+
+    private string filePath;
 
     private int counter = 0;
 
@@ -77,7 +79,7 @@ public class Logger: IDisposable {
     {
         Logger.time = System.DateTime.Now.ToString("ddMMyyyyHHmmss");
         Logger.commonFileFolder = Path.Combine(new string[] { folderName, fileName,Logger.time });
-        Logger.commonFileName = Logger.time + "_" + fileName;
+        Logger.commonFileName = fileName;
         Logger.commonFilePath = filePath;
     }
     public void CreateFolder()
@@ -96,11 +98,11 @@ public class Logger: IDisposable {
 
     public async Task OpenWriteCloseBye(string text, FileMode fileMode)
     {
-        string filepath = fullFile;
+        filePath = fullFile;
         if (counter > 0)
-            filepath += counter.ToString();
+            filePath += counter.ToString();
 
-        using (FileStream stream = new FileStream(filepath, fileMode, FileAccess.Write))
+        using (FileStream stream = new FileStream(filePath, fileMode, FileAccess.Write))
         using (StreamWriter writer = new StreamWriter(stream))
         {
             //This is writing the line of the type, name, damage... etc... (I set these)
@@ -108,9 +110,11 @@ public class Logger: IDisposable {
         }
     }
 
-    public void SetStream()
+    public void SetupDataStream()
     {
-        dStream = new FileStream(fullFile, FileMode.Append, FileAccess.Write);
+        if (!File.Exists(filePath))
+            throw (new IOException("File " +filePath+ " missing. Set Header first."));
+        dStream = new FileStream(filePath, FileMode.Append, FileAccess.Write);
         dWriter = new StreamWriter(dStream);
     }
 
@@ -119,7 +123,7 @@ public class Logger: IDisposable {
         if (KeepStream)
         {
             if (dWriter == null)
-                SetStream();
+                SetupDataStream();
 
             await dWriter.WriteLineAsync(dataLine).ConfigureAwait(false);
             await dWriter.FlushAsync().ConfigureAwait(false);
