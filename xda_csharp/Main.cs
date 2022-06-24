@@ -48,7 +48,7 @@ namespace MTwExample
         private MyXda _xda;
 		private XsDevice _measuringDevice = null;
 		private Dictionary<XsDevice, MyMtCallback> _measuringMts = new Dictionary<XsDevice, MyMtCallback>();
-		private Dictionary<uint, ConnectedMtData> _connectedMtwData = new Dictionary<uint, ConnectedMtData>();
+		private Dictionary<ulong, ConnectedMtData> _connectedMtwData = new Dictionary<ulong, ConnectedMtData>();
 		public static readonly string appPath = Path.GetDirectoryName(Application.ExecutablePath);
 		public static readonly string resourcesPath1 = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources1";
 		public static readonly string resourcesPath = Path.GetDirectoryName(Application.ExecutablePath) + "\\resources";
@@ -196,7 +196,7 @@ namespace MTwExample
         private void timer1_Tick(object sender, EventArgs e)
         {
 			string text = "";
-		    foreach (KeyValuePair<uint, ConnectedMtData> data in _connectedMtwData)
+		    foreach (KeyValuePair<ulong, ConnectedMtData> data in _connectedMtwData)
             {
 				if (data.Value._orientation != null)
 				{

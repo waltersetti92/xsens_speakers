@@ -539,7 +539,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::dll_example_mtw_64.Properties.Resources.two;
+            this.pictureBox3.Image = global::example.Properties.Resources.two;
             this.pictureBox3.Location = new System.Drawing.Point(743, 277);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(131, 135);
@@ -549,7 +549,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::dll_example_mtw_64.Properties.Resources.four11;
+            this.pictureBox2.Image = global::example.Properties.Resources.four11;
             this.pictureBox2.Location = new System.Drawing.Point(1093, 277);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(135, 135);
@@ -559,7 +559,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::dll_example_mtw_64.Properties.Resources.one2;
+            this.pictureBox1.Image = global::example.Properties.Resources.one2;
             this.pictureBox1.Location = new System.Drawing.Point(928, 160);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(122, 138);
