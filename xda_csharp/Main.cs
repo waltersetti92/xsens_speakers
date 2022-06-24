@@ -71,6 +71,7 @@ namespace MTwExample
 		private Logger TriangleClassicLogger;
 		private Logger TriangleSoundLogger;
 		private Logger ConfusionLogger;
+		private Logger NullLogger;
 
 		private Logger thisTaskLogger;
 
@@ -82,12 +83,19 @@ namespace MTwExample
             _xda = new MyXda();
 			cbxChannel.SelectedIndex = 0;
             step(1);
+			
 			speakers = new Speakers();
+			
 			ID = str;
+			
 			Logger.SetCommonPath(appPath, "results", ID);
-			TriangleClassicLogger = new Logger("tc", destinationFolder: ID, extension: "dat", keepStream: false);
-			TriangleSoundLogger = new Logger("ts", destinationFolder: ID, extension: "dat", keepStream: false);
-			ConfusionLogger = new Logger("c", destinationFolder: ID, extension: "dat", keepStream: false);
+			TriangleClassicLogger = new Logger(expTask.TriClassic.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
+			TriangleSoundLogger = new Logger(expTask.TriSound.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
+			ConfusionLogger = new Logger(expTask.Confusion.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
+			NullLogger = new Logger(expTask.NONE.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
+			thisTaskLogger = NullLogger;
+
+			UpdateSensFilename();
 		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -186,9 +194,18 @@ namespace MTwExample
 
 		private void btnRecord_Click(object sender, EventArgs e)
 		{
-			_measuringDevice.createLogFile(new XsString(SensFilenameBox.Text));
-			_measuringDevice.startRecording();
-			btnRecord.Enabled = false;
+			if (InvokeRequired)
+			{
+				// Update UI, make sure this happens on the UI thread
+				BeginInvoke(new Action(delegate { btnRecord_Click(sender, e); }));
+			}
+			else
+			{
+				_measuringDevice.createLogFile(new XsString(Path.Combine(thisTaskLogger.thisFileFolder, SensFilenameBox.Text)));
+				_measuringDevice.startRecording();
+				btnRecord.Enabled = false;
+			}
+			
 		}
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -325,10 +342,14 @@ namespace MTwExample
         private void Form1_Load(object sender, EventArgs e)
         {
 			Initial_Visibility();
-			SensFilenameBox.Text = string.Join("_",new string[] { ID,_task.ToString(),trialCounter.ToString()}) + ".mtb";
         }
 
-        private async void TriSoundBtn_Click(object sender, EventArgs e)
+		private void TrialBox_TextChanged(object sender, EventArgs e)
+		{
+			UpdateSensFilename();
+		}
+
+		private async void TriSoundBtn_Click(object sender, EventArgs e)
         {
 			ConfBtn.Visible = false;
 			TriSoundBtn.Enabled = false;
@@ -352,10 +373,16 @@ namespace MTwExample
 			label4.Visible = true;
 
 			_task = expTask.TriSound;
-
-			TriangleSoundLogger.CreateFolder();
-			await TriangleSoundLogger.SetHeader(Form1Header);
 			thisTaskLogger = TriangleSoundLogger;
+
+
+			thisTaskLogger.CreateFolder();
+			await thisTaskLogger.SetHeader(Form1Header);
+
+			trialCounter++;
+			TrialBox.Text = trialCounter.ToString();
+
+			UpdateLogBasicInfo();
 			//speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
 
@@ -540,7 +567,7 @@ namespace MTwExample
 			
 			trialCounter = 0;
 			_task = expTask.NONE;
-			thisTaskLogger = null;
+			thisTaskLogger = NullLogger;
         }
 
         private async void ConfBtn_Click(object sender, EventArgs e)
@@ -552,9 +579,17 @@ namespace MTwExample
 			button10.Visible = true;
 			button11.Visible = true;
 			TriClassicBtn.Visible = false;
-			ConfusionLogger.CreateFolder();
-			await ConfusionLogger.SetHeader(Form1Header);
+
+			_task = expTask.Confusion;
 			thisTaskLogger = ConfusionLogger;
+
+
+			thisTaskLogger.CreateFolder();
+			await thisTaskLogger.SetHeader(Form1Header);
+
+			TrialBox.Text = trialCounter.ToString();
+
+			UpdateLogBasicInfo();
 		}
 
         private async void TriClassicBtn_Click(object sender, EventArgs e)
@@ -566,36 +601,42 @@ namespace MTwExample
 			StartCounterBtn.Visible = true;
 			StopCounterBtn.Visible = false;
 			TriClassicBtn.Enabled = false;
-			_task = expTask.TriClassic;
-			TriangleClassicLogger.CreateFolder();
-			await TriangleClassicLogger.SetHeader(Form1Header);
-			
-			thisTaskLogger = TriangleClassicLogger;
 
+			thisTaskLogger = TriangleClassicLogger;
+			_task = expTask.TriClassic;
+
+			thisTaskLogger.CreateFolder();
+			await thisTaskLogger.SetHeader(Form1Header);
 			
+			trialCounter++;
+			TrialBox.Text = trialCounter.ToString();
+
+			UpdateLogBasicInfo();
+
+
 		}
 
         private void StartCounterBtn_Click(object sender, EventArgs e)
         {
-			trialCounter++;
-			_measuringDevice.createLogFile(new XsString(SensFilenameBox.Text));
-			_measuringDevice.startRecording();
+
+			btnRecord_Click(sender, e);
 
 			StartCounterBtn.Visible = false;
 			StopCounterBtn.Visible = true;
 			btnRecord.Enabled = false;
+			TrialBox.Visible = true;
 			
 			thisTaskLogger.UpdateValue("Trial", trialCounter);
 		}
 
 		private void StopCounterBtn_Click(object sender, EventArgs e)
 		{
-			StopCounterBtn.Visible = false;
-			StartCounterBtn.Visible = true;
-			ArrivalTimeLbl.Visible = true;
-			textBox1.Visible = true;
-			btnStop.Enabled = false;
 			timer1.Enabled = false;
+
+			int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+			thisTaskLogger.UpdateValue("sensordata", SensFilenameBox.Text);
+			thisTaskLogger.UpdateValue("Timestamp", unixTimestamp);
+			thisTaskLogger.LogData();
 
 			if (_measuringDevice.isRecording())
 				_measuringDevice.stopRecording();
@@ -615,11 +656,14 @@ namespace MTwExample
 			{
 				step(1);
 			}
-			
-			//trialCounter = trialCounter + 1;
-			int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-			thisTaskLogger.UpdateValue("Timestamp", unixTimestamp);
-			thisTaskLogger.
+
+			trialCounter++;
+
+			StopCounterBtn.Visible = false;
+			StartCounterBtn.Visible = true;
+			ArrivalTimeLbl.Visible = true;
+			textBox1.Visible = true;
+			btnStop.Enabled = false;
 			textBox1.Text = unixTimestamp.ToString();
 			TrialBox.Text = trialCounter.ToString();
 			label9.Visible = true;
@@ -653,6 +697,11 @@ namespace MTwExample
 
 		#endregion
 
+		void UpdateSensFilename()
+        {
+			SensFilenameBox.Text = string.Join("_", new string[] { thisTaskLogger.thisFileName, trialCounter.ToString() }) + ".mtb";
+
+		}
 		void UpdateLogBasicInfo()
         {
 			thisTaskLogger.UpdateValue("Code", thisTaskLogger.thisFileName);

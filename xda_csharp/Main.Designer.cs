@@ -99,13 +99,14 @@
             this.ArrivalTimeLbl = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.TrialBox = new System.Windows.Forms.Label();
+            this.TrialBox = new System.Windows.Forms.TextBox();
             this.Cassa2Img = new System.Windows.Forms.PictureBox();
             this.Cassa4Img = new System.Windows.Forms.PictureBox();
             this.Cassa1Img = new System.Windows.Forms.PictureBox();
             this.ArrivalStartBtn = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.ArrivalStopBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa2Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa4Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa1Img)).BeginInit();
@@ -124,7 +125,7 @@
             // btnEnable
             // 
             this.btnEnable.Enabled = false;
-            this.btnEnable.Location = new System.Drawing.Point(12, 121);
+            this.btnEnable.Location = new System.Drawing.Point(12, 111);
             this.btnEnable.Name = "btnEnable";
             this.btnEnable.Size = new System.Drawing.Size(92, 23);
             this.btnEnable.TabIndex = 3;
@@ -152,7 +153,7 @@
             // lblDeviceCount
             // 
             this.lblDeviceCount.AutoSize = true;
-            this.lblDeviceCount.Location = new System.Drawing.Point(120, 164);
+            this.lblDeviceCount.Location = new System.Drawing.Point(120, 151);
             this.lblDeviceCount.Name = "lblDeviceCount";
             this.lblDeviceCount.Size = new System.Drawing.Size(105, 13);
             this.lblDeviceCount.TabIndex = 6;
@@ -161,7 +162,7 @@
             // btnMeasure
             // 
             this.btnMeasure.Enabled = false;
-            this.btnMeasure.Location = new System.Drawing.Point(12, 159);
+            this.btnMeasure.Location = new System.Drawing.Point(12, 146);
             this.btnMeasure.Name = "btnMeasure";
             this.btnMeasure.Size = new System.Drawing.Size(92, 23);
             this.btnMeasure.TabIndex = 8;
@@ -172,7 +173,7 @@
             // btnStop
             // 
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(13, 235);
+            this.btnStop.Location = new System.Drawing.Point(13, 238);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(91, 23);
             this.btnStop.TabIndex = 9;
@@ -231,7 +232,7 @@
             // btnRecord
             // 
             this.btnRecord.Enabled = false;
-            this.btnRecord.Location = new System.Drawing.Point(12, 197);
+            this.btnRecord.Location = new System.Drawing.Point(12, 176);
             this.btnRecord.Name = "btnRecord";
             this.btnRecord.Size = new System.Drawing.Size(92, 23);
             this.btnRecord.TabIndex = 13;
@@ -241,10 +242,10 @@
             // 
             // SensFilenameBox
             // 
-            this.SensFilenameBox.Location = new System.Drawing.Point(123, 200);
+            this.SensFilenameBox.Location = new System.Drawing.Point(110, 176);
             this.SensFilenameBox.Name = "SensFilenameBox";
             this.SensFilenameBox.ReadOnly = true;
-            this.SensFilenameBox.Size = new System.Drawing.Size(86, 20);
+            this.SensFilenameBox.Size = new System.Drawing.Size(193, 20);
             this.SensFilenameBox.TabIndex = 21;
             // 
             // ConfBtn
@@ -545,15 +546,17 @@
             // 
             // TrialBox
             // 
-            this.TrialBox.AutoSize = true;
+            this.TrialBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TrialBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TrialBox.ForeColor = System.Drawing.Color.Red;
-            this.TrialBox.Location = new System.Drawing.Point(733, 376);
+            this.TrialBox.Location = new System.Drawing.Point(736, 376);
             this.TrialBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TrialBox.Name = "TrialBox";
+            this.TrialBox.ReadOnly = true;
             this.TrialBox.Size = new System.Drawing.Size(48, 13);
             this.TrialBox.TabIndex = 54;
             this.TrialBox.Text = "label10";
+            this.TrialBox.TextChanged += new System.EventHandler(this.TrialBox_TextChanged);
             // 
             // Cassa2Img
             // 
@@ -619,11 +622,22 @@
             this.ArrivalStopBtn.UseVisualStyleBackColor = true;
             this.ArrivalStopBtn.Click += new System.EventHandler(this.button17_Click);
             // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(13, 208);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 23);
+            this.button1.TabIndex = 58;
+            this.button1.Text = "Stop";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 610);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ArrivalStopBtn);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.ArrivalStartBtn);
@@ -732,10 +746,11 @@
         private System.Windows.Forms.Label ArrivalTimeLbl;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label TrialBox;
+        private System.Windows.Forms.TextBox TrialBox;
         private System.Windows.Forms.Button ArrivalStartBtn;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button ArrivalStopBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
 
