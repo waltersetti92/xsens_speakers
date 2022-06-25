@@ -106,6 +106,8 @@
             this.button16 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.button17 = new System.Windows.Forms.Button();
+            this.lbl_condition = new System.Windows.Forms.Label();
+            this.lbl_orientation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -520,20 +522,21 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1036, 579);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(1293, 260);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 20);
+            this.label9.Size = new System.Drawing.Size(92, 26);
             this.label9.TabIndex = 53;
             this.label9.Text = "TRIAL: ";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(1099, 579);
+            this.label10.Location = new System.Drawing.Point(1391, 252);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 20);
+            this.label10.Size = new System.Drawing.Size(119, 36);
             this.label10.TabIndex = 54;
             this.label10.Text = "label10";
             // 
@@ -569,7 +572,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(941, 418);
+            this.button16.Location = new System.Drawing.Point(941, 419);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(168, 31);
             this.button16.TabIndex = 55;
@@ -587,7 +590,7 @@
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(941, 457);
+            this.button17.Location = new System.Drawing.Point(941, 454);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(168, 31);
             this.button17.TabIndex = 57;
@@ -595,11 +598,34 @@
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
+            // lbl_condition
+            // 
+            this.lbl_condition.AutoSize = true;
+            this.lbl_condition.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_condition.Location = new System.Drawing.Point(1281, 214);
+            this.lbl_condition.Name = "lbl_condition";
+            this.lbl_condition.Size = new System.Drawing.Size(157, 26);
+            this.lbl_condition.TabIndex = 58;
+            this.lbl_condition.Text = "CONDITION: ";
+            // 
+            // lbl_orientation
+            // 
+            this.lbl_orientation.AutoSize = true;
+            this.lbl_orientation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_orientation.ForeColor = System.Drawing.Color.Green;
+            this.lbl_orientation.Location = new System.Drawing.Point(1444, 206);
+            this.lbl_orientation.Name = "lbl_orientation";
+            this.lbl_orientation.Size = new System.Drawing.Size(32, 36);
+            this.lbl_orientation.TabIndex = 59;
+            this.lbl_orientation.Text = "a";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1430, 938);
+            this.ClientSize = new System.Drawing.Size(1924, 938);
+            this.Controls.Add(this.lbl_orientation);
+            this.Controls.Add(this.lbl_condition);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.button16);
@@ -713,6 +739,8 @@
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label lbl_condition;
+        private System.Windows.Forms.Label lbl_orientation;
     }
 }
 

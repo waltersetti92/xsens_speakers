@@ -55,7 +55,7 @@ namespace MTwExample
 		public static readonly string resultsDir = Path.GetDirectoryName(Application.ExecutablePath) + "\\results";
 		private UserControl currUC = null;
 		public Speakers speakers = null;
-		public int counter = 0;
+		public int counter = 1;
 		public string ID;
 		public Form1(string str)
         {
@@ -65,6 +65,8 @@ namespace MTwExample
             step(1);
 			speakers = new Speakers();
 			ID = str;
+
+	
 		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -295,6 +297,9 @@ namespace MTwExample
 			label8.Visible = false;
 			textBox1.Visible = false;
 			btnRecord.Visible = false;
+			lbl_condition.Visible = false;
+			lbl_orientation.Visible = false;
+		
 		}
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -324,6 +329,12 @@ namespace MTwExample
 			label2.Visible = true;
 			label3.Visible = true;
 			label4.Visible = true;
+			String[] a_o = new String[4];
+			a_o[0] = "a";
+			a_o[1] = "o";
+			a_o[2] = "a";
+			a_o[3] = "o";
+			
 			//speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
 
@@ -373,7 +384,7 @@ namespace MTwExample
 			button5.Visible = true;
 			button6.Visible = false;
 			button8.Visible = false;
-			speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
+		//	speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
 
         private void button6_Click(object sender, EventArgs e)
@@ -383,9 +394,12 @@ namespace MTwExample
 			button7.Visible = true;
 			button4.Visible = false;
 			button8.Visible = false;
-			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
-			_measuringDevice.startRecording();
-			speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
+			label10.Text = counter.ToString();
+			label9.Visible = true;
+			label10.Visible = true;
+			//_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			//_measuringDevice.startRecording();
+			//speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
 		}
 
         private void button8_Click(object sender, EventArgs e)
@@ -395,9 +409,9 @@ namespace MTwExample
 			button4.Visible = false;
 			button6.Visible = false;
 			button9.Visible = true;
-			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
-			_measuringDevice.startRecording();
-			speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 1);
+			//_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			//_measuringDevice.startRecording();
+			//speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 1);
 		}
 
         private void button5_Click(object sender, EventArgs e)
@@ -407,7 +421,7 @@ namespace MTwExample
 			button4.Visible = true;
 			button6.Visible = true;
 			button8.Visible = true;
-			speakers.stopspeaker();
+			//speakers.stopspeaker();
 		}
 
         private void button7_Click(object sender, EventArgs e)
@@ -422,26 +436,26 @@ namespace MTwExample
 			btnStop.Enabled = false;
 			timer1.Enabled = false;
 
-			if (_measuringDevice.isRecording())
-				_measuringDevice.stopRecording();
-			_measuringDevice.gotoConfig();
-			_measuringDevice.disableRadio();
-			_measuringDevice.clearCallbackHandlers();
+			//if (_measuringDevice.isRecording())
+			//	_measuringDevice.stopRecording();
+			//_measuringDevice.gotoConfig();
+			//_measuringDevice.disableRadio();
+			//_measuringDevice.clearCallbackHandlers();
 
-			btnScan.Enabled = true;
+			//btnScan.Enabled = true;
 
-			if (cbxStations.Items.Count > 0)
-			{
-				cbxStations.SelectedIndex = 0;
-				btnEnable.Enabled = true;
-				step(2);
-			}
-			else
-			{
-				step(1);
-			}
+			//if (cbxStations.Items.Count > 0)
+			//{
+			//	cbxStations.SelectedIndex = 0;
+			//	btnEnable.Enabled = true;
+			//	step(2);
+			//}
+			//else
+			//{
+			//	step(1);
+			//}
 			
-			speakers.stopspeaker();
+			//speakers.stopspeaker();
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			txt_box_2_1.Text = unixTimestamp.ToString();
 		}
@@ -458,28 +472,28 @@ namespace MTwExample
 			button17.Visible = false;
 			txt_box_1_4.Visible = true;
 			btnStop.Enabled = false;
-			timer1.Enabled = false;
+			//timer1.Enabled = false;
 
-			if (_measuringDevice.isRecording())
-				_measuringDevice.stopRecording();
-			_measuringDevice.gotoConfig();
-			_measuringDevice.disableRadio();
-			_measuringDevice.clearCallbackHandlers();
+			//if (_measuringDevice.isRecording())
+			//	_measuringDevice.stopRecording();
+			//_measuringDevice.gotoConfig();
+			//_measuringDevice.disableRadio();
+			//_measuringDevice.clearCallbackHandlers();
 
-			btnScan.Enabled = true;
+			//btnScan.Enabled = true;
 
-			if (cbxStations.Items.Count > 0)
-			{
-				cbxStations.SelectedIndex = 0;
-				btnEnable.Enabled = true;
-				step(2);
-			}
-			else
-			{
-				step(1);
-			}
+			//if (cbxStations.Items.Count > 0)
+			//{
+			//	cbxStations.SelectedIndex = 0;
+			//	btnEnable.Enabled = true;
+			//	step(2);
+			//}
+			//else
+			//{
+			//	step(1);
+			//}
 			
-			speakers.stopspeaker();
+			//speakers.stopspeaker();
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			txt_box_1_4.Text = unixTimestamp.ToString();			
 		}
@@ -542,25 +556,24 @@ namespace MTwExample
 			btnStop.Enabled = false;
 			timer1.Enabled = false;
 
-			if (_measuringDevice.isRecording())
-				_measuringDevice.stopRecording();
-			_measuringDevice.gotoConfig();
-			_measuringDevice.disableRadio();
-			_measuringDevice.clearCallbackHandlers();
+			//if (_measuringDevice.isRecording())
+			//	_measuringDevice.stopRecording();
+			//_measuringDevice.gotoConfig();
+			//_measuringDevice.disableRadio();
+			//_measuringDevice.clearCallbackHandlers();
 
-			btnScan.Enabled = true;
+			//btnScan.Enabled = true;
 
-			if (cbxStations.Items.Count > 0)
-			{
-				cbxStations.SelectedIndex = 0;
-				btnEnable.Enabled = true;
-				step(2);
-			}
-			else
-			{
-				step(1);
-			}
-			
+			//if (cbxStations.Items.Count > 0)
+			//{
+			//	cbxStations.SelectedIndex = 0;
+			//	btnEnable.Enabled = true;
+			//	step(2);
+			//}
+			//else
+			//{
+			//	step(1);
+			//}			
 			counter = counter + 1;
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			textBox1.Text = unixTimestamp.ToString();
@@ -594,9 +607,7 @@ namespace MTwExample
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			textBox1.Text = unixTimestamp.ToString();
 			textBox1.Visible = true;
-			label10.Text = counter.ToString();
-			label9.Visible = true;
-			label10.Visible = true;
+
 		}
     }
 }
