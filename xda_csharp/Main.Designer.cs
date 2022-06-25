@@ -85,8 +85,8 @@
             this.C1StopBtn = new System.Windows.Forms.Button();
             this.C4StartBtn = new System.Windows.Forms.Button();
             this.C4StopBtn = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.StartAllBtn = new System.Windows.Forms.Button();
+            this.StopAllBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_box_2_1 = new System.Windows.Forms.TextBox();
@@ -406,27 +406,27 @@
             this.C4StopBtn.UseVisualStyleBackColor = true;
             this.C4StopBtn.Click += new System.EventHandler(this.C4StopBtn_Click);
             // 
-            // button10
+            // StartAllBtn
             // 
-            this.button10.Location = new System.Drawing.Point(647, 272);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(73, 20);
-            this.button10.TabIndex = 39;
-            this.button10.Text = "START ALL";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.StartAllBtn.Location = new System.Drawing.Point(647, 272);
+            this.StartAllBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.StartAllBtn.Name = "StartAllBtn";
+            this.StartAllBtn.Size = new System.Drawing.Size(73, 20);
+            this.StartAllBtn.TabIndex = 39;
+            this.StartAllBtn.Text = "START ALL";
+            this.StartAllBtn.UseVisualStyleBackColor = true;
+            this.StartAllBtn.Click += new System.EventHandler(this.StartAllBtn_Click);
             // 
-            // button11
+            // StopAllBtn
             // 
-            this.button11.Location = new System.Drawing.Point(647, 296);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(73, 20);
-            this.button11.TabIndex = 40;
-            this.button11.Text = "STOP ALL";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.StopAllBtn.Location = new System.Drawing.Point(647, 296);
+            this.StopAllBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.StopAllBtn.Name = "StopAllBtn";
+            this.StopAllBtn.Size = new System.Drawing.Size(73, 20);
+            this.StopAllBtn.TabIndex = 40;
+            this.StopAllBtn.Text = "STOP ALL";
+            this.StopAllBtn.UseVisualStyleBackColor = true;
+            this.StopAllBtn.Click += new System.EventHandler(this.StopAllBtn_Click);
             // 
             // label5
             // 
@@ -656,8 +656,8 @@
             this.Controls.Add(this.txt_box_2_1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.StopAllBtn);
+            this.Controls.Add(this.StartAllBtn);
             this.Controls.Add(this.C4StopBtn);
             this.Controls.Add(this.C4StartBtn);
             this.Controls.Add(this.C1StopBtn);
@@ -732,8 +732,8 @@
         private System.Windows.Forms.Button C1StopBtn;
         private System.Windows.Forms.Button C4StartBtn;
         private System.Windows.Forms.Button C4StopBtn;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button StartAllBtn;
+        private System.Windows.Forms.Button StopAllBtn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_box_2_1;

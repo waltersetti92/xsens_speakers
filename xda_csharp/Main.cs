@@ -98,8 +98,8 @@ namespace MTwExample
 			
 			speakers = new Speakers();
 
-			previous = "B";
-			current = "B";
+			previous = "";
+			current = "";
 
 			ID = str;
 			
@@ -373,8 +373,8 @@ namespace MTwExample
 			C1StopBtn.Visible = false;
 			C4StartBtn.Visible = false;
 			C4StopBtn.Visible = false;
-			button10.Visible = false;
-			button11.Visible = false;
+			StartAllBtn.Visible = false;
+			StopAllBtn.Visible = false;
 			ArrivalStartBtn.Visible = false;
 			ArrivalStopBtn.Visible = false;
 			comboBox1.Visible = false;
@@ -422,6 +422,9 @@ namespace MTwExample
 			trialCounter++;
 			TrialBox.Text = trialCounter.ToString();
 
+			previous = "B";
+			current  = "B";
+
 			UpdateLogBasicInfo();
 
 			//speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
@@ -436,8 +439,8 @@ namespace MTwExample
 			C2StopBtn.Visible = false;
 			C1StopBtn.Visible = false;
 			C4StopBtn.Visible = false;
-			button10.Visible = false;
-			button11.Visible = false;
+			StartAllBtn.Visible = false;
+			StopAllBtn.Visible = false;
 			EndCondBtn.Visible = true;
 			ArrivalStartBtn.Visible = false;
 			Cassa1Img.Visible = true;
@@ -451,42 +454,29 @@ namespace MTwExample
 			TrialBox.Visible = true;
 		}
 
-        private void button11_Click(object sender, EventArgs e)
+        private void StopAllBtn_Click(object sender, EventArgs e)
         {
-			button11.Visible = false;
-			button10.Visible = true;
+
+			speakers.stopspeaker();
+
+			btnStopRecord_Click(sender, e);
+
+			UpdateLogToStopBtn();
+			thisTaskLogger.LogData();
+
+			txt_Confusion.Text = (stopDate - startDate).TotalMilliseconds.ToString();
+
+			trialCounter++;
+			TrialBox.Text = trialCounter.ToString();
+
+			TrialLbl.Visible = true;
+			TrialBox.Visible = true;
+			StopAllBtn.Visible = false;
+			StartAllBtn.Visible = true;
 			EndCondBtn.Visible = true;
 			label7.Visible = true;
 			txt_Confusion.Visible = true;
-			speakers.stopspeaker();
-			btnStopRecord.Enabled = false;
-			timer1.Enabled = false;
 
-			if (_measuringDevice.isRecording())
-				_measuringDevice.stopRecording();
-			_measuringDevice.gotoConfig();
-			_measuringDevice.disableRadio();
-			_measuringDevice.clearCallbackHandlers();
-
-			btnScan.Enabled = true;
-
-			if (cbxStations.Items.Count > 0)
-			{
-				cbxStations.SelectedIndex = 0;
-				btnEnable.Enabled = true;
-				step(2);
-			}
-			else
-			{
-				step(1);
-			}
-			
-			trialCounter = trialCounter + 1;
-			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-			txt_Confusion.Text = unixTimestamp.ToString();
-			TrialBox.Text = trialCounter.ToString();
-			TrialLbl.Visible = true;
-			TrialBox.Visible = true;
 
 		}
 
@@ -590,14 +580,18 @@ namespace MTwExample
 			previous = "C4";
 		}
 
-        private void button10_Click(object sender, EventArgs e)
+        private void StartAllBtn_Click(object sender, EventArgs e)
         {
-			button10.Visible = false;
-			button11.Visible = true;
+			StartAllBtn.Visible = false;
+			StopAllBtn.Visible = true;
 			EndCondBtn.Visible = false;
-			_measuringDevice.createLogFile(new XsString(SensFilenameBox.Text));
-			_measuringDevice.startRecording();
+
+			btnRecord_Click(sender, e);
+
+			UpdateLogToStartBtn();
+
 			speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 2);
+
 		}
 
         private void EndCondBtn_Click(object sender, EventArgs e)
@@ -612,7 +606,9 @@ namespace MTwExample
 			ConfBtn.Enabled = true;
 
 			btnStopAll_Click(sender, e);
-			
+
+			previous = "";
+			current = "";
 			trialCounter = 0;
 			_task = expTask.NONE;
 			thisTaskLogger = NullLogger;
@@ -620,12 +616,14 @@ namespace MTwExample
 
         private async void ConfBtn_Click(object sender, EventArgs e)
         {
+			Initial_Visibility();
+			TrialLbl.Visible = true;
+			TrialBox.Visible = true;
 			ConfBtn.Enabled = false;
 			TriSoundBtn.Visible = false;
-			Initial_Visibility();
 			EndCondBtn.Visible = true;
-			button10.Visible = true;
-			button11.Visible = true;
+			StartAllBtn.Visible = true;
+			StopAllBtn.Visible = true;
 			TriClassicBtn.Visible = false;
 
 			_task = expTask.Confusion;
@@ -635,6 +633,7 @@ namespace MTwExample
 			thisTaskLogger.CreateFolder();
 			await thisTaskLogger.SetHeader(Form1Header);
 
+			trialCounter++;
 			TrialBox.Text = trialCounter.ToString();
 
 			UpdateLogBasicInfo();
@@ -675,8 +674,9 @@ namespace MTwExample
 			StartCounterBtn.Visible = false;
 			StopCounterBtn.Visible = true;
 			btnRecord.Enabled = false;
-			
-			thisTaskLogger.UpdateValue("Trial", trialCounter);
+
+			UpdateLogToStartBtn();
+
 		}
 
 		private void StopCounterBtn_Click(object sender, EventArgs e)
