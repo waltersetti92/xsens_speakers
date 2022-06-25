@@ -56,7 +56,11 @@ namespace MTwExample
 		private UserControl currUC = null;
 		public Speakers speakers = null;
 		public int counter = 1;
+		public int verse_rotation = 0;
 		public string ID;
+		public string[] a_o_cond = { "o", "a", "a", "o"};
+		public List<string> random_a_o_cond;
+		public String[] a_o = new String[4];
 		public Form1(string str)
         {
             InitializeComponent();
@@ -65,10 +69,9 @@ namespace MTwExample
             step(1);
 			speakers = new Speakers();
 			ID = str;
-
-	
+			random_a_o_cond = a_o_cond.ToList();
+			Random rand = new Random();
 		}
-
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			timer1.Enabled = false;
@@ -329,12 +332,17 @@ namespace MTwExample
 			label2.Visible = true;
 			label3.Visible = true;
 			label4.Visible = true;
-			String[] a_o = new String[4];
-			a_o[0] = "a";
-			a_o[1] = "o";
-			a_o[2] = "a";
-			a_o[3] = "o";
-			
+			var rand1 = new Random();
+
+			for (int i = 0; i < a_o_cond.Length; i++)
+			{
+				var randNum = rand1.Next(i, random_a_o_cond.Count);
+				var temp = random_a_o_cond[randNum];
+				random_a_o_cond[randNum] = random_a_o_cond[i];
+				random_a_o_cond[i] = temp;
+			}
+
+			counter = 1;
 			//speakers.startSpeaker(Speakers.available_speakers[0], "01 ", 1);
 		}
 
@@ -397,6 +405,15 @@ namespace MTwExample
 			label10.Text = counter.ToString();
 			label9.Visible = true;
 			label10.Visible = true;
+			lbl_orientation.Text = random_a_o_cond[verse_rotation];
+			lbl_orientation.Visible = true;
+			lbl_condition.Visible = true;
+			if (counter > 4)
+			{
+				counter = 0;
+				lbl_orientation.Text = "FINISHED";
+				label10.Text = "FINISHED";
+			}
 			//_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
 			//_measuringDevice.startRecording();
 			//speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
@@ -535,15 +552,38 @@ namespace MTwExample
 			button2.Visible = false;
 			button12.Visible = true;
 			button14.Visible = true;
-			button15.Visible = false; 
+			button15.Visible = false;
+			var rand1 = new Random();
+
+			for (int i = 0; i < a_o_cond.Length; i++)
+			{
+				var randNum = rand1.Next(i, random_a_o_cond.Count);
+				var temp = random_a_o_cond[randNum];
+				random_a_o_cond[randNum] = random_a_o_cond[i];
+				random_a_o_cond[i] = temp;
+			}
+			counter = 1;
 		}
 
         private void button14_Click(object sender, EventArgs e)
         {
 			button14.Visible = false;
 			button15.Visible = true;
-			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
-			_measuringDevice.startRecording();
+			label10.Text = counter.ToString();
+			label9.Visible = true;
+			label10.Visible = true;
+			lbl_orientation.Text = random_a_o_cond[verse_rotation];
+			lbl_orientation.Visible = true;
+			lbl_condition.Visible = true;
+            if (counter > 4)
+            {
+				counter = 0;
+				lbl_orientation.Text = "FINISHED";
+				label10.Text = "FINISHED";
+            }
+			//_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			//_measuringDevice.startRecording();
+
 			////btnRecord.Enabled = false;
 		}
 
@@ -573,13 +613,20 @@ namespace MTwExample
 			//else
 			//{
 			//	step(1);
-			//}			
+			//}		
+			//	
 			counter = counter + 1;
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			textBox1.Text = unixTimestamp.ToString();
-			label10.Text = counter.ToString();
-			label9.Visible = true;
-			label10.Visible = true;
+			textBox1.Visible = true;
+			if (counter <= 4)
+				verse_rotation = verse_rotation + 1;
+			else
+			{
+				lbl_orientation.Text = "FINISHED";
+				label10.Text = "FINISHED";
+			}
+			
 		}
 
         private void textBoxFilename_TextChanged(object sender, EventArgs e)
@@ -607,6 +654,15 @@ namespace MTwExample
 			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			textBox1.Text = unixTimestamp.ToString();
 			textBox1.Visible = true;
+			if (counter <= 4)
+				verse_rotation = verse_rotation + 1;
+			else
+            {
+				lbl_orientation.Text = "FINISHED";
+				label10.Text = "FINISHED";
+			}
+				
+
 
 		}
     }
