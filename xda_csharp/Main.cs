@@ -221,6 +221,7 @@ namespace MTwExample
 				_measuringDevice.createLogFile(new XsString(Path.Combine(thisTaskLogger.thisFileFolder, SensFilenameBox.Text)));
 				_measuringDevice.startRecording();
 				btnRecord.Enabled = false;
+				step(9);
 			}
 			
 		}
@@ -235,14 +236,42 @@ namespace MTwExample
 			else
 			{
 				btnStopRecord.Enabled = false;
-				timer1.Enabled = false;
 
 				if (_measuringDevice.isRecording())
+                {
 					_measuringDevice.stopRecording();
+					_measuringDevice.closeLogFile();
+				}
+
+				btnRecord.Enabled = true;
+				btnStopAll.Enabled = true;
+
+				step(10);
+					
+			}
+        }
+
+		private void btnStopAll_Click(object sender, EventArgs e)
+		{
+			if (InvokeRequired)
+			{
+				// Update UI, make sure this happens on the UI thread
+				BeginInvoke(new Action(delegate { btnStopAll_Click(sender, e); }));
+			}
+			else
+			{
+				btnStopRecord_Click(sender, e);
+
+				timer1.Enabled = false;
+
 				_measuringDevice.gotoConfig();
 				_measuringDevice.disableRadio();
 				_measuringDevice.clearCallbackHandlers();
 
+				step(11);
+
+				btnRecord.Enabled = false;
+				btnStopAll.Enabled=false;
 				btnScan.Enabled = true;
 
 				if (cbxStations.Items.Count > 0)
@@ -256,9 +285,9 @@ namespace MTwExample
 					step(1);
 				}
 			}
-        }
+		}
 
-        private void timer1_Tick(object sender, EventArgs e)
+		private void timer1_Tick(object sender, EventArgs e)
         {
 			string text = "";
 		    foreach (KeyValuePair<ulong, ConnectedMtData> data in _connectedMtwData)
@@ -318,9 +347,15 @@ namespace MTwExample
                     rtbSteps.Text = "There was an unexpected failure going to the operational mode.";
                     break;
                 case 9:
-                    rtbSteps.Text = "Enjoy the data... click 'Stop' when no further joy can be obtained from looking at the data.\nClick 'Record' when you want to feel the same joy again at a later moment";
+                    rtbSteps.Text = "Start recording... click 'Stop Record' to stop recording and keep measuring. Click 'Stop all' when no further joy can be obtained from looking at the data.";
                     break;
-                default:
+				case 10:
+					rtbSteps.Text = "Recording stopped... yet the MTws are still measuring. Click 'Stop all' when no further joy can be obtained from looking at the data.\nClick 'Record' to start recording again";
+					break;
+				case 11:
+					rtbSteps.Text = "Shutting down MTw and disabling radio...bye bye.";
+					break;
+				default:
                     rtbSteps.Text = "No station was found, make sure the drivers were installed correctly.";
                     break;
             }
@@ -362,7 +397,7 @@ namespace MTwExample
 			StopCounterBtn.Visible = false;
 			ArrivalTimeLbl.Visible = false;
 			textBox1.Visible = false;
-			btnRecord.Visible = false;
+			//btnRecord.Visible = false;
 		}
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -576,7 +611,7 @@ namespace MTwExample
 			TriSoundBtn.Enabled = true;
 			ConfBtn.Enabled = true;
 
-			btnStopRecord_Click(sender, e);
+			btnStopAll_Click(sender, e);
 			
 			trialCounter = 0;
 			_task = expTask.NONE;
@@ -653,24 +688,7 @@ namespace MTwExample
 			thisTaskLogger.UpdateValue("StopTimestamp", unixTimestamp);
 			thisTaskLogger.LogData();
 
-			if (_measuringDevice.isRecording())
-				_measuringDevice.stopRecording();
-			_measuringDevice.gotoConfig();
-			_measuringDevice.disableRadio();
-			_measuringDevice.clearCallbackHandlers();
-
-			btnScan.Enabled = true;
-
-			if (cbxStations.Items.Count > 0)
-			{
-				cbxStations.SelectedIndex = 0;
-				btnEnable.Enabled = true;
-				step(2);
-			}
-			else
-			{
-				step(1);
-			}
+			btnStopRecord_Click(sender, e);
 
 			trialCounter++;
 

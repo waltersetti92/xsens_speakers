@@ -190,6 +190,7 @@
             this.btnStopAll.TabIndex = 58;
             this.btnStopAll.Text = "Stop All";
             this.btnStopAll.UseVisualStyleBackColor = true;
+            this.btnStopAll.Click += new System.EventHandler(this.btnStopAll_Click);
             // 
             // timer1
             // 
@@ -197,10 +198,10 @@
             // 
             // rtbSteps
             // 
-            this.rtbSteps.Location = new System.Drawing.Point(315, 51);
+            this.rtbSteps.Location = new System.Drawing.Point(338, 51);
             this.rtbSteps.Name = "rtbSteps";
             this.rtbSteps.ReadOnly = true;
-            this.rtbSteps.Size = new System.Drawing.Size(158, 200);
+            this.rtbSteps.Size = new System.Drawing.Size(154, 200);
             this.rtbSteps.TabIndex = 10;
             this.rtbSteps.Text = "";
             // 
@@ -255,12 +256,12 @@
             this.SensFilenameBox.Location = new System.Drawing.Point(110, 176);
             this.SensFilenameBox.Name = "SensFilenameBox";
             this.SensFilenameBox.ReadOnly = true;
-            this.SensFilenameBox.Size = new System.Drawing.Size(193, 20);
+            this.SensFilenameBox.Size = new System.Drawing.Size(222, 20);
             this.SensFilenameBox.TabIndex = 21;
             // 
             // ConfBtn
             // 
-            this.ConfBtn.Location = new System.Drawing.Point(499, 8);
+            this.ConfBtn.Location = new System.Drawing.Point(519, 8);
             this.ConfBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ConfBtn.Name = "ConfBtn";
             this.ConfBtn.Size = new System.Drawing.Size(89, 23);
@@ -271,7 +272,7 @@
             // 
             // TriSoundBtn
             // 
-            this.TriSoundBtn.Location = new System.Drawing.Point(499, 34);
+            this.TriSoundBtn.Location = new System.Drawing.Point(519, 34);
             this.TriSoundBtn.Margin = new System.Windows.Forms.Padding(2);
             this.TriSoundBtn.Name = "TriSoundBtn";
             this.TriSoundBtn.Size = new System.Drawing.Size(136, 23);
@@ -283,7 +284,7 @@
             // COMPortLbl
             // 
             this.COMPortLbl.AutoSize = true;
-            this.COMPortLbl.Location = new System.Drawing.Point(649, 27);
+            this.COMPortLbl.Location = new System.Drawing.Point(669, 27);
             this.COMPortLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.COMPortLbl.Name = "COMPortLbl";
             this.COMPortLbl.Size = new System.Drawing.Size(71, 13);
@@ -293,7 +294,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(652, 42);
+            this.comboBox1.Location = new System.Drawing.Point(672, 42);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(82, 21);
@@ -301,7 +302,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(737, 38);
+            this.button3.Location = new System.Drawing.Point(757, 38);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(50, 27);
@@ -312,7 +313,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(497, 165);
+            this.label2.Location = new System.Drawing.Point(517, 165);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
@@ -322,7 +323,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(616, 89);
+            this.label3.Location = new System.Drawing.Point(636, 89);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
@@ -332,7 +333,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(733, 159);
+            this.label4.Location = new System.Drawing.Point(753, 159);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 13);
@@ -341,7 +342,7 @@
             // 
             // C2StartBtn
             // 
-            this.C2StartBtn.Location = new System.Drawing.Point(511, 273);
+            this.C2StartBtn.Location = new System.Drawing.Point(531, 273);
             this.C2StartBtn.Margin = new System.Windows.Forms.Padding(2);
             this.C2StartBtn.Name = "C2StartBtn";
             this.C2StartBtn.Size = new System.Drawing.Size(56, 20);
@@ -352,7 +353,7 @@
             // 
             // C2StopBtn
             // 
-            this.C2StopBtn.Location = new System.Drawing.Point(511, 297);
+            this.C2StopBtn.Location = new System.Drawing.Point(531, 297);
             this.C2StopBtn.Margin = new System.Windows.Forms.Padding(2);
             this.C2StopBtn.Name = "C2StopBtn";
             this.C2StopBtn.Size = new System.Drawing.Size(56, 20);
@@ -363,7 +364,7 @@
             // 
             // C1StartBtn
             // 
-            this.C1StartBtn.Location = new System.Drawing.Point(637, 200);
+            this.C1StartBtn.Location = new System.Drawing.Point(657, 200);
             this.C1StartBtn.Margin = new System.Windows.Forms.Padding(2);
             this.C1StartBtn.Name = "C1StartBtn";
             this.C1StartBtn.Size = new System.Drawing.Size(63, 20);
@@ -374,7 +375,7 @@
             // 
             // C1StopBtn
             // 
-            this.C1StopBtn.Location = new System.Drawing.Point(637, 224);
+            this.C1StopBtn.Location = new System.Drawing.Point(657, 224);
             this.C1StopBtn.Margin = new System.Windows.Forms.Padding(2);
             this.C1StopBtn.Name = "C1StopBtn";
             this.C1StopBtn.Size = new System.Drawing.Size(63, 20);
@@ -385,7 +386,7 @@
             // 
             // C4StartBtn
             // 
-            this.C4StartBtn.Location = new System.Drawing.Point(746, 273);
+            this.C4StartBtn.Location = new System.Drawing.Point(766, 273);
             this.C4StartBtn.Margin = new System.Windows.Forms.Padding(2);
             this.C4StartBtn.Name = "C4StartBtn";
             this.C4StartBtn.Size = new System.Drawing.Size(56, 20);
@@ -396,7 +397,7 @@
             // 
             // C4StopBtn
             // 
-            this.C4StopBtn.Location = new System.Drawing.Point(746, 297);
+            this.C4StopBtn.Location = new System.Drawing.Point(766, 297);
             this.C4StopBtn.Margin = new System.Windows.Forms.Padding(2);
             this.C4StopBtn.Name = "C4StopBtn";
             this.C4StopBtn.Size = new System.Drawing.Size(56, 20);
@@ -407,7 +408,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(627, 272);
+            this.button10.Location = new System.Drawing.Point(647, 272);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(73, 20);
@@ -418,7 +419,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(627, 296);
+            this.button11.Location = new System.Drawing.Point(647, 296);
             this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(73, 20);
@@ -430,7 +431,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(499, 369);
+            this.label5.Location = new System.Drawing.Point(519, 369);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 13);
@@ -440,7 +441,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(499, 393);
+            this.label6.Location = new System.Drawing.Point(519, 393);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 13);
@@ -449,7 +450,7 @@
             // 
             // txt_box_2_1
             // 
-            this.txt_box_2_1.Location = new System.Drawing.Point(599, 365);
+            this.txt_box_2_1.Location = new System.Drawing.Point(619, 365);
             this.txt_box_2_1.Margin = new System.Windows.Forms.Padding(2);
             this.txt_box_2_1.Name = "txt_box_2_1";
             this.txt_box_2_1.Size = new System.Drawing.Size(68, 20);
@@ -457,7 +458,7 @@
             // 
             // txt_box_1_4
             // 
-            this.txt_box_1_4.Location = new System.Drawing.Point(599, 389);
+            this.txt_box_1_4.Location = new System.Drawing.Point(619, 389);
             this.txt_box_1_4.Margin = new System.Windows.Forms.Padding(2);
             this.txt_box_1_4.Name = "txt_box_1_4";
             this.txt_box_1_4.Size = new System.Drawing.Size(68, 20);
@@ -465,7 +466,7 @@
             // 
             // EndCondBtn
             // 
-            this.EndCondBtn.Location = new System.Drawing.Point(606, 502);
+            this.EndCondBtn.Location = new System.Drawing.Point(626, 502);
             this.EndCondBtn.Margin = new System.Windows.Forms.Padding(2);
             this.EndCondBtn.Name = "EndCondBtn";
             this.EndCondBtn.Size = new System.Drawing.Size(133, 23);
@@ -477,7 +478,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(499, 343);
+            this.label7.Location = new System.Drawing.Point(519, 343);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 13);
@@ -486,7 +487,7 @@
             // 
             // txt_Confusion
             // 
-            this.txt_Confusion.Location = new System.Drawing.Point(599, 341);
+            this.txt_Confusion.Location = new System.Drawing.Point(619, 341);
             this.txt_Confusion.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Confusion.Name = "txt_Confusion";
             this.txt_Confusion.Size = new System.Drawing.Size(68, 20);
@@ -494,7 +495,7 @@
             // 
             // TriClassicBtn
             // 
-            this.TriClassicBtn.Location = new System.Drawing.Point(501, 61);
+            this.TriClassicBtn.Location = new System.Drawing.Point(521, 61);
             this.TriClassicBtn.Margin = new System.Windows.Forms.Padding(2);
             this.TriClassicBtn.Name = "TriClassicBtn";
             this.TriClassicBtn.Size = new System.Drawing.Size(134, 23);
@@ -505,7 +506,7 @@
             // 
             // StartCounterBtn
             // 
-            this.StartCounterBtn.Location = new System.Drawing.Point(627, 272);
+            this.StartCounterBtn.Location = new System.Drawing.Point(647, 272);
             this.StartCounterBtn.Margin = new System.Windows.Forms.Padding(2);
             this.StartCounterBtn.Name = "StartCounterBtn";
             this.StartCounterBtn.Size = new System.Drawing.Size(112, 20);
@@ -516,7 +517,7 @@
             // 
             // StopCounterBtn
             // 
-            this.StopCounterBtn.Location = new System.Drawing.Point(627, 296);
+            this.StopCounterBtn.Location = new System.Drawing.Point(647, 296);
             this.StopCounterBtn.Margin = new System.Windows.Forms.Padding(2);
             this.StopCounterBtn.Name = "StopCounterBtn";
             this.StopCounterBtn.Size = new System.Drawing.Size(112, 20);
@@ -528,7 +529,7 @@
             // ArrivalTimeLbl
             // 
             this.ArrivalTimeLbl.AutoSize = true;
-            this.ArrivalTimeLbl.Location = new System.Drawing.Point(499, 341);
+            this.ArrivalTimeLbl.Location = new System.Drawing.Point(519, 341);
             this.ArrivalTimeLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ArrivalTimeLbl.Name = "ArrivalTimeLbl";
             this.ArrivalTimeLbl.Size = new System.Drawing.Size(65, 13);
@@ -537,7 +538,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(619, 341);
+            this.textBox1.Location = new System.Drawing.Point(639, 341);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(68, 20);
@@ -547,7 +548,7 @@
             // TrialLbl
             // 
             this.TrialLbl.AutoSize = true;
-            this.TrialLbl.Location = new System.Drawing.Point(691, 376);
+            this.TrialLbl.Location = new System.Drawing.Point(711, 376);
             this.TrialLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TrialLbl.Name = "TrialLbl";
             this.TrialLbl.Size = new System.Drawing.Size(44, 13);
@@ -559,7 +560,7 @@
             this.TrialBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TrialBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TrialBox.ForeColor = System.Drawing.Color.Red;
-            this.TrialBox.Location = new System.Drawing.Point(736, 376);
+            this.TrialBox.Location = new System.Drawing.Point(756, 376);
             this.TrialBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TrialBox.Name = "TrialBox";
             this.TrialBox.ReadOnly = true;
@@ -571,7 +572,7 @@
             // Cassa2Img
             // 
             this.Cassa2Img.Image = global::example.Properties.Resources.two;
-            this.Cassa2Img.Location = new System.Drawing.Point(495, 180);
+            this.Cassa2Img.Location = new System.Drawing.Point(515, 180);
             this.Cassa2Img.Margin = new System.Windows.Forms.Padding(2);
             this.Cassa2Img.Name = "Cassa2Img";
             this.Cassa2Img.Size = new System.Drawing.Size(87, 88);
@@ -582,7 +583,7 @@
             // Cassa4Img
             // 
             this.Cassa4Img.Image = global::example.Properties.Resources.four11;
-            this.Cassa4Img.Location = new System.Drawing.Point(729, 180);
+            this.Cassa4Img.Location = new System.Drawing.Point(749, 180);
             this.Cassa4Img.Margin = new System.Windows.Forms.Padding(2);
             this.Cassa4Img.Name = "Cassa4Img";
             this.Cassa4Img.Size = new System.Drawing.Size(90, 88);
@@ -593,7 +594,7 @@
             // Cassa1Img
             // 
             this.Cassa1Img.Image = global::example.Properties.Resources.one2;
-            this.Cassa1Img.Location = new System.Drawing.Point(619, 104);
+            this.Cassa1Img.Location = new System.Drawing.Point(639, 104);
             this.Cassa1Img.Margin = new System.Windows.Forms.Padding(2);
             this.Cassa1Img.Name = "Cassa1Img";
             this.Cassa1Img.Size = new System.Drawing.Size(81, 90);
@@ -603,7 +604,7 @@
             // 
             // ArrivalStartBtn
             // 
-            this.ArrivalStartBtn.Location = new System.Drawing.Point(627, 272);
+            this.ArrivalStartBtn.Location = new System.Drawing.Point(647, 272);
             this.ArrivalStartBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ArrivalStartBtn.Name = "ArrivalStartBtn";
             this.ArrivalStartBtn.Size = new System.Drawing.Size(112, 20);
@@ -623,7 +624,7 @@
             // 
             // ArrivalStopBtn
             // 
-            this.ArrivalStopBtn.Location = new System.Drawing.Point(627, 297);
+            this.ArrivalStopBtn.Location = new System.Drawing.Point(647, 297);
             this.ArrivalStopBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ArrivalStopBtn.Name = "ArrivalStopBtn";
             this.ArrivalStopBtn.Size = new System.Drawing.Size(112, 20);
