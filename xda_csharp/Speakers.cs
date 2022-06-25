@@ -166,14 +166,17 @@ namespace MTwExample
             _canceller = new CancellationTokenSource();
             await Task.Run(() =>
             {
-                do
+                if (sp != null)
                 {
-                    sp.Write(bytes, 0, bytes.Length);
-                    Thread.Sleep(300);
-                    timer_index++;
-                    if (_canceller.Token.IsCancellationRequested)
-                        break;
-                } while (true);
+                    do
+                    {
+                        sp.Write(bytes, 0, bytes.Length);
+                        Thread.Sleep(300);
+                        timer_index++;
+                        if (_canceller.Token.IsCancellationRequested)
+                            break;
+                    } while (true);
+                }
             });
         }
         public async void startSpeaker_all2(string sound_speaker)

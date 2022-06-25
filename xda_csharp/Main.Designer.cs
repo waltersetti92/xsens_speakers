@@ -63,7 +63,8 @@
             this.cbxStations = new System.Windows.Forms.ComboBox();
             this.lblDeviceCount = new System.Windows.Forms.Label();
             this.btnMeasure = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
+            this.btnStopRecord = new System.Windows.Forms.Button();
+            this.btnStopAll = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.rtbSteps = new System.Windows.Forms.RichTextBox();
             this.rtbData = new System.Windows.Forms.RichTextBox();
@@ -98,7 +99,7 @@
             this.StopCounterBtn = new System.Windows.Forms.Button();
             this.ArrivalTimeLbl = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.TrialLbl = new System.Windows.Forms.Label();
             this.TrialBox = new System.Windows.Forms.TextBox();
             this.Cassa2Img = new System.Windows.Forms.PictureBox();
             this.Cassa4Img = new System.Windows.Forms.PictureBox();
@@ -106,7 +107,6 @@
             this.ArrivalStartBtn = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.ArrivalStopBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa2Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa4Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa1Img)).BeginInit();
@@ -170,16 +170,26 @@
             this.btnMeasure.UseVisualStyleBackColor = true;
             this.btnMeasure.Click += new System.EventHandler(this.btnMeasure_Click);
             // 
-            // btnStop
+            // btnStopRecord
             // 
-            this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(13, 238);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(91, 23);
-            this.btnStop.TabIndex = 9;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.btnStopRecord.Enabled = false;
+            this.btnStopRecord.Location = new System.Drawing.Point(13, 205);
+            this.btnStopRecord.Name = "btnStopRecord";
+            this.btnStopRecord.Size = new System.Drawing.Size(91, 23);
+            this.btnStopRecord.TabIndex = 9;
+            this.btnStopRecord.Text = "Stop Record";
+            this.btnStopRecord.UseVisualStyleBackColor = true;
+            this.btnStopRecord.Click += new System.EventHandler(this.btnStopRecord_Click);
+            // 
+            // btnStopAll
+            // 
+            this.btnStopAll.Enabled = false;
+            this.btnStopAll.Location = new System.Drawing.Point(14, 234);
+            this.btnStopAll.Name = "btnStopAll";
+            this.btnStopAll.Size = new System.Drawing.Size(91, 23);
+            this.btnStopAll.TabIndex = 58;
+            this.btnStopAll.Text = "Stop All";
+            this.btnStopAll.UseVisualStyleBackColor = true;
             // 
             // timer1
             // 
@@ -338,7 +348,7 @@
             this.C2StartBtn.TabIndex = 33;
             this.C2StartBtn.Text = "START";
             this.C2StartBtn.UseVisualStyleBackColor = true;
-            this.C2StartBtn.Click += new System.EventHandler(this.button4_Click);
+            this.C2StartBtn.Click += new System.EventHandler(this.C2StartBtn_Click);
             // 
             // C2StopBtn
             // 
@@ -349,7 +359,7 @@
             this.C2StopBtn.TabIndex = 34;
             this.C2StopBtn.Text = "STOP";
             this.C2StopBtn.UseVisualStyleBackColor = true;
-            this.C2StopBtn.Click += new System.EventHandler(this.button5_Click);
+            this.C2StopBtn.Click += new System.EventHandler(this.C2StopBtn_Click);
             // 
             // C1StartBtn
             // 
@@ -360,7 +370,7 @@
             this.C1StartBtn.TabIndex = 35;
             this.C1StartBtn.Text = "START";
             this.C1StartBtn.UseVisualStyleBackColor = true;
-            this.C1StartBtn.Click += new System.EventHandler(this.button6_Click);
+            this.C1StartBtn.Click += new System.EventHandler(this.C1StartBtn_Click);
             // 
             // C1StopBtn
             // 
@@ -371,7 +381,7 @@
             this.C1StopBtn.TabIndex = 36;
             this.C1StopBtn.Text = "STOP";
             this.C1StopBtn.UseVisualStyleBackColor = true;
-            this.C1StopBtn.Click += new System.EventHandler(this.button7_Click);
+            this.C1StopBtn.Click += new System.EventHandler(this.C1StopBtn_Click);
             // 
             // C4StartBtn
             // 
@@ -382,7 +392,7 @@
             this.C4StartBtn.TabIndex = 37;
             this.C4StartBtn.Text = "START";
             this.C4StartBtn.UseVisualStyleBackColor = true;
-            this.C4StartBtn.Click += new System.EventHandler(this.button8_Click);
+            this.C4StartBtn.Click += new System.EventHandler(this.C4StartBtn_Click);
             // 
             // C4StopBtn
             // 
@@ -393,7 +403,7 @@
             this.C4StopBtn.TabIndex = 38;
             this.C4StopBtn.Text = "STOP";
             this.C4StopBtn.UseVisualStyleBackColor = true;
-            this.C4StopBtn.Click += new System.EventHandler(this.button9_Click);
+            this.C4StopBtn.Click += new System.EventHandler(this.C4StopBtn_Click);
             // 
             // button10
             // 
@@ -534,15 +544,15 @@
             this.textBox1.TabIndex = 52;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label9
+            // TrialLbl
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(691, 376);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 53;
-            this.label9.Text = "TRIAL: ";
+            this.TrialLbl.AutoSize = true;
+            this.TrialLbl.Location = new System.Drawing.Point(691, 376);
+            this.TrialLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TrialLbl.Name = "TrialLbl";
+            this.TrialLbl.Size = new System.Drawing.Size(44, 13);
+            this.TrialLbl.TabIndex = 53;
+            this.TrialLbl.Text = "TRIAL: ";
             // 
             // TrialBox
             // 
@@ -600,7 +610,7 @@
             this.ArrivalStartBtn.TabIndex = 55;
             this.ArrivalStartBtn.Text = "START ARRIVAL";
             this.ArrivalStartBtn.UseVisualStyleBackColor = true;
-            this.ArrivalStartBtn.Click += new System.EventHandler(this.button16_Click);
+            this.ArrivalStartBtn.Click += new System.EventHandler(this.ArrivalStartBtn_Click);
             // 
             // label11
             // 
@@ -620,29 +630,19 @@
             this.ArrivalStopBtn.TabIndex = 57;
             this.ArrivalStopBtn.Text = "STOP ARRIVAL";
             this.ArrivalStopBtn.UseVisualStyleBackColor = true;
-            this.ArrivalStopBtn.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button1
-            // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(13, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 23);
-            this.button1.TabIndex = 58;
-            this.button1.Text = "Stop";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ArrivalStopBtn.Click += new System.EventHandler(this.ArrivalStopBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 610);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnStopAll);
             this.Controls.Add(this.ArrivalStopBtn);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.ArrivalStartBtn);
             this.Controls.Add(this.TrialBox);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.TrialLbl);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ArrivalTimeLbl);
             this.Controls.Add(this.StopCounterBtn);
@@ -679,7 +679,7 @@
             this.Controls.Add(this.cbxChannel);
             this.Controls.Add(this.rtbData);
             this.Controls.Add(this.rtbSteps);
-            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnStopRecord);
             this.Controls.Add(this.btnMeasure);
             this.Controls.Add(this.lblDeviceCount);
             this.Controls.Add(this.cbxStations);
@@ -707,7 +707,7 @@
         private System.Windows.Forms.ComboBox cbxStations;
 		private System.Windows.Forms.Label lblDeviceCount;
         private System.Windows.Forms.Button btnMeasure;
-        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnStopRecord;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.RichTextBox rtbSteps;
         private System.Windows.Forms.RichTextBox rtbData;
@@ -745,12 +745,12 @@
         private System.Windows.Forms.Button StopCounterBtn;
         private System.Windows.Forms.Label ArrivalTimeLbl;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label TrialLbl;
         private System.Windows.Forms.TextBox TrialBox;
         private System.Windows.Forms.Button ArrivalStartBtn;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button ArrivalStopBtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStopAll;
     }
 }
 
