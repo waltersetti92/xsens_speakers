@@ -414,6 +414,7 @@ namespace MTwExample
 				lbl_orientation.Text = "FINISHED";
 				label10.Text = "FINISHED";
 			}
+
 			//_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
 			//_measuringDevice.startRecording();
 			//speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
