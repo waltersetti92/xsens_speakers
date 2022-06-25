@@ -415,9 +415,9 @@ namespace MTwExample
 				label10.Text = "FINISHED";
 			}
 
-			//_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
-			//_measuringDevice.startRecording();
-			//speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
+			_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+			_measuringDevice.startRecording();
+			speakers.startSpeaker(Speakers.available_speakers[1], "01 ", 1);
 		}
 
         private void button8_Click(object sender, EventArgs e)
@@ -427,10 +427,10 @@ namespace MTwExample
 			button4.Visible = false;
 			button6.Visible = false;
 			button9.Visible = true;
-			//_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
-			//_measuringDevice.startRecording();
-			//speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 1);
-		}
+            _measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+            _measuringDevice.startRecording();
+            speakers.startSpeaker(Speakers.available_speakers[2], "01 ", 1);
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -454,27 +454,27 @@ namespace MTwExample
 			btnStop.Enabled = false;
 			timer1.Enabled = false;
 
-			//if (_measuringDevice.isRecording())
-			//	_measuringDevice.stopRecording();
-			//_measuringDevice.gotoConfig();
-			//_measuringDevice.disableRadio();
-			//_measuringDevice.clearCallbackHandlers();
+            if (_measuringDevice.isRecording())
+                _measuringDevice.stopRecording();
+            _measuringDevice.gotoConfig();
+            _measuringDevice.disableRadio();
+            _measuringDevice.clearCallbackHandlers();
 
-			//btnScan.Enabled = true;
+            btnScan.Enabled = true;
 
-			//if (cbxStations.Items.Count > 0)
-			//{
-			//	cbxStations.SelectedIndex = 0;
-			//	btnEnable.Enabled = true;
-			//	step(2);
-			//}
-			//else
-			//{
-			//	step(1);
-			//}
-			
-			//speakers.stopspeaker();
-			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            if (cbxStations.Items.Count > 0)
+            {
+                cbxStations.SelectedIndex = 0;
+                btnEnable.Enabled = true;
+                step(2);
+            }
+            else
+            {
+                step(1);
+            }
+
+            speakers.stopspeaker();
+            Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			txt_box_2_1.Text = unixTimestamp.ToString();
 		}
 
@@ -490,29 +490,29 @@ namespace MTwExample
 			button17.Visible = false;
 			txt_box_1_4.Visible = true;
 			btnStop.Enabled = false;
-			//timer1.Enabled = false;
+            timer1.Enabled = false;
 
-			//if (_measuringDevice.isRecording())
-			//	_measuringDevice.stopRecording();
-			//_measuringDevice.gotoConfig();
-			//_measuringDevice.disableRadio();
-			//_measuringDevice.clearCallbackHandlers();
+            if (_measuringDevice.isRecording())
+                _measuringDevice.stopRecording();
+            _measuringDevice.gotoConfig();
+            _measuringDevice.disableRadio();
+            _measuringDevice.clearCallbackHandlers();
 
-			//btnScan.Enabled = true;
+            btnScan.Enabled = true;
 
-			//if (cbxStations.Items.Count > 0)
-			//{
-			//	cbxStations.SelectedIndex = 0;
-			//	btnEnable.Enabled = true;
-			//	step(2);
-			//}
-			//else
-			//{
-			//	step(1);
-			//}
-			
-			//speakers.stopspeaker();
-			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            if (cbxStations.Items.Count > 0)
+            {
+                cbxStations.SelectedIndex = 0;
+                btnEnable.Enabled = true;
+                step(2);
+            }
+            else
+            {
+                step(1);
+            }
+
+            speakers.stopspeaker();
+            Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			txt_box_1_4.Text = unixTimestamp.ToString();			
 		}
 
@@ -582,13 +582,13 @@ namespace MTwExample
 				lbl_orientation.Text = "FINISHED";
 				label10.Text = "FINISHED";
 			}
-			//_measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
-			//_measuringDevice.startRecording();
+            _measuringDevice.createLogFile(new XsString(textBoxFilename.Text));
+            _measuringDevice.startRecording();
 
-			////btnRecord.Enabled = false;
-		}
+            //btnRecord.Enabled = false;
+        }
 
-		private void button15_Click(object sender, EventArgs e)
+        private void button15_Click(object sender, EventArgs e)
 		{
 			button15.Visible = false;
 			button14.Visible = true;
@@ -597,27 +597,27 @@ namespace MTwExample
 			btnStop.Enabled = false;
 			timer1.Enabled = false;
 
-			//if (_measuringDevice.isRecording())
-			//	_measuringDevice.stopRecording();
-			//_measuringDevice.gotoConfig();
-			//_measuringDevice.disableRadio();
-			//_measuringDevice.clearCallbackHandlers();
+            if (_measuringDevice.isRecording())
+                _measuringDevice.stopRecording();
+            _measuringDevice.gotoConfig();
+            _measuringDevice.disableRadio();
+            _measuringDevice.clearCallbackHandlers();
 
-			//btnScan.Enabled = true;
+            btnScan.Enabled = true;
 
-			//if (cbxStations.Items.Count > 0)
-			//{
-			//	cbxStations.SelectedIndex = 0;
-			//	btnEnable.Enabled = true;
-			//	step(2);
-			//}
-			//else
-			//{
-			//	step(1);
-			//}		
-			//	
-			
-			Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            if (cbxStations.Items.Count > 0)
+            {
+                cbxStations.SelectedIndex = 0;
+                btnEnable.Enabled = true;
+                step(2);
+            }
+            else
+            {
+                step(1);
+            }
+            //	
+
+            Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 			textBox1.Text = unixTimestamp.ToString();
 			textBox1.Visible = true;
 			if (counter < 4)
