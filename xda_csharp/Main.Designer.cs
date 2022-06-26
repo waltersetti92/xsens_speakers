@@ -110,6 +110,7 @@
             this.lbl_condition = new System.Windows.Forms.Label();
             this.lbl_orientation = new System.Windows.Forms.Label();
             this.comboBoxUpdateRate = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa2Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa4Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa1Img)).BeginInit();
@@ -640,16 +641,26 @@
             // comboBoxUpdateRate
             // 
             this.comboBoxUpdateRate.FormattingEnabled = true;
-            this.comboBoxUpdateRate.Location = new System.Drawing.Point(278, 118);
+            this.comboBoxUpdateRate.Location = new System.Drawing.Point(354, 118);
             this.comboBoxUpdateRate.Name = "comboBoxUpdateRate";
-            this.comboBoxUpdateRate.Size = new System.Drawing.Size(121, 28);
+            this.comboBoxUpdateRate.Size = new System.Drawing.Size(99, 28);
             this.comboBoxUpdateRate.TabIndex = 60;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(226, 122);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 20);
+            this.label1.TabIndex = 61;
+            this.label1.Text = "Update rate (Hz)";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1430, 938);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxUpdateRate);
             this.Controls.Add(this.lbl_orientation);
             this.Controls.Add(this.lbl_condition);
@@ -771,6 +782,7 @@
         private System.Windows.Forms.Label lbl_condition;
         private System.Windows.Forms.Label lbl_orientation;
         private System.Windows.Forms.ComboBox comboBoxUpdateRate;
+        private System.Windows.Forms.Label label1;
     }
 }
 
