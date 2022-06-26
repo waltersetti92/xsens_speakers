@@ -41,7 +41,8 @@ namespace MTwExample
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Logger.SetCommonPath(appPath, "results", txtBoxID.Text);
+            DateTime startBtnClickTime = DateTime.Now;
+            Logger.SetCommonPath(appPath, "results", txtBoxID.Text, _time: startBtnClickTime);
             subjLogger = new Logger(destinationFolder: txtBoxID.Text, extension: "subjinfo", keepStream: false);
             subjLogger.CreateFolder();
 
@@ -57,7 +58,7 @@ namespace MTwExample
 
             subjLogger.LogData();
 
-            Form1 form1 = new Form1(txtBoxID.Text);
+            Form1 form1 = new Form1(txtBoxID.Text, startBtnClickTime);
             form1.ShowDialog();
            // form1.ID = id;
            // MessageBox.Show(form1.ID);

@@ -68,6 +68,9 @@ namespace MTwExample
 		public Speakers speakers = null;
 		
 		public int trialCounter = 0;
+		public int verse_rotation { get => trialCounter - 1; }
+
+		public int NTrial = 4;
 
 		private DateTime rootDate;
 		private DateTime startDate;
@@ -78,6 +81,10 @@ namespace MTwExample
 
 
 		public string ID;
+
+		public string[] a_o_cond = { "O", "A", "A", "O" };
+		public List<string> random_a_o_cond;
+		public String[] a_o = new String[4];
 
 		expTask _task = expTask.NONE;
 
@@ -90,13 +97,19 @@ namespace MTwExample
 
 		private string[] Form1Header = new string[] { "Code", "ID", "Task", "Condition", "Trial", "StartPoint", "StopPoint", "StartTimestamp", "StopTimestamp", "sensordata", "angle_abs", "radius_abs", "angle_rel" };
 
-		public Form1(string str)
+		public Form1(string str, DateTime sessionStarted)
         {
             InitializeComponent();
+
+			rootDate = sessionStarted;
+
             _xda = new MyXda();
 			cbxChannel.SelectedIndex = 0;
             step(1);
-			
+
+			random_a_o_cond = a_o_cond.ToList();
+			Random rand = new Random();
+
 			speakers = new Speakers();
 
 			previous = "";
@@ -104,7 +117,7 @@ namespace MTwExample
 
 			ID = str;
 			
-			Logger.SetCommonPath(appPath, "results", ID);
+			//Logger.SetCommonPath(appPath, "results", ID, _time: sessionStarted);
 			TriangleClassicLogger = new Logger(expTask.TriClassic.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
 			TriangleSoundLogger = new Logger(expTask.TriSound.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
 			ConfusionLogger = new Logger(expTask.Confusion.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
@@ -113,6 +126,7 @@ namespace MTwExample
 
 			UpdateSensFilename();
 
+			if (rootDate == null)
 			rootDate = DateTime.Now;
 		}
 
@@ -219,7 +233,12 @@ namespace MTwExample
 			}
 			else
 			{
-				_measuringDevice.createLogFile(new XsString(Path.Combine(thisTaskLogger.thisFileFolder, SensFilenameBox.Text)));
+				if (_measuringDevice == null)
+					return;
+				if (!_measuringDevice.isMeasuring())
+					return;
+
+					_measuringDevice.createLogFile(new XsString(Path.Combine(thisTaskLogger.thisFileFolder, SensFilenameBox.Text)));
 				_measuringDevice.startRecording();
 				btnRecord.Enabled = false;
 				step(9);
@@ -236,6 +255,9 @@ namespace MTwExample
 			}
 			else
 			{
+				if (_measuringDevice == null)
+					return;
+
 				btnStopRecord.Enabled = false;
 
 				if (_measuringDevice.isRecording())
@@ -264,6 +286,9 @@ namespace MTwExample
 				btnStopRecord_Click(sender, e);
 
 				timer1.Enabled = false;
+
+				if (_measuringDevice == null)
+					return;
 
 				_measuringDevice.gotoConfig();
 				_measuringDevice.disableRadio();
@@ -398,6 +423,8 @@ namespace MTwExample
 			StopCounterBtn.Visible = false;
 			ArrivalTimeLbl.Visible = false;
 			textBox1.Visible = false;
+			lbl_condition.Visible = false;
+			lbl_orientation.Visible = false;
 			//btnRecord.Visible = false;
 		}
         private void Form1_Load(object sender, EventArgs e)
@@ -422,6 +449,9 @@ namespace MTwExample
 
 			trialCounter++;
 			TrialBox.Text = trialCounter.ToString();
+
+			shuffle(ref random_a_o_cond);
+			lbl_orientation.Text = trialCounter > NTrial? "" : random_a_o_cond[verse_rotation];
 
 			previous = "B";
 			current  = "B";
@@ -453,6 +483,9 @@ namespace MTwExample
 
 			TrialLbl.Visible = true;
 			TrialBox.Visible = true;
+			lbl_orientation.Visible = true;
+			lbl_condition.Visible = true;
+
 		}
 
         private void StopAllBtn_Click(object sender, EventArgs e)
@@ -467,8 +500,15 @@ namespace MTwExample
 
 			txt_Confusion.Text = (stopDate - startDate).TotalMilliseconds.ToString();
 
-			trialCounter++;
-			TrialBox.Text = trialCounter.ToString();
+			if (++trialCounter > NTrial)
+			{
+				trialCounter = 9999;
+				TrialBox.Text = "FINISHED";
+			}
+			else
+			{
+				TrialBox.Text = trialCounter.ToString();
+			}
 
 			TrialLbl.Visible = true;
 			TrialBox.Visible = true;
@@ -527,8 +567,6 @@ namespace MTwExample
 			C4StartBtn.Visible = true;
 			label5.Visible = true;
 			txt_box_2_1.Visible = true;
-
-			btnStopRecord_Click(sender,e);
 			
 			speakers.stopspeaker();
 
@@ -536,6 +574,8 @@ namespace MTwExample
 			thisTaskLogger.LogData();
 
 			txt_box_2_1.Text = (stopDate - startDate).TotalMilliseconds.ToString();
+
+			btnStopRecord_Click(sender, e);
 
 			previous = "C1";
 		}
@@ -620,6 +660,9 @@ namespace MTwExample
 			Initial_Visibility();
 			TrialLbl.Visible = true;
 			TrialBox.Visible = true;
+			lbl_orientation.Visible = false;
+			lbl_condition.Visible = false;
+
 			ConfBtn.Enabled = false;
 			TriSoundBtn.Visible = false;
 			EndCondBtn.Visible = true;
@@ -631,11 +674,14 @@ namespace MTwExample
 			thisTaskLogger = ConfusionLogger;
 
 
+
 			thisTaskLogger.CreateFolder();
 			await thisTaskLogger.SetHeader(Form1Header);
 
 			trialCounter++;
 			TrialBox.Text = trialCounter.ToString();
+			lbl_orientation.Text = "";
+
 
 			UpdateLogBasicInfo();
 		}
@@ -651,6 +697,8 @@ namespace MTwExample
 			TriClassicBtn.Enabled = false;
 			TrialLbl.Visible = true;
 			TrialBox.Visible = true;
+			lbl_orientation.Visible = true;
+			lbl_condition.Visible = true;
 
 
 			thisTaskLogger = TriangleClassicLogger;
@@ -658,9 +706,12 @@ namespace MTwExample
 
 			thisTaskLogger.CreateFolder();
 			await thisTaskLogger.SetHeader(Form1Header);
-			
+
 			trialCounter++;
 			TrialBox.Text = trialCounter.ToString();
+
+			shuffle(ref random_a_o_cond);
+			lbl_orientation.Text = trialCounter > NTrial ? "" : random_a_o_cond[verse_rotation];
 
 			UpdateLogBasicInfo();
 
@@ -670,11 +721,14 @@ namespace MTwExample
         private void StartCounterBtn_Click(object sender, EventArgs e)
         {
 
-			btnRecord_Click(sender, e);
+				btnRecord_Click(sender, e);
 
 			StartCounterBtn.Visible = false;
 			StopCounterBtn.Visible = true;
 			btnRecord.Enabled = false;
+
+			lbl_orientation.Visible = true;
+			lbl_condition.Visible = true;
 
 			UpdateLogToStartBtn();
 
@@ -682,24 +736,32 @@ namespace MTwExample
 
 		private void StopCounterBtn_Click(object sender, EventArgs e)
 		{
-			timer1.Enabled = false;
 
-			int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-			thisTaskLogger.UpdateValue("sensordata", SensFilenameBox.Text);
-			thisTaskLogger.UpdateValue("StopTimestamp", unixTimestamp);
+			UpdateLogToStopBtn();
 			thisTaskLogger.LogData();
 
+			textBox1.Text = (stopDate - startDate).TotalMilliseconds.ToString();
+			
 			btnStopRecord_Click(sender, e);
 
-			trialCounter++;
+
+
+			if (++trialCounter > NTrial)
+			{
+				trialCounter = 9999;
+				TrialBox.Text = "FINISHED";
+			}
+			else
+			{
+				TrialBox.Text = trialCounter.ToString();
+			}
+			lbl_orientation.Text = trialCounter > NTrial ? "" : random_a_o_cond[verse_rotation];
 
 			StopCounterBtn.Visible = false;
 			StartCounterBtn.Visible = true;
 			ArrivalTimeLbl.Visible = true;
 			textBox1.Visible = true;
 			btnStopRecord.Enabled = false;
-			textBox1.Text = unixTimestamp.ToString();
-			TrialBox.Text = trialCounter.ToString();
 			TrialLbl.Visible = true;
 			TrialBox.Visible = true;
 		}
@@ -733,15 +795,25 @@ namespace MTwExample
 			TrialLbl.Visible = true;
 			TrialBox.Visible = true;
 
-			
-			textBox1.Text = (stopDate - startDate).TotalMilliseconds.ToString();
 
 			UpdateLogToStopBtn();
 			thisTaskLogger.LogData();
 
-			trialCounter++;
-			TrialBox.Text = trialCounter.ToString();
-			
+			textBox1.Text = (stopDate - startDate).TotalMilliseconds.ToString();
+
+			if (++trialCounter > NTrial)
+			{
+				trialCounter = 9999;
+				TrialBox.Text = "FINISHED";
+			}
+			else
+			{
+				TrialBox.Text = trialCounter.ToString();
+			}
+			lbl_orientation.Text = trialCounter > NTrial ? "" : random_a_o_cond[verse_rotation];
+
+
+
 			previous = current;
 			current = "B";
 		}
@@ -770,6 +842,7 @@ namespace MTwExample
 			thisTaskLogger.UpdateValue("StartPoint", previous);
 			thisTaskLogger.UpdateValue("Trial", trialCounter);
 			thisTaskLogger.UpdateValue("StartTimestamp", (startDate - rootDate).TotalMilliseconds);
+			thisTaskLogger.UpdateValue("Condition", lbl_orientation.Text);
 		}
 
 		void UpdateLogToStopBtn()
@@ -778,6 +851,19 @@ namespace MTwExample
 			thisTaskLogger.UpdateValue("StopPoint", current);
 			thisTaskLogger.UpdateValue("sensordata", SensFilenameBox.Text);
 			thisTaskLogger.UpdateValue("StopTimestamp", (stopDate - rootDate).TotalMilliseconds);
+		}
+
+		void shuffle<T>(ref List<T> orderedList)
+        {
+			var rand1 = new Random();
+
+			for (int i = 0; i < orderedList.Count(); i++)
+			{
+				var randNum = rand1.Next(i, orderedList.Count);
+				var temp = orderedList[randNum];
+				orderedList[randNum] = orderedList[i];
+				orderedList[i] = temp;
+			}
 		}
 
     }

@@ -78,9 +78,12 @@ public class Logger: IDisposable {
 
     #region methods
 
-    public static void SetCommonPath(string filePath, string folderName, string fileName)
+    public static void SetCommonPath(string filePath, string folderName, string fileName, DateTime? _time = null)
     {
+        if (_time == null)
         Logger.time = System.DateTime.Now.ToString("ddMMyyyyHHmmss");
+        else
+            Logger.time = _time.Value.ToString("ddMMyyyyHHmmss");
         Logger.commonFileFolder = Path.Combine(new string[] { folderName, fileName,Logger.time });
         Logger.commonFileName = Logger.time + "_" + fileName;
         Logger.commonFilePath = filePath;

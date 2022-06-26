@@ -107,6 +107,8 @@
             this.ArrivalStartBtn = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.ArrivalStopBtn = new System.Windows.Forms.Button();
+            this.lbl_condition = new System.Windows.Forms.Label();
+            this.lbl_orientation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa2Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa4Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa1Img)).BeginInit();
@@ -114,9 +116,10 @@
             // 
             // btnScan
             // 
-            this.btnScan.Location = new System.Drawing.Point(13, 12);
+            this.btnScan.Location = new System.Drawing.Point(20, 18);
+            this.btnScan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(92, 23);
+            this.btnScan.Size = new System.Drawing.Size(138, 35);
             this.btnScan.TabIndex = 0;
             this.btnScan.Text = "Scan";
             this.btnScan.UseVisualStyleBackColor = true;
@@ -125,9 +128,10 @@
             // btnEnable
             // 
             this.btnEnable.Enabled = false;
-            this.btnEnable.Location = new System.Drawing.Point(12, 111);
+            this.btnEnable.Location = new System.Drawing.Point(18, 171);
+            this.btnEnable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEnable.Name = "btnEnable";
-            this.btnEnable.Size = new System.Drawing.Size(92, 23);
+            this.btnEnable.Size = new System.Drawing.Size(138, 35);
             this.btnEnable.TabIndex = 3;
             this.btnEnable.Text = "Enable Radio";
             this.btnEnable.UseVisualStyleBackColor = true;
@@ -136,35 +140,39 @@
             // lblChannel
             // 
             this.lblChannel.AutoSize = true;
-            this.lblChannel.Location = new System.Drawing.Point(16, 82);
+            this.lblChannel.Location = new System.Drawing.Point(24, 126);
+            this.lblChannel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblChannel.Name = "lblChannel";
-            this.lblChannel.Size = new System.Drawing.Size(49, 13);
+            this.lblChannel.Size = new System.Drawing.Size(72, 20);
             this.lblChannel.TabIndex = 4;
             this.lblChannel.Text = "Channel:";
             // 
             // cbxStations
             // 
             this.cbxStations.FormattingEnabled = true;
-            this.cbxStations.Location = new System.Drawing.Point(13, 51);
+            this.cbxStations.Location = new System.Drawing.Point(20, 78);
+            this.cbxStations.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbxStations.Name = "cbxStations";
-            this.cbxStations.Size = new System.Drawing.Size(290, 21);
+            this.cbxStations.Size = new System.Drawing.Size(433, 28);
             this.cbxStations.TabIndex = 5;
             // 
             // lblDeviceCount
             // 
             this.lblDeviceCount.AutoSize = true;
-            this.lblDeviceCount.Location = new System.Drawing.Point(120, 151);
+            this.lblDeviceCount.Location = new System.Drawing.Point(180, 232);
+            this.lblDeviceCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDeviceCount.Name = "lblDeviceCount";
-            this.lblDeviceCount.Size = new System.Drawing.Size(105, 13);
+            this.lblDeviceCount.Size = new System.Drawing.Size(152, 20);
             this.lblDeviceCount.TabIndex = 6;
             this.lblDeviceCount.Text = "MTw\'s Connected: 0";
             // 
             // btnMeasure
             // 
             this.btnMeasure.Enabled = false;
-            this.btnMeasure.Location = new System.Drawing.Point(12, 146);
+            this.btnMeasure.Location = new System.Drawing.Point(18, 225);
+            this.btnMeasure.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMeasure.Name = "btnMeasure";
-            this.btnMeasure.Size = new System.Drawing.Size(92, 23);
+            this.btnMeasure.Size = new System.Drawing.Size(138, 35);
             this.btnMeasure.TabIndex = 8;
             this.btnMeasure.Text = "Measure";
             this.btnMeasure.UseVisualStyleBackColor = true;
@@ -173,9 +181,10 @@
             // btnStopRecord
             // 
             this.btnStopRecord.Enabled = false;
-            this.btnStopRecord.Location = new System.Drawing.Point(13, 205);
+            this.btnStopRecord.Location = new System.Drawing.Point(20, 315);
+            this.btnStopRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStopRecord.Name = "btnStopRecord";
-            this.btnStopRecord.Size = new System.Drawing.Size(91, 23);
+            this.btnStopRecord.Size = new System.Drawing.Size(136, 35);
             this.btnStopRecord.TabIndex = 9;
             this.btnStopRecord.Text = "Stop Record";
             this.btnStopRecord.UseVisualStyleBackColor = true;
@@ -184,9 +193,10 @@
             // btnStopAll
             // 
             this.btnStopAll.Enabled = false;
-            this.btnStopAll.Location = new System.Drawing.Point(14, 234);
+            this.btnStopAll.Location = new System.Drawing.Point(21, 360);
+            this.btnStopAll.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStopAll.Name = "btnStopAll";
-            this.btnStopAll.Size = new System.Drawing.Size(91, 23);
+            this.btnStopAll.Size = new System.Drawing.Size(136, 35);
             this.btnStopAll.TabIndex = 58;
             this.btnStopAll.Text = "Stop All";
             this.btnStopAll.UseVisualStyleBackColor = true;
@@ -198,19 +208,21 @@
             // 
             // rtbSteps
             // 
-            this.rtbSteps.Location = new System.Drawing.Point(338, 51);
+            this.rtbSteps.Location = new System.Drawing.Point(507, 78);
+            this.rtbSteps.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rtbSteps.Name = "rtbSteps";
             this.rtbSteps.ReadOnly = true;
-            this.rtbSteps.Size = new System.Drawing.Size(154, 200);
+            this.rtbSteps.Size = new System.Drawing.Size(229, 306);
             this.rtbSteps.TabIndex = 10;
             this.rtbSteps.Text = "";
             // 
             // rtbData
             // 
             this.rtbData.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbData.Location = new System.Drawing.Point(12, 273);
+            this.rtbData.Location = new System.Drawing.Point(18, 420);
+            this.rtbData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rtbData.Name = "rtbData";
-            this.rtbData.Size = new System.Drawing.Size(483, 293);
+            this.rtbData.Size = new System.Drawing.Size(722, 449);
             this.rtbData.TabIndex = 11;
             this.rtbData.Text = "";
             // 
@@ -235,17 +247,19 @@
             "23",
             "24",
             "25"});
-            this.cbxChannel.Location = new System.Drawing.Point(71, 77);
+            this.cbxChannel.Location = new System.Drawing.Point(106, 118);
+            this.cbxChannel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbxChannel.Name = "cbxChannel";
-            this.cbxChannel.Size = new System.Drawing.Size(73, 21);
+            this.cbxChannel.Size = new System.Drawing.Size(108, 28);
             this.cbxChannel.TabIndex = 12;
             // 
             // btnRecord
             // 
             this.btnRecord.Enabled = false;
-            this.btnRecord.Location = new System.Drawing.Point(12, 176);
+            this.btnRecord.Location = new System.Drawing.Point(18, 271);
+            this.btnRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRecord.Name = "btnRecord";
-            this.btnRecord.Size = new System.Drawing.Size(92, 23);
+            this.btnRecord.Size = new System.Drawing.Size(138, 35);
             this.btnRecord.TabIndex = 13;
             this.btnRecord.Text = "Record";
             this.btnRecord.UseVisualStyleBackColor = true;
@@ -253,18 +267,18 @@
             // 
             // SensFilenameBox
             // 
-            this.SensFilenameBox.Location = new System.Drawing.Point(110, 176);
+            this.SensFilenameBox.Location = new System.Drawing.Point(165, 271);
+            this.SensFilenameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SensFilenameBox.Name = "SensFilenameBox";
             this.SensFilenameBox.ReadOnly = true;
-            this.SensFilenameBox.Size = new System.Drawing.Size(222, 20);
+            this.SensFilenameBox.Size = new System.Drawing.Size(331, 26);
             this.SensFilenameBox.TabIndex = 21;
             // 
             // ConfBtn
             // 
-            this.ConfBtn.Location = new System.Drawing.Point(519, 8);
-            this.ConfBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ConfBtn.Location = new System.Drawing.Point(778, 12);
             this.ConfBtn.Name = "ConfBtn";
-            this.ConfBtn.Size = new System.Drawing.Size(89, 23);
+            this.ConfBtn.Size = new System.Drawing.Size(134, 35);
             this.ConfBtn.TabIndex = 22;
             this.ConfBtn.Text = "CONFUSION";
             this.ConfBtn.UseVisualStyleBackColor = true;
@@ -272,10 +286,9 @@
             // 
             // TriSoundBtn
             // 
-            this.TriSoundBtn.Location = new System.Drawing.Point(519, 34);
-            this.TriSoundBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.TriSoundBtn.Location = new System.Drawing.Point(778, 52);
             this.TriSoundBtn.Name = "TriSoundBtn";
-            this.TriSoundBtn.Size = new System.Drawing.Size(136, 23);
+            this.TriSoundBtn.Size = new System.Drawing.Size(204, 35);
             this.TriSoundBtn.TabIndex = 23;
             this.TriSoundBtn.Text = "TRIANGLE SOUND";
             this.TriSoundBtn.UseVisualStyleBackColor = true;
@@ -284,28 +297,25 @@
             // COMPortLbl
             // 
             this.COMPortLbl.AutoSize = true;
-            this.COMPortLbl.Location = new System.Drawing.Point(669, 27);
-            this.COMPortLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.COMPortLbl.Location = new System.Drawing.Point(1004, 42);
             this.COMPortLbl.Name = "COMPortLbl";
-            this.COMPortLbl.Size = new System.Drawing.Size(71, 13);
+            this.COMPortLbl.Size = new System.Drawing.Size(103, 20);
             this.COMPortLbl.TabIndex = 24;
             this.COMPortLbl.Text = "PORTA COM";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(672, 42);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox1.Location = new System.Drawing.Point(1008, 65);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(82, 21);
+            this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 25;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(757, 38);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(1136, 58);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(50, 27);
+            this.button3.Size = new System.Drawing.Size(75, 42);
             this.button3.TabIndex = 26;
             this.button3.Text = "SET";
             this.button3.UseVisualStyleBackColor = true;
@@ -313,39 +323,35 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(517, 165);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(776, 254);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.Size = new System.Drawing.Size(129, 20);
             this.label2.TabIndex = 30;
             this.label2.Text = "Speaker Number";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(636, 89);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(954, 137);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.Size = new System.Drawing.Size(129, 20);
             this.label3.TabIndex = 31;
             this.label3.Text = "Speaker Number";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(753, 159);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(1130, 245);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.Size = new System.Drawing.Size(129, 20);
             this.label4.TabIndex = 32;
             this.label4.Text = "Speaker Number";
             // 
             // C2StartBtn
             // 
-            this.C2StartBtn.Location = new System.Drawing.Point(531, 273);
-            this.C2StartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C2StartBtn.Location = new System.Drawing.Point(796, 420);
             this.C2StartBtn.Name = "C2StartBtn";
-            this.C2StartBtn.Size = new System.Drawing.Size(56, 20);
+            this.C2StartBtn.Size = new System.Drawing.Size(84, 31);
             this.C2StartBtn.TabIndex = 33;
             this.C2StartBtn.Text = "START";
             this.C2StartBtn.UseVisualStyleBackColor = true;
@@ -353,10 +359,9 @@
             // 
             // C2StopBtn
             // 
-            this.C2StopBtn.Location = new System.Drawing.Point(531, 297);
-            this.C2StopBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C2StopBtn.Location = new System.Drawing.Point(796, 457);
             this.C2StopBtn.Name = "C2StopBtn";
-            this.C2StopBtn.Size = new System.Drawing.Size(56, 20);
+            this.C2StopBtn.Size = new System.Drawing.Size(84, 31);
             this.C2StopBtn.TabIndex = 34;
             this.C2StopBtn.Text = "STOP";
             this.C2StopBtn.UseVisualStyleBackColor = true;
@@ -364,10 +369,9 @@
             // 
             // C1StartBtn
             // 
-            this.C1StartBtn.Location = new System.Drawing.Point(657, 200);
-            this.C1StartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C1StartBtn.Location = new System.Drawing.Point(986, 308);
             this.C1StartBtn.Name = "C1StartBtn";
-            this.C1StartBtn.Size = new System.Drawing.Size(63, 20);
+            this.C1StartBtn.Size = new System.Drawing.Size(94, 31);
             this.C1StartBtn.TabIndex = 35;
             this.C1StartBtn.Text = "START";
             this.C1StartBtn.UseVisualStyleBackColor = true;
@@ -375,10 +379,9 @@
             // 
             // C1StopBtn
             // 
-            this.C1StopBtn.Location = new System.Drawing.Point(657, 224);
-            this.C1StopBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C1StopBtn.Location = new System.Drawing.Point(986, 345);
             this.C1StopBtn.Name = "C1StopBtn";
-            this.C1StopBtn.Size = new System.Drawing.Size(63, 20);
+            this.C1StopBtn.Size = new System.Drawing.Size(94, 31);
             this.C1StopBtn.TabIndex = 36;
             this.C1StopBtn.Text = "STOP";
             this.C1StopBtn.UseVisualStyleBackColor = true;
@@ -386,10 +389,9 @@
             // 
             // C4StartBtn
             // 
-            this.C4StartBtn.Location = new System.Drawing.Point(766, 273);
-            this.C4StartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C4StartBtn.Location = new System.Drawing.Point(1149, 420);
             this.C4StartBtn.Name = "C4StartBtn";
-            this.C4StartBtn.Size = new System.Drawing.Size(56, 20);
+            this.C4StartBtn.Size = new System.Drawing.Size(84, 31);
             this.C4StartBtn.TabIndex = 37;
             this.C4StartBtn.Text = "START";
             this.C4StartBtn.UseVisualStyleBackColor = true;
@@ -397,10 +399,9 @@
             // 
             // C4StopBtn
             // 
-            this.C4StopBtn.Location = new System.Drawing.Point(766, 297);
-            this.C4StopBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.C4StopBtn.Location = new System.Drawing.Point(1149, 457);
             this.C4StopBtn.Name = "C4StopBtn";
-            this.C4StopBtn.Size = new System.Drawing.Size(56, 20);
+            this.C4StopBtn.Size = new System.Drawing.Size(84, 31);
             this.C4StopBtn.TabIndex = 38;
             this.C4StopBtn.Text = "STOP";
             this.C4StopBtn.UseVisualStyleBackColor = true;
@@ -408,10 +409,9 @@
             // 
             // StartAllBtn
             // 
-            this.StartAllBtn.Location = new System.Drawing.Point(647, 272);
-            this.StartAllBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.StartAllBtn.Location = new System.Drawing.Point(970, 418);
             this.StartAllBtn.Name = "StartAllBtn";
-            this.StartAllBtn.Size = new System.Drawing.Size(73, 20);
+            this.StartAllBtn.Size = new System.Drawing.Size(110, 31);
             this.StartAllBtn.TabIndex = 39;
             this.StartAllBtn.Text = "START ALL";
             this.StartAllBtn.UseVisualStyleBackColor = true;
@@ -419,10 +419,9 @@
             // 
             // StopAllBtn
             // 
-            this.StopAllBtn.Location = new System.Drawing.Point(647, 296);
-            this.StopAllBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.StopAllBtn.Location = new System.Drawing.Point(970, 455);
             this.StopAllBtn.Name = "StopAllBtn";
-            this.StopAllBtn.Size = new System.Drawing.Size(73, 20);
+            this.StopAllBtn.Size = new System.Drawing.Size(110, 31);
             this.StopAllBtn.TabIndex = 40;
             this.StopAllBtn.Text = "STOP ALL";
             this.StopAllBtn.UseVisualStyleBackColor = true;
@@ -431,45 +430,40 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(519, 369);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(778, 568);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 13);
+            this.label5.Size = new System.Drawing.Size(130, 20);
             this.label5.TabIndex = 41;
             this.label5.Text = "Arrival Time 2 ->1";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(519, 393);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(778, 605);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.Size = new System.Drawing.Size(130, 20);
             this.label6.TabIndex = 42;
             this.label6.Text = "Arrival Time 1 ->4";
             // 
             // txt_box_2_1
             // 
-            this.txt_box_2_1.Location = new System.Drawing.Point(619, 365);
-            this.txt_box_2_1.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_box_2_1.Location = new System.Drawing.Point(928, 562);
             this.txt_box_2_1.Name = "txt_box_2_1";
-            this.txt_box_2_1.Size = new System.Drawing.Size(68, 20);
+            this.txt_box_2_1.Size = new System.Drawing.Size(100, 26);
             this.txt_box_2_1.TabIndex = 43;
             // 
             // txt_box_1_4
             // 
-            this.txt_box_1_4.Location = new System.Drawing.Point(619, 389);
-            this.txt_box_1_4.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_box_1_4.Location = new System.Drawing.Point(928, 598);
             this.txt_box_1_4.Name = "txt_box_1_4";
-            this.txt_box_1_4.Size = new System.Drawing.Size(68, 20);
+            this.txt_box_1_4.Size = new System.Drawing.Size(100, 26);
             this.txt_box_1_4.TabIndex = 44;
             // 
             // EndCondBtn
             // 
-            this.EndCondBtn.Location = new System.Drawing.Point(626, 502);
-            this.EndCondBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.EndCondBtn.Location = new System.Drawing.Point(939, 772);
             this.EndCondBtn.Name = "EndCondBtn";
-            this.EndCondBtn.Size = new System.Drawing.Size(133, 23);
+            this.EndCondBtn.Size = new System.Drawing.Size(200, 35);
             this.EndCondBtn.TabIndex = 45;
             this.EndCondBtn.Text = "END CONDITION";
             this.EndCondBtn.UseVisualStyleBackColor = true;
@@ -478,27 +472,24 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(519, 343);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(778, 528);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.Size = new System.Drawing.Size(119, 20);
             this.label7.TabIndex = 46;
             this.label7.Text = "Time Confusion";
             // 
             // txt_Confusion
             // 
-            this.txt_Confusion.Location = new System.Drawing.Point(619, 341);
-            this.txt_Confusion.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_Confusion.Location = new System.Drawing.Point(928, 525);
             this.txt_Confusion.Name = "txt_Confusion";
-            this.txt_Confusion.Size = new System.Drawing.Size(68, 20);
+            this.txt_Confusion.Size = new System.Drawing.Size(100, 26);
             this.txt_Confusion.TabIndex = 47;
             // 
             // TriClassicBtn
             // 
-            this.TriClassicBtn.Location = new System.Drawing.Point(521, 61);
-            this.TriClassicBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.TriClassicBtn.Location = new System.Drawing.Point(782, 94);
             this.TriClassicBtn.Name = "TriClassicBtn";
-            this.TriClassicBtn.Size = new System.Drawing.Size(134, 23);
+            this.TriClassicBtn.Size = new System.Drawing.Size(201, 35);
             this.TriClassicBtn.TabIndex = 48;
             this.TriClassicBtn.Text = "TRIANGLE CLASSIC";
             this.TriClassicBtn.UseVisualStyleBackColor = true;
@@ -506,10 +497,9 @@
             // 
             // StartCounterBtn
             // 
-            this.StartCounterBtn.Location = new System.Drawing.Point(647, 272);
-            this.StartCounterBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.StartCounterBtn.Location = new System.Drawing.Point(970, 418);
             this.StartCounterBtn.Name = "StartCounterBtn";
-            this.StartCounterBtn.Size = new System.Drawing.Size(112, 20);
+            this.StartCounterBtn.Size = new System.Drawing.Size(168, 31);
             this.StartCounterBtn.TabIndex = 49;
             this.StartCounterBtn.Text = "START COUNTER";
             this.StartCounterBtn.UseVisualStyleBackColor = true;
@@ -517,10 +507,9 @@
             // 
             // StopCounterBtn
             // 
-            this.StopCounterBtn.Location = new System.Drawing.Point(647, 296);
-            this.StopCounterBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.StopCounterBtn.Location = new System.Drawing.Point(970, 455);
             this.StopCounterBtn.Name = "StopCounterBtn";
-            this.StopCounterBtn.Size = new System.Drawing.Size(112, 20);
+            this.StopCounterBtn.Size = new System.Drawing.Size(168, 31);
             this.StopCounterBtn.TabIndex = 50;
             this.StopCounterBtn.Text = "STOP COUNTER";
             this.StopCounterBtn.UseVisualStyleBackColor = true;
@@ -529,29 +518,26 @@
             // ArrivalTimeLbl
             // 
             this.ArrivalTimeLbl.AutoSize = true;
-            this.ArrivalTimeLbl.Location = new System.Drawing.Point(519, 341);
-            this.ArrivalTimeLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ArrivalTimeLbl.Location = new System.Drawing.Point(778, 525);
             this.ArrivalTimeLbl.Name = "ArrivalTimeLbl";
-            this.ArrivalTimeLbl.Size = new System.Drawing.Size(65, 13);
+            this.ArrivalTimeLbl.Size = new System.Drawing.Size(94, 20);
             this.ArrivalTimeLbl.TabIndex = 51;
             this.ArrivalTimeLbl.Text = "Arrival Time ";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(639, 341);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Location = new System.Drawing.Point(958, 525);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(68, 20);
+            this.textBox1.Size = new System.Drawing.Size(100, 26);
             this.textBox1.TabIndex = 52;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // TrialLbl
             // 
             this.TrialLbl.AutoSize = true;
-            this.TrialLbl.Location = new System.Drawing.Point(711, 376);
-            this.TrialLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TrialLbl.Location = new System.Drawing.Point(1066, 578);
             this.TrialLbl.Name = "TrialLbl";
-            this.TrialLbl.Size = new System.Drawing.Size(44, 13);
+            this.TrialLbl.Size = new System.Drawing.Size(63, 20);
             this.TrialLbl.TabIndex = 53;
             this.TrialLbl.Text = "TRIAL: ";
             // 
@@ -560,11 +546,11 @@
             this.TrialBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TrialBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TrialBox.ForeColor = System.Drawing.Color.Red;
-            this.TrialBox.Location = new System.Drawing.Point(756, 376);
-            this.TrialBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TrialBox.Location = new System.Drawing.Point(1134, 578);
+            this.TrialBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.TrialBox.Name = "TrialBox";
             this.TrialBox.ReadOnly = true;
-            this.TrialBox.Size = new System.Drawing.Size(48, 13);
+            this.TrialBox.Size = new System.Drawing.Size(72, 19);
             this.TrialBox.TabIndex = 54;
             this.TrialBox.Text = "label10";
             this.TrialBox.TextChanged += new System.EventHandler(this.TrialBox_TextChanged);
@@ -572,10 +558,9 @@
             // Cassa2Img
             // 
             this.Cassa2Img.Image = global::example.Properties.Resources.two;
-            this.Cassa2Img.Location = new System.Drawing.Point(515, 180);
-            this.Cassa2Img.Margin = new System.Windows.Forms.Padding(2);
+            this.Cassa2Img.Location = new System.Drawing.Point(772, 277);
             this.Cassa2Img.Name = "Cassa2Img";
-            this.Cassa2Img.Size = new System.Drawing.Size(87, 88);
+            this.Cassa2Img.Size = new System.Drawing.Size(130, 135);
             this.Cassa2Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Cassa2Img.TabIndex = 29;
             this.Cassa2Img.TabStop = false;
@@ -583,10 +568,9 @@
             // Cassa4Img
             // 
             this.Cassa4Img.Image = global::example.Properties.Resources.four11;
-            this.Cassa4Img.Location = new System.Drawing.Point(749, 180);
-            this.Cassa4Img.Margin = new System.Windows.Forms.Padding(2);
+            this.Cassa4Img.Location = new System.Drawing.Point(1124, 277);
             this.Cassa4Img.Name = "Cassa4Img";
-            this.Cassa4Img.Size = new System.Drawing.Size(90, 88);
+            this.Cassa4Img.Size = new System.Drawing.Size(135, 135);
             this.Cassa4Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Cassa4Img.TabIndex = 28;
             this.Cassa4Img.TabStop = false;
@@ -594,20 +578,18 @@
             // Cassa1Img
             // 
             this.Cassa1Img.Image = global::example.Properties.Resources.one2;
-            this.Cassa1Img.Location = new System.Drawing.Point(639, 104);
-            this.Cassa1Img.Margin = new System.Windows.Forms.Padding(2);
+            this.Cassa1Img.Location = new System.Drawing.Point(958, 160);
             this.Cassa1Img.Name = "Cassa1Img";
-            this.Cassa1Img.Size = new System.Drawing.Size(81, 90);
+            this.Cassa1Img.Size = new System.Drawing.Size(122, 138);
             this.Cassa1Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Cassa1Img.TabIndex = 27;
             this.Cassa1Img.TabStop = false;
             // 
             // ArrivalStartBtn
             // 
-            this.ArrivalStartBtn.Location = new System.Drawing.Point(647, 272);
-            this.ArrivalStartBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ArrivalStartBtn.Location = new System.Drawing.Point(970, 418);
             this.ArrivalStartBtn.Name = "ArrivalStartBtn";
-            this.ArrivalStartBtn.Size = new System.Drawing.Size(112, 20);
+            this.ArrivalStartBtn.Size = new System.Drawing.Size(168, 31);
             this.ArrivalStartBtn.TabIndex = 55;
             this.ArrivalStartBtn.Text = "START ARRIVAL";
             this.ArrivalStartBtn.UseVisualStyleBackColor = true;
@@ -616,28 +598,51 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(499, 440);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(748, 677);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(0, 13);
+            this.label11.Size = new System.Drawing.Size(0, 20);
             this.label11.TabIndex = 56;
             // 
             // ArrivalStopBtn
             // 
-            this.ArrivalStopBtn.Location = new System.Drawing.Point(647, 297);
-            this.ArrivalStopBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ArrivalStopBtn.Location = new System.Drawing.Point(970, 457);
             this.ArrivalStopBtn.Name = "ArrivalStopBtn";
-            this.ArrivalStopBtn.Size = new System.Drawing.Size(112, 20);
+            this.ArrivalStopBtn.Size = new System.Drawing.Size(168, 31);
             this.ArrivalStopBtn.TabIndex = 57;
             this.ArrivalStopBtn.Text = "STOP ARRIVAL";
             this.ArrivalStopBtn.UseVisualStyleBackColor = true;
             this.ArrivalStopBtn.Click += new System.EventHandler(this.ArrivalStopBtn_Click);
             // 
+            // lbl_condition
+            // 
+            this.lbl_condition.AutoSize = true;
+            this.lbl_condition.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_condition.Location = new System.Drawing.Point(1054, 605);
+            this.lbl_condition.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_condition.Name = "lbl_condition";
+            this.lbl_condition.Size = new System.Drawing.Size(157, 26);
+            this.lbl_condition.TabIndex = 58;
+            this.lbl_condition.Text = "CONDITION: ";
+            // 
+            // lbl_orientation
+            // 
+            this.lbl_orientation.AutoSize = true;
+            this.lbl_orientation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_orientation.ForeColor = System.Drawing.Color.Green;
+            this.lbl_orientation.Location = new System.Drawing.Point(1201, 598);
+            this.lbl_orientation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_orientation.Name = "lbl_orientation";
+            this.lbl_orientation.Size = new System.Drawing.Size(32, 36);
+            this.lbl_orientation.TabIndex = 59;
+            this.lbl_orientation.Text = "a";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 610);
+            this.ClientSize = new System.Drawing.Size(1430, 938);
+            this.Controls.Add(this.lbl_orientation);
+            this.Controls.Add(this.lbl_condition);
             this.Controls.Add(this.btnStopAll);
             this.Controls.Add(this.ArrivalStopBtn);
             this.Controls.Add(this.label11);
@@ -687,6 +692,7 @@
             this.Controls.Add(this.lblChannel);
             this.Controls.Add(this.btnEnable);
             this.Controls.Add(this.btnScan);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "MTw Example";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -752,6 +758,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button ArrivalStopBtn;
         private System.Windows.Forms.Button btnStopAll;
+        private System.Windows.Forms.Label lbl_condition;
+        private System.Windows.Forms.Label lbl_orientation;
     }
 }
 
