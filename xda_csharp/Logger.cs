@@ -104,7 +104,7 @@ public class Logger: IDisposable {
 
     public async Task OpenWriteCloseBye(string text, FileMode fileMode)
     {
-        using (FileStream stream = new FileStream(fullFile, fileMode, FileAccess.Write, FileShare.Write, bufferSize: 8192, useAsync: true))
+        using (FileStream stream = new FileStream(fullFile, fileMode, FileAccess.Write, FileShare.None, bufferSize: 8192, useAsync: true))
         using (StreamWriter writer = new StreamWriter(stream))
         {
             //This is writing the line of the type, name, damage... etc... (I set these)
@@ -116,7 +116,7 @@ public class Logger: IDisposable {
     {
         if (!File.Exists(fullFile))
             throw (new IOException("File " +fullFile+ " missing. Set Header first."));
-        dStream = new FileStream(fullFile, FileMode.Append, FileAccess.Write, FileShare.Write, bufferSize:64, useAsync: true);
+        dStream = new FileStream(fullFile, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize:8192, useAsync: true);
         dWriter = new StreamWriter(dStream);
     }
 
@@ -128,7 +128,7 @@ public class Logger: IDisposable {
                 SetupDataStream();
 
             await dWriter.WriteLineAsync(dataLine).ConfigureAwait(false);
-            await dWriter.FlushAsync().ConfigureAwait(false);
+            //await dWriter.FlushAsync().ConfigureAwait(false);
         }
         else
         {

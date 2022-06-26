@@ -40,6 +40,7 @@ using System.Media;
 using System.IO;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace MTwExample
 {
@@ -102,6 +103,8 @@ namespace MTwExample
 		public Form1(string str, DateTime sessionStarted)
         {
             InitializeComponent();
+
+			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
 			rootDate = sessionStarted;
 
@@ -181,6 +184,31 @@ namespace MTwExample
         private void btnEnable_Click(object sender, EventArgs e)
         {
 			XsDevice device = _xda.getDevice(((MasterInfo)cbxStations.SelectedItem).DeviceId);
+			// Supported update rates and maximum available from xda
+			XsIntArray supportedRates = device.supportedUpdateRates();
+			int maxUpdateRate = device.maximumUpdateRate();
+
+			// -- Put the allowed update rates in the combobox for the user to choose from --
+			comboBoxUpdateRate.Items.Clear();
+			for (uint i = 0; i < supportedRates.size() && supportedRates.at(i) <= maxUpdateRate; ++i)
+			{
+				// This is an allowed update rate, so add it to the list.
+				comboBoxUpdateRate.Items.Add(Convert.ToString(supportedRates.at(i)));
+			}
+
+			// Select the current update rate of the station.
+			int updateRateIndex = comboBoxUpdateRate.FindString(Convert.ToString(device.updateRate()));
+			comboBoxUpdateRate.SelectedIndex = updateRateIndex;
+
+
+			// Set a default update rate of 75 (if available) when we set the radio channel
+			updateRateIndex = comboBoxUpdateRate.FindString(Convert.ToString(75));
+
+			if (updateRateIndex != -1)
+			{
+				comboBoxUpdateRate.SelectedIndex = updateRateIndex;
+			}
+
 			if (device.isRadioEnabled())
 				device.disableRadio();
             if (device.enableRadio(Convert.ToInt32(cbxChannel.Text)))
@@ -203,6 +231,21 @@ namespace MTwExample
             step(9);
 			_connectedMtwData.Clear();
 			_measuringDevice = _xda.getDevice(((MasterInfo)cbxStations.SelectedItem).DeviceId);
+
+			// First set the update rate
+			int desiredUpdateRate = Convert.ToInt32(comboBoxUpdateRate.Text);
+			if (desiredUpdateRate != -1 && desiredUpdateRate != _measuringDevice.updateRate())
+			{
+				if (_measuringDevice.setUpdateRate(desiredUpdateRate))
+				{
+					rtbSteps.Text = String.Format("Update rate set. ID: {0}, Rate: {1}", _measuringDevice.deviceId().toXsString().toString(), desiredUpdateRate);
+				}
+				else
+				{
+					rtbSteps.Text = String.Format("Failed to set update rate. ID: {0}, Rate: {1}", _measuringDevice.deviceId().toXsString().toString(), desiredUpdateRate);
+				}
+			}
+
 			_measuringDevice.gotoMeasurement();
 			XsDevicePtrArray deviceIds = _measuringDevice.children();
 			for (uint i = 0; i < deviceIds.size(); i++)
@@ -227,7 +270,7 @@ namespace MTwExample
             timer1.Enabled = true;
         }
 
-		private void btnRecord_Click(object sender, EventArgs e)
+		private async void btnRecord_Click(object sender, EventArgs e)
 		{
 			if (InvokeRequired)
 			{
@@ -241,7 +284,11 @@ namespace MTwExample
 				if (!_measuringDevice.isMeasuring())
 					return;
 
-					_measuringDevice.createLogFile(new XsString(Path.Combine(thisTaskLogger.thisFileFolder, SensFilenameBox.Text)));
+				UpdateSensFilename();
+				_measuringDevice.createLogFile(new XsString(Path.Combine(thisTaskLogger.thisFileFolder, SensFilenameBox.Text)));
+				SensLogger.CreateFolder();
+				Task sethead = Task.Run(()=>SensLogger.SetHeader(new string[] { "s", "t" }));
+				sethead.Wait();
 				_measuringDevice.startRecording();
 				btnRecord.Enabled = false;
 				step(9);
@@ -350,6 +397,7 @@ namespace MTwExample
                 {
 					SensLogger.UpdateValue("s", e.Packet.m_packetId);
 					SensLogger.UpdateValue("t", (DateTime.Now-rootDate).TotalMilliseconds );
+					SensLogger.LogData();
 				}
 			}
 		}

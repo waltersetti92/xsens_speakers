@@ -109,6 +109,7 @@
             this.ArrivalStopBtn = new System.Windows.Forms.Button();
             this.lbl_condition = new System.Windows.Forms.Label();
             this.lbl_orientation = new System.Windows.Forms.Label();
+            this.comboBoxUpdateRate = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa2Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa4Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cassa1Img)).BeginInit();
@@ -636,11 +637,20 @@
             this.lbl_orientation.TabIndex = 59;
             this.lbl_orientation.Text = "a";
             // 
+            // comboBoxUpdateRate
+            // 
+            this.comboBoxUpdateRate.FormattingEnabled = true;
+            this.comboBoxUpdateRate.Location = new System.Drawing.Point(278, 118);
+            this.comboBoxUpdateRate.Name = "comboBoxUpdateRate";
+            this.comboBoxUpdateRate.Size = new System.Drawing.Size(121, 28);
+            this.comboBoxUpdateRate.TabIndex = 60;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1430, 938);
+            this.Controls.Add(this.comboBoxUpdateRate);
             this.Controls.Add(this.lbl_orientation);
             this.Controls.Add(this.lbl_condition);
             this.Controls.Add(this.btnStopAll);
@@ -760,6 +770,7 @@
         private System.Windows.Forms.Button btnStopAll;
         private System.Windows.Forms.Label lbl_condition;
         private System.Windows.Forms.Label lbl_orientation;
+        private System.Windows.Forms.ComboBox comboBoxUpdateRate;
     }
 }
 
