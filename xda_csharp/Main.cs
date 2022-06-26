@@ -39,7 +39,7 @@ using XDA;
 using System.Media;
 using System.IO;
 using Newtonsoft.Json;
-using System.Threading;
+using System.Threading.Tasks;
 
 namespace MTwExample
 {
@@ -95,6 +95,8 @@ namespace MTwExample
 
 		private Logger thisTaskLogger;
 
+		private Logger SensLogger;
+
 		private string[] Form1Header = new string[] { "Code", "ID", "Task", "Condition", "Trial", "StartPoint", "StopPoint", "StartTimestamp", "StopTimestamp", "sensordata", "angle_abs", "radius_abs", "angle_rel" };
 
 		public Form1(string str, DateTime sessionStarted)
@@ -122,6 +124,7 @@ namespace MTwExample
 			TriangleSoundLogger = new Logger(expTask.TriSound.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
 			ConfusionLogger = new Logger(expTask.Confusion.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
 			NullLogger = new Logger(expTask.NONE.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
+			SensLogger = new Logger(SensFilenameBox.Text, destinationFolder: ID, extension: "ts", keepStream: true);
 			thisTaskLogger = NullLogger;
 
 			UpdateSensFilename();
@@ -342,14 +345,35 @@ namespace MTwExample
 				XsEuler oriEuler = e.Packet.orientationEuler();
 
 				_connectedMtwData[e.Device.deviceId().toInt()]._orientation = oriEuler;
+
+				if (_measuringDevice.isRecording())
+                {
+					SensLogger.UpdateValue("s", e.Packet.m_packetId);
+					SensLogger.UpdateValue("t", (DateTime.Now-rootDate).TotalMilliseconds );
+				}
 			}
 		}
 
-        /// <summary>
-        /// Some step by step info
-        /// </summary>
-        /// <param name="stepNumber"></param>
-        private void step(int stepNumber)
+		void _callbackHandler_RecordingStarted(object sender, DataAvailableArgs e)
+		{
+			if (InvokeRequired)
+			{
+				// Update UI, make sure this happens on the UI thread
+				BeginInvoke(new Action(delegate { _callbackHandler_RecordingStarted(sender, e); }));
+			}
+			else
+			{
+				SensLogger.CreateFolder();
+				Task mkHdr = Task.Run(() => SensLogger.SetHeader(new string[] { "s", "t" }));
+				mkHdr.Wait();
+			}
+		}
+
+		/// <summary>
+		/// Some step by step info
+		/// </summary>
+		/// <param name="stepNumber"></param>
+		private void step(int stepNumber)
         {
             switch (stepNumber)
             {
