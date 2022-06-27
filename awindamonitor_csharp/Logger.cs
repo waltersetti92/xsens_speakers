@@ -128,6 +128,7 @@ public class Logger: IDisposable {
                 SetupDataStream();
 
             await dWriter.WriteLineAsync(dataLine).ConfigureAwait(false);
+            
             //await dWriter.FlushAsync().ConfigureAwait(false);
         }
         else
@@ -177,8 +178,10 @@ public class Logger: IDisposable {
     {
         if (dWriter != null)
         {
+            Task flusher = Task.Run(()=>dWriter.Flush());
+            flusher.Wait();
             dWriter.Close();
-            dStream.Close();
+            //dStream.Close();
         }
     }
 

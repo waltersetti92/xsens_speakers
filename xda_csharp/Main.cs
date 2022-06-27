@@ -127,7 +127,7 @@ namespace MTwExample
 			TriangleSoundLogger = new Logger(expTask.TriSound.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
 			ConfusionLogger = new Logger(expTask.Confusion.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
 			NullLogger = new Logger(expTask.NONE.ToString(), destinationFolder: ID, extension: "dat", keepStream: false);
-			SensLogger = new Logger(SensFilenameBox.Text, destinationFolder: ID, extension: "ts", keepStream: true);
+			
 			thisTaskLogger = NullLogger;
 
 			UpdateSensFilename();
@@ -285,8 +285,11 @@ namespace MTwExample
 					return;
 
 				UpdateSensFilename();
-				_measuringDevice.createLogFile(new XsString(Path.Combine(thisTaskLogger.thisFileFolder, SensFilenameBox.Text)));
+				SensLogger = new Logger(destinationFile: SensFilenameBox.Text, destinationFolder: ID, extension: "ts", keepStream: true);
 				SensLogger.CreateFolder();
+
+				_measuringDevice.createLogFile(new XsString(Path.Combine(thisTaskLogger.thisFileFolder, SensFilenameBox.Text)));
+				
 				Task sethead = Task.Run(()=>SensLogger.SetHeader(new string[] { "s", "t" }));
 				sethead.Wait();
 				_measuringDevice.startRecording();
@@ -402,20 +405,20 @@ namespace MTwExample
 			}
 		}
 
-		void _callbackHandler_RecordingStarted(object sender, DataAvailableArgs e)
-		{
-			if (InvokeRequired)
-			{
-				// Update UI, make sure this happens on the UI thread
-				BeginInvoke(new Action(delegate { _callbackHandler_RecordingStarted(sender, e); }));
-			}
-			else
-			{
-				SensLogger.CreateFolder();
-				Task mkHdr = Task.Run(() => SensLogger.SetHeader(new string[] { "s", "t" }));
-				mkHdr.Wait();
-			}
-		}
+		//void _callbackHandler_RecordingStarted(object sender, DataAvailableArgs e)
+		//{
+		//	if (InvokeRequired)
+		//	{
+		//		// Update UI, make sure this happens on the UI thread
+		//		BeginInvoke(new Action(delegate { _callbackHandler_RecordingStarted(sender, e); }));
+		//	}
+		//	else
+		//	{
+		//		SensLogger.CreateFolder();
+		//		Task mkHdr = Task.Run(() => SensLogger.SetHeader(new string[] { "s", "t" }));
+		//		mkHdr.Wait();
+		//	}
+		//}
 
 		/// <summary>
 		/// Some step by step info

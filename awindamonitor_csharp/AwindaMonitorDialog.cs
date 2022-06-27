@@ -31,6 +31,7 @@
 //  
 
 ﻿using System;
+using System.Globalization;
 using System.Timers;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Threading;
 using Xsens;
 using XDA;
@@ -81,9 +83,16 @@ namespace AwindaMonitor
 
         private Thread _scanThread;
 
+		private Logger SensLogger;
+		public static readonly string appPath = Path.Combine(new string[] { Path.GetDirectoryName(Application.ExecutablePath) });
+
+		private DateTime rootDate;
+
 		public AwindaMonitorDialog()
 		{
 			InitializeComponent();
+
+			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
 			_measuringMtws = new Dictionary<XsDevice, MyMtwCallback>();
 			_connectedMtwData = new Dictionary<uint, ConnectedMTwData>();
@@ -122,6 +131,9 @@ namespace AwindaMonitor
 
 			_portScanTimer.Enabled = true;
 			_batteryLevelRequestTimer.Enabled = true;
+
+			rootDate = DateTime.Now;
+			
 		}
 
 		private void requestBatteryLevels(object sender, EventArgs e)
@@ -569,6 +581,12 @@ namespace AwindaMonitor
 					// Display data when MTw selected.
 					displayMtwData(_connectedMtwData[e.Device.deviceId().legacyDeviceId()]);
 				}
+				if (_MyWirelessMasterDevice.isRecording())
+				{
+					SensLogger.UpdateValue("s", e.Packet.m_packetId);
+					SensLogger.UpdateValue("t", (DateTime.Now - rootDate).TotalMilliseconds);
+					SensLogger.LogData();
+				}
 			}
 		}
 
@@ -814,26 +832,40 @@ namespace AwindaMonitor
 		private float timerLapse;
 		private void btnRecord_Click(object sender, EventArgs e)
 		{
+			
 			switch (_state)
 			{
 			case States.MEASURING:
 				{
-					// -- Start the recording --
-
-					// Get the filename from the input and creating a log file.
-					String logFilename = textBoxFilename.Text;
-					if (_MyWirelessMasterDevice.createLogFile(new XsString(logFilename)) == XsResultValue.XRV_OK)
+						// -- Start the recording --
+						Logger.SetCommonPath(appPath, "results", textBoxID.Text, _time: rootDate);
+						SensLogger = new Logger(destinationFile: comboBoxCond.Text, destinationFolder: textBoxID.Text, extension: "ts", keepStream: true);
+						SensLogger.CreateFolder();
+						// Get the filename from the input and creating a log file.
+						String logFilename = Path.Combine(SensLogger.thisFileFolder, SensLogger.thisFileName+".mtb");
+					if (_MyWirelessMasterDevice.createLogFile(new XsString(Path.Combine(SensLogger.thisFileFolder, SensLogger.thisFileName + ".mtb"))) == XsResultValue.XRV_OK)
 					{
-						if (_MyWirelessMasterDevice.startRecording())
+							Task sethead = Task.Run(() => SensLogger.SetHeader(new string[] { "s", "t" }));
+							sethead.Wait();
+
+							if (_MyWirelessMasterDevice.startRecording())
 						{
 								if (TimerCheckBox.Checked)
 								{
-									aTimer = new System.Timers.Timer(timerLapse * 1000);
-									// Hook up the Elapsed event for the timer. 
-									aTimer.Elapsed += OnTimedEvent;
-									aTimer.AutoReset = false;
-									aTimer.Enabled = true;
-									log("Timer started");
+									float.TryParse(TimerTextBox.Text, out timerLapse);
+									if (timerLapse <= 0)
+									{
+										log("time must be larger than 0, set another time");
+									}
+									else
+									{
+										aTimer = new System.Timers.Timer(timerLapse * 1000);
+										// Hook up the Elapsed event for the timer. 
+										aTimer.Elapsed += OnTimedEvent;
+										aTimer.AutoReset = false;
+										aTimer.Enabled = true;
+										log("Timer started");
+									}
 								}
 							}
 						else
@@ -853,15 +885,14 @@ namespace AwindaMonitor
 					_state = States.FLUSHING;
 					_MyWirelessMasterDevice.stopRecording();
 					log(String.Format("Stopping recording. ID: {0}", _MyWirelessMasterDevice.deviceId().toXsString().toString()));
-					
-					if (aTimer != null)
+
+						if (aTimer != null)
                         {
 							aTimer.Stop();
 							aTimer.Dispose();
 							log("Timer stopped");
 						}
-
-				} break;
+					} break;
 
 			default:
 				break;
@@ -935,6 +966,7 @@ namespace AwindaMonitor
 					comboBoxUpdateRate.Enabled = true;
 					pictureBoxStateDiagram.Image = global::awindamonitor.Properties.Resources.enabled;
 					btnRecord.Enabled = false;
+					textBoxID.Enabled = true;
 				} break;
 
 				case AwindaMonitorDialog.States.OPERATIONAL:
@@ -949,7 +981,8 @@ namespace AwindaMonitor
 					comboBoxUpdateRate.Enabled = true;
 					pictureBoxStateDiagram.Image = global::awindamonitor.Properties.Resources.operational;
 					btnRecord.Enabled = false;
-				} break;
+					textBoxID.Enabled = true;
+					} break;
 
 				case AwindaMonitorDialog.States.AWAIT_MEASUREMENT_START:
 				case AwindaMonitorDialog.States.AWAIT_RECORDING_START:
@@ -972,8 +1005,9 @@ namespace AwindaMonitor
 					comboBoxUpdateRate.Enabled = false;
 					btnRecord.Text = "Start recording";
 					btnRecord.Enabled = true;
-					labelFilename.Enabled = true;
-					textBoxFilename.Enabled = true;
+					labelCondition.Enabled = true;
+					comboBoxCond.Enabled = true;
+					textBoxID.Enabled = true;
 					labelFlushing.Enabled = false;
 					progressBarFlushing.Enabled = false;
 					progressBarFlushing.Value = 0;
@@ -984,8 +1018,9 @@ namespace AwindaMonitor
 				{
 					btnRecord.Enabled = true;
 					btnRecord.Text = "Stop recording";
-					labelFilename.Enabled = false;
-					textBoxFilename.Enabled = false;
+					labelCondition.Enabled = false;
+					comboBoxCond.Enabled = false;
+					textBoxID.Enabled = false;
 					btnMeasure.Enabled = false;
 					pictureBoxStateDiagram.Image = global::awindamonitor.Properties.Resources.recording;
 				} break;
@@ -1012,6 +1047,11 @@ namespace AwindaMonitor
         private void TimerTextBox_TextChanged(object sender, EventArgs e)
         {
 			float.TryParse(TimerTextBox.Text, out timerLapse);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

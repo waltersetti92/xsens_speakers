@@ -83,6 +83,7 @@
     <Compile Include="AwindaMonitorDialog.Designer.cs">
       <DependentUpon>AwindaMonitorDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logger.cs" />
     <Compile Include="MyXda.cs" />
     <Compile Include="MyEventArgs.cs" />
     <Compile Include="Program.cs" />
