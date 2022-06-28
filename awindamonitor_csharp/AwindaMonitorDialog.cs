@@ -843,7 +843,7 @@ namespace AwindaMonitor
 						SensLogger.CreateFolder();
 						// Get the filename from the input and creating a log file.
 						String logFilename = Path.Combine(SensLogger.thisFileFolder, SensLogger.thisFileName+".mtb");
-					if (_MyWirelessMasterDevice.createLogFile(new XsString(Path.Combine(SensLogger.thisFileFolder, SensLogger.thisFileName + ".mtb"))) == XsResultValue.XRV_OK)
+					if (_MyWirelessMasterDevice.createLogFile(new XsString(logFilename)) == XsResultValue.XRV_OK)
 					{
 							Task sethead = Task.Run(() => SensLogger.SetHeader(new string[] { "s", "t" }));
 							sethead.Wait();
@@ -889,7 +889,6 @@ namespace AwindaMonitor
 						if (aTimer != null)
                         {
 							aTimer.Stop();
-							aTimer.Dispose();
 							log("Timer stopped");
 						}
 					} break;
@@ -1053,5 +1052,6 @@ namespace AwindaMonitor
         {
 
         }
+
     }
 }

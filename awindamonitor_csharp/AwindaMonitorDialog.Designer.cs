@@ -60,6 +60,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label labelTimer;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AwindaMonitorDialog));
             this.btnEnable = new System.Windows.Forms.Button();
@@ -104,6 +105,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pictureBoxStateDiagram = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             labelTimer = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.dockedMtwListGroupBox.SuspendLayout();
@@ -628,6 +630,10 @@
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // AwindaMonitorDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -705,6 +711,7 @@
         private System.Windows.Forms.CheckBox TimerCheckBox;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
